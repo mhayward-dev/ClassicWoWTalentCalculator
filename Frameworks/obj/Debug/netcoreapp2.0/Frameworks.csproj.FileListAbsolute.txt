@@ -1,0 +1,9 @@
+C:\Code\WoWClassicTalentCalculator\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.deps.json
+C:\Code\WoWClassicTalentCalculator\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.dll
+C:\Code\WoWClassicTalentCalculator\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.pdb
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.csproj.CoreCompileInputs.cache
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfoInputs.cache
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfo.cs
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.dll
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.pdb
+C:\Code\WoWClassicTalentCalculator\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.csprojResolveAssemblyReference.cache

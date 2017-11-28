@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Talent Calculator";
+}
+
+<div id="talent-calculator" class="container" ng-app="talentCalculatorApp">
+    <div ng-controller="talentController">
+        <div id="class-row" class="row">
+            <div class="col-md-12">
+                <div class="class-icon" ng-show="classes.length > 0" ng-repeat="c in classes">
+                    <img ng-src="{{ getIconFileName(c.className) }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/talentModule.js"></script>
+    <script src="~/js/talentFactory.js"></script>
+    <script src="~/js/talentController.js"></script>
+}
