@@ -13,20 +13,21 @@ namespace WoWClassicTalentCalculator.Migrations
                 name: "WarcraftClasses",
                 columns: table => new
                 {
-                    WarcraftClassId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Order = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WarcraftClasses", x => x.WarcraftClassId);
+                    table.PrimaryKey("PK_WarcraftClasses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "WarcraftClassSpecifications",
                 columns: table => new
                 {
-                    WarcraftClassSpecificationId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SpecificationIndex = table.Column<int>(type: "int", nullable: false),
                     SpecificationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -34,20 +35,20 @@ namespace WoWClassicTalentCalculator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WarcraftClassSpecifications", x => x.WarcraftClassSpecificationId);
+                    table.PrimaryKey("PK_WarcraftClassSpecifications", x => x.Id);
                     table.ForeignKey(
                         name: "FK_WarcraftClassSpecifications_WarcraftClasses_WarcraftClassId",
                         column: x => x.WarcraftClassId,
                         principalTable: "WarcraftClasses",
-                        principalColumn: "WarcraftClassId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Talents",
+                name: "SpecificationTalents",
                 columns: table => new
                 {
-                    TalentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ColumnIndex = table.Column<int>(type: "int", nullable: false),
                     NoOfRanks = table.Column<int>(type: "int", nullable: false),
@@ -58,18 +59,18 @@ namespace WoWClassicTalentCalculator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Talents", x => x.TalentId);
+                    table.PrimaryKey("PK_SpecificationTalents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Talents_WarcraftClassSpecifications_WarcraftClassSpecificationId",
+                        name: "FK_SpecificationTalents_WarcraftClassSpecifications_WarcraftClassSpecificationId",
                         column: x => x.WarcraftClassSpecificationId,
                         principalTable: "WarcraftClassSpecifications",
-                        principalColumn: "WarcraftClassSpecificationId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Talents_WarcraftClassSpecificationId",
-                table: "Talents",
+                name: "IX_SpecificationTalents_WarcraftClassSpecificationId",
+                table: "SpecificationTalents",
                 column: "WarcraftClassSpecificationId");
 
             migrationBuilder.CreateIndex(
@@ -81,7 +82,7 @@ namespace WoWClassicTalentCalculator.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Talents");
+                name: "SpecificationTalents");
 
             migrationBuilder.DropTable(
                 name: "WarcraftClassSpecifications");

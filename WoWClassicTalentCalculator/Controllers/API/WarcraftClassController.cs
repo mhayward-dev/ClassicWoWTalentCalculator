@@ -30,5 +30,18 @@ namespace WoWClassicTalentCalculator.Controllers.API
 
             return BadRequest();
         }
+
+        [Route("{classId:int}")]
+        public object GetSelectedSpecificationsForClass(int classId)
+        {
+            var warcraftClass = classRepository.GetById(classId, true);
+
+            if (warcraftClass.IsNotNull())
+            {
+                return Ok(WarcraftClassDTO.ToDTO(warcraftClass));
+            }
+
+            return BadRequest();
+        }
     }
 }

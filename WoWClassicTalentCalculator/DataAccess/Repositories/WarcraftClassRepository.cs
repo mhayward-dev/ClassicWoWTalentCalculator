@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
 using WoWClassicTalentCalculator.Models;
 
 namespace WoWClassicTalentCalculator.DataAccess.Repositories
@@ -13,6 +11,12 @@ namespace WoWClassicTalentCalculator.DataAccess.Repositories
             CurrentRepository = this;
         }
 
-
+        public WarcraftClass GetById(int id, bool eagerLoad = false)
+        {
+            return eagerLoad ? Context.WarcraftClasses.Include(wc => wc.WarcraftClassSpecifications)
+                                                      .ThenInclude(wcs => wcs.SpecificationTalents)
+                                                      .FirstOrDefault(wc => wc.Id == id)
+                             : base.GetById(id);
+        }
     }
 }

@@ -6,12 +6,18 @@
     display: inline;
 }
 
-#class-row .class-icon {
-    float: left;
-    text-align: center;
-    width: 11%;
-}
-
-    #class-row .class-icon img {
-        width: 100%;
+    #class-row .class-icon {
+        float: left;
+        text-align: center;
+        width: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
+
+        #class-row .class-icon img {
+            width: 100px;
+        }
+
+.highlight-line {
+    border-bottom: 2px solid;
+}

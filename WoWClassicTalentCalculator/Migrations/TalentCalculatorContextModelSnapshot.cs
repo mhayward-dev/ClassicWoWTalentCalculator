@@ -20,9 +20,9 @@ namespace WoWClassicTalentCalculator.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WoWClassicTalentCalculator.Models.Talent", b =>
+            modelBuilder.Entity("WoWClassicTalentCalculator.Models.SpecificationTalent", b =>
                 {
-                    b.Property<int>("TalentId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ColumnIndex");
@@ -37,30 +37,30 @@ namespace WoWClassicTalentCalculator.Migrations
 
                     b.Property<int>("WarcraftClassSpecificationId");
 
-                    b.HasKey("TalentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("WarcraftClassSpecificationId");
 
-                    b.ToTable("Talents");
+                    b.ToTable("SpecificationTalents");
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.WarcraftClass", b =>
                 {
-                    b.Property<int>("WarcraftClassId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClassName");
 
                     b.Property<int>("Order");
 
-                    b.HasKey("WarcraftClassId");
+                    b.HasKey("Id");
 
                     b.ToTable("WarcraftClasses");
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.WarcraftClassSpecification", b =>
                 {
-                    b.Property<int>("WarcraftClassSpecificationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("SpecificationIndex");
@@ -69,17 +69,17 @@ namespace WoWClassicTalentCalculator.Migrations
 
                     b.Property<int>("WarcraftClassId");
 
-                    b.HasKey("WarcraftClassSpecificationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("WarcraftClassId");
 
                     b.ToTable("WarcraftClassSpecifications");
                 });
 
-            modelBuilder.Entity("WoWClassicTalentCalculator.Models.Talent", b =>
+            modelBuilder.Entity("WoWClassicTalentCalculator.Models.SpecificationTalent", b =>
                 {
                     b.HasOne("WoWClassicTalentCalculator.Models.WarcraftClassSpecification")
-                        .WithMany("Talents")
+                        .WithMany("SpecificationTalents")
                         .HasForeignKey("WarcraftClassSpecificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

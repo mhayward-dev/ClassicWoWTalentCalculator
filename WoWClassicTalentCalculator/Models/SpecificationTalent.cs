@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WoWClassicTalentCalculator.Models
+﻿namespace WoWClassicTalentCalculator.Models
 {
-    public class Talent
+    public class SpecificationTalent
     {
-        public int TalentId { get; set; }
+        public int Id { get; set; }
         public string TalentName { get; set; }
         public string TalentDescription { get; set; }
         public int NoOfRanks { get; set; }

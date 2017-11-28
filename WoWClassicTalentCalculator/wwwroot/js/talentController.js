@@ -1,20 +1,42 @@
 ﻿
-app.controller('talentController', ['$scope', 'talentFactory', function ($scope, talentFactory) {
+app.controller('talentController', function ($scope, talentFactory, warcraftClassVm, warcraftClassSpecificationVm) {
     $scope.isLoading = true;
     $scope.classes = [];
+    $scope.selectedClassId = 0;
+    $scope.selectedClass = [];
 
-    $scope.getClasses = function () {
+    $scope.fetchClasses = function () {
         talentFactory.getClasses()
             .then(function (response) {
-                $scope.classes = response.data
+                $scope.classes = response.data.map(warcraftClassVm.build);
+
             }, function (error) {
                 console.log(error);
             });
     }
 
-    $scope.getIconFileName = function (className) {
-        return "images/class-icons/" + className.toLowerCase() + "-class-icon.png";
+    $scope.fetchSpecifications = function (id) {
+        if ($scope.selectedClassId > 0)
+            $scope.getClass($scope.selectedClassId).isSelected = false;
+
+        talentFactory.getSpecifications(id)
+            .then(function (response) {
+                $scope.selectedClassId = id;
+                $scope.getClass(id).isSelected = true;
+                $scope.selectedClass = warcraftClassVm.build(response.data);
+
+            }, function (error) {
+                console.log(error);
+            });
     }
 
-    $scope.getClasses();
-}]);
+    $scope.getClass = function (id) {
+        var selectedClass = _.find($scope.classes, { 'id': id });
+        if (selectedClass) return selectedClass;
+
+        return null;
+    }
+
+    $scope.fetchClasses();
+    $scope.fetchSpecifications(1);
+});

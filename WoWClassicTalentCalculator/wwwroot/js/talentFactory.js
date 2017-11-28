@@ -6,5 +6,9 @@ app.factory('talentFactory', ['$http', function ($http) {
         return $http.get('/api/Classes');
     };
 
+    talentFactory.getSpecifications = function (id) {
+        return $http.get('/api/Classes/' + id)
+    }
+
     return talentFactory;
 }]);

@@ -5,17 +5,28 @@
 
 <div id="talent-calculator" class="container" ng-app="talentCalculatorApp">
     <div ng-controller="talentController">
-        <div id="class-row" class="row">
-            <div class="col-md-12">
-                <div class="class-icon" ng-show="classes.length > 0" ng-repeat="c in classes">
-                    <img ng-src="{{ getIconFileName(c.className) }}" />
+        <section id="class-select">
+            <div id="class-row" class="row">
+                <div class="col-md-12">
+                    <div class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
+                        <img title="{{ c.className }}" ng-src="{{ c.iconSrc }}" />
+                        <div ng-show="getClass(c.id).isSelected" class="highlight-line"></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <section id="talents-select">
+            <div id="specifications-row" class="row">
+                <div class="col-md-4" ng-repeat="s in selectedClass.specifications">
+                    {{ s.specName }}
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
 @section Scripts {
+    <script src="~/js/talentVm.js"></script>
     <script src="~/js/talentModule.js"></script>
     <script src="~/js/talentFactory.js"></script>
     <script src="~/js/talentController.js"></script>

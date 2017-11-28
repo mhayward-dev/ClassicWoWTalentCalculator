@@ -7,14 +7,16 @@ namespace WoWClassicTalentCalculator.Models.DTOs
 {
     public class WarcraftClassDTO
     {
-        public int WarcraftClassId { get; set; }
+        public int Id { get; set; }
         public string ClassName { get; set; }
+        public IEnumerable<WarcraftClassSpecificationDTO> Specifications { get; set; }
 
         public static WarcraftClassDTO ToDTO(WarcraftClass wc)
         {
             return new WarcraftClassDTO {
-                WarcraftClassId = wc.WarcraftClassId,
-                ClassName = wc.ClassName
+                Id = wc.Id,
+                ClassName = wc.ClassName,
+                Specifications = wc.WarcraftClassSpecifications?.Select(wcs => WarcraftClassSpecificationDTO.ToDTO(wcs))
             };
         }
     }
