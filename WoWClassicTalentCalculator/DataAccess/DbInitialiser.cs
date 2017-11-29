@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WoWClassicTalentCalculator.Models;
+using WoWClassicTalentCalculator.DataAccess.DbSeeder;
 
 namespace WoWClassicTalentCalculator.DataAccess
 {
@@ -77,7 +78,7 @@ namespace WoWClassicTalentCalculator.DataAccess
                 new WarcraftClass { ClassName = "Paladin", WarcraftClassSpecifications = paladinSpecs, Order = 4 },
                 new WarcraftClass { ClassName = "Priest", WarcraftClassSpecifications = priestSpecs, Order = 5 },
                 new WarcraftClass { ClassName = "Rogue", WarcraftClassSpecifications = rogueSpecs, Order = 6 },
-                new WarcraftClass { ClassName = "Shaman", WarcraftClassSpecifications = shamanSpecs, Order = 7 },
+                new WarcraftClass { ClassName = "Shaman", WarcraftClassSpecifications = ShamanClassSeeder.SeedShamanTalents(), Order = 7 },
                 new WarcraftClass { ClassName = "Warlock", WarcraftClassSpecifications = warlockSpecs, Order = 8 },
                 new WarcraftClass { ClassName = "Warrior", WarcraftClassSpecifications = warriorSpecs, Order = 9 },
             };

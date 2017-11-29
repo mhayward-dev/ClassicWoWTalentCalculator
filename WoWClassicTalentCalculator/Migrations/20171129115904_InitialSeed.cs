@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WoWClassicTalentCalculator.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialSeed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,9 +51,7 @@ namespace WoWClassicTalentCalculator.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ColumnIndex = table.Column<int>(type: "int", nullable: false),
-                    NoOfRanks = table.Column<int>(type: "int", nullable: false),
                     RowIndex = table.Column<int>(type: "int", nullable: false),
-                    TalentDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TalentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WarcraftClassSpecificationId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -68,10 +66,61 @@ namespace WoWClassicTalentCalculator.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TalentRanks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RankDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RankNo = table.Column<int>(type: "int", nullable: false),
+                    SpecificationTalentId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TalentRanks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TalentRanks_SpecificationTalents_SpecificationTalentId",
+                        column: x => x.SpecificationTalentId,
+                        principalTable: "SpecificationTalents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TalentRequirements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RequirementDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TalentRankId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TalentRequirements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TalentRequirements_TalentRanks_TalentRankId",
+                        column: x => x.TalentRankId,
+                        principalTable: "TalentRanks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_SpecificationTalents_WarcraftClassSpecificationId",
                 table: "SpecificationTalents",
                 column: "WarcraftClassSpecificationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TalentRanks_SpecificationTalentId",
+                table: "TalentRanks",
+                column: "SpecificationTalentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TalentRequirements_TalentRankId",
+                table: "TalentRequirements",
+                column: "TalentRankId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WarcraftClassSpecifications_WarcraftClassId",
@@ -81,6 +130,12 @@ namespace WoWClassicTalentCalculator.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "TalentRequirements");
+
+            migrationBuilder.DropTable(
+                name: "TalentRanks");
+
             migrationBuilder.DropTable(
                 name: "SpecificationTalents");
 

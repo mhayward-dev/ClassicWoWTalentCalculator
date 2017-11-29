@@ -40,4 +40,5 @@ app.controller('talentController', function ($scope, talentFactory, warcraftClas
 
     $scope.fetchClasses();
     $scope.fetchSpecifications(1);
+
 });

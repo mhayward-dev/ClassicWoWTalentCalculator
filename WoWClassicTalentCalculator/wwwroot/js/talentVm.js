@@ -17,14 +17,15 @@ function warcraftClassVm(warcraftClassSpecificationVm) {
     return WarcraftClass;
 }
 
-function warcraftClassSpecificationVm() {
+function warcraftClassSpecificationVm(talentRowVm) {
 
     function WarcraftClassSpecification(wcs, className) {
         this.id = wcs.id;
         this.specName = wcs.specificationName;
         this.index = wcs.specificationIndex;
         this.bgImage = "images/specification-backgrounds/" +
-                       _.kebabCase(className + "-" + wcs.specificationName) + "-bg.jpg";
+            _.kebabCase(className + "-" + wcs.specificationName) + "-bg.jpg";
+        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(subarray => subarray.map(talentRowVm.build)) : [];
     }
 
     WarcraftClassSpecification.build = function (data) {
@@ -32,4 +33,21 @@ function warcraftClassSpecificationVm() {
     }
 
     return WarcraftClassSpecification;
+}
+
+function talentRowVm() {
+
+    function Talent(t) {
+        this.id = t.id;
+        this.talentName = t.talentName;
+        this.columnIndex = t.columnIndex;
+        this.rowIndex = t.rowIndex;
+        this.talentRanks = t.talentRanks;
+    }
+
+    Talent.build = function (data) {
+        return new Talent(data);
+    }
+
+    return Talent;
 }

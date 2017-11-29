@@ -22,7 +22,6 @@
     border-bottom: 2px solid;
 }
 
-
 #specifications {
     margin-top: 20px;
 }
@@ -34,8 +33,8 @@
 
         #specifications #spec-inner .specification-pane {
             background-repeat: no-repeat;
-            background-size: 300px 515px;
-            width: 330px;
+            background-size: 285px 515px;
+            width: 315px;
             height: 515px;
             float: left;
         }
