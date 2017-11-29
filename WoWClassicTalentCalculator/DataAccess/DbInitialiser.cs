@@ -59,7 +59,7 @@ namespace WoWClassicTalentCalculator.DataAccess
             };
 
             var warlockSpecs = new List<WarcraftClassSpecification> {
-                new WarcraftClassSpecification { SpecificationName = "Afflication", SpecificationIndex = 0 },
+                new WarcraftClassSpecification { SpecificationName = "Affliction", SpecificationIndex = 0 },
                 new WarcraftClassSpecification { SpecificationName = "Demonology", SpecificationIndex = 1 },
                 new WarcraftClassSpecification { SpecificationName = "Destruction", SpecificationIndex = 2 }
             };

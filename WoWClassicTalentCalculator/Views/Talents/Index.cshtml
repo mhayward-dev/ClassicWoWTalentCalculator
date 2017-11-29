@@ -9,16 +9,21 @@
             <div id="class-row" class="row">
                 <div class="col-md-12">
                     <div class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
-                        <img title="{{ c.className }}" ng-src="{{ c.iconSrc }}" />
-                        <div ng-show="getClass(c.id).isSelected" class="highlight-line"></div>
+                        <img ng-src="{{ c.iconSrc }}" />
+                        <div ng-show="c.isSelected" class="highlight-line"></div>
                     </div>
                 </div>
             </div>
         </section>
         <section id="talents-select">
-            <div id="specifications-row" class="row">
-                <div class="col-md-4" ng-repeat="s in selectedClass.specifications">
-                    {{ s.specName }}
+            <div id="specifications" class="row">
+                <div id="spec-container" class="col-sm-12">
+                    <div id="spec-inner">
+                        <div class="row specification-pane" ng-repeat="s in selectedClass.specifications | orderBy:'+index'" 
+                             ng-style="{'background-image': 'url(' + s.bgImage + ')'}">
+                            <table></table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

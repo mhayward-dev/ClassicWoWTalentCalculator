@@ -16,11 +16,12 @@ app.controller('talentController', function ($scope, talentFactory, warcraftClas
     }
 
     $scope.fetchSpecifications = function (id) {
-        if ($scope.selectedClassId > 0)
-            $scope.getClass($scope.selectedClassId).isSelected = false;
-
         talentFactory.getSpecifications(id)
             .then(function (response) {
+                if ($scope.selectedClassId > 0) {
+                    $scope.getClass($scope.selectedClassId).isSelected = false;
+                }
+
                 $scope.selectedClassId = id;
                 $scope.getClass(id).isSelected = true;
                 $scope.selectedClass = warcraftClassVm.build(response.data);

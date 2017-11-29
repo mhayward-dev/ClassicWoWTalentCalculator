@@ -21,3 +21,21 @@
 .highlight-line {
     border-bottom: 2px solid;
 }
+
+
+#specifications {
+    margin-top: 20px;
+}
+
+    #specifications #spec-inner {
+        display: table;
+        margin: 0 auto;
+    }
+
+        #specifications #spec-inner .specification-pane {
+            background-repeat: no-repeat;
+            background-size: 300px 515px;
+            width: 330px;
+            height: 515px;
+            float: left;
+        }
