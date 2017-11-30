@@ -33,8 +33,15 @@
 
         #specifications #spec-inner .specification-pane {
             background-repeat: no-repeat;
-            background-size: 285px 515px;
-            width: 315px;
-            height: 515px;
+            background-size: 200px 400px;
+            width: 200px;
+            height: 400px;
             float: left;
+        }
+
+        #specifications #spec-inner .specification-pane table td {
+            width: 50px;
+            height: 50px;
+            color: white;
+            text-align: center;
         }

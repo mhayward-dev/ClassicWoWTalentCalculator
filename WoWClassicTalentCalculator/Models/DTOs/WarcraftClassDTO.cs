@@ -16,7 +16,7 @@ namespace WoWClassicTalentCalculator.Models.DTOs
             return new WarcraftClassDTO {
                 Id = wc.Id,
                 ClassName = wc.ClassName,
-                Specifications = wc.WarcraftClassSpecifications?.Select(wcs => WarcraftClassSpecificationDTO.ToDTO(wcs))
+                Specifications = wc.WarcraftClassSpecifications?.OrderBy(wcs => wcs.SpecificationIndex).Select(wcs => WarcraftClassSpecificationDTO.ToDTO(wcs))
             };
         }
     }

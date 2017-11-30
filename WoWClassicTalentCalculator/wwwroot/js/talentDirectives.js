@@ -1,26 +1,30 @@
-﻿app.directive('specificationTalents', function () {
+﻿app.directive('specificationTable', function () {
     return {
         restrict: 'E',
-        link: function (scope, element, attrs) {
-            var html = '<table>';
+        link: function ($scope, element, attrs) {
+            $scope.$watch('selectedClass', function (selectedClass) {
+                var tableHtml = $('<table>');
+                var spec = selectedClass.specifications[Number(attrs.specIndex)];
 
-            angular.forEach(scope[attrs.talents], function (tr, index) {
-                html += '<td><td>' + tr.talentName + '</td></tr>';
-            })
+                $.each(spec.talentRows, function (rowIndex, rowArray) {
+                    var rowHtml = $('<tr>');
 
-            html += '</table>';
-            element.replaceWith(html)
+                    for (var i = 0; i < 4; i++) {
+                        var cellHtml = $('<td>');
 
-            //angular.forEach(scope[attrs.rows], function (row, index) {
-            //    html += '<tr><td>' + row.name + '</td></tr>';
-            //    if ('subrows' in row) {
-            //        angular.forEach(row.subrows, function (subrow, index) {
-            //            html += '<tr><td>' + subrow.name + '</td></tr>';
-            //        });
-            //    }
-            //});
-            //html += '</table>';
-            //element.replaceWith(html)
+                        var talent = $scope.getTalentByColIndex(i, rowArray);
+                        if (talent) {
+                            cellHtml.text('X');
+                        }
+
+                        rowHtml.append(cellHtml);
+                    }
+
+                    tableHtml.append(rowHtml);
+                });
+
+                element.replaceWith(tableHtml);
+            });
         }
     };
 });

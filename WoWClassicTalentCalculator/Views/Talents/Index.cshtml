@@ -16,12 +16,12 @@
             </div>
         </section>
         <section id="talents-select">
-            <div id="specifications" class="row">
-                <div id="spec-container" class="col-sm-12">
+            <div id="specifications">
+                <div id="spec-container">
                     <div id="spec-inner">
-                        <div class="row specification-pane" ng-repeat="s in selectedClass.specifications | orderBy:'+index'" 
+                        <div class="specification-pane" ng-repeat="s in selectedClass.specifications | orderBy:'+index'"
                              ng-style="{'background-image': 'url(' + s.bgImage + ')'}">
-                            <specification-talents talents="{{ s.talentRows }}"></specification-talents>
+                            <specification-table spec-index="{{ s.index }}"></specification-table>
                         </div>
                     </div>
                 </div>

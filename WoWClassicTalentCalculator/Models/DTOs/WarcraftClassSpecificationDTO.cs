@@ -21,8 +21,8 @@ namespace WoWClassicTalentCalculator.Models.DTOs
                 for (var i = 0; i <= wcs.SpecificationTalents.Max(st => st.RowIndex); i++)
                 {
                     var talents = wcs.SpecificationTalents.Where(st => st.RowIndex == i)
-                                                         .Select(st => SpecificationTalentDTO.ToDTO(st))
-                                                         .ToArray();
+                                                          .Select(st => SpecificationTalentDTO.ToDTO(st))
+                                                          .ToArray();
                     talentRows.Add(talents);
                 }
             }

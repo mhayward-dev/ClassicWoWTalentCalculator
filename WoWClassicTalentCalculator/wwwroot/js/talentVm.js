@@ -25,7 +25,7 @@ function warcraftClassSpecificationVm(talentRowVm) {
         this.index = wcs.specificationIndex;
         this.bgImage = "images/specification-backgrounds/" +
             _.kebabCase(className + "-" + wcs.specificationName) + "-bg.jpg";
-        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(subarray => subarray.map(talentRowVm.build)) : [];
+        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(talents => talents.map(talentRowVm.build)) : [];
     }
 
     WarcraftClassSpecification.build = function (data) {
@@ -40,7 +40,7 @@ function talentRowVm() {
     function Talent(t) {
         this.id = t.id;
         this.talentName = t.talentName;
-        this.columnIndex = t.columnIndex;
+        this.colIndex = t.columnIndex;
         this.rowIndex = t.rowIndex;
         this.talentRanks = t.talentRanks;
     }

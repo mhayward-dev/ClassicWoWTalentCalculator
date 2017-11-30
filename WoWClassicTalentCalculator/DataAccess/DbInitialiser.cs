@@ -53,11 +53,11 @@ namespace WoWClassicTalentCalculator.DataAccess
                 new WarcraftClassSpecification { SpecificationName = "Subtlety", SpecificationIndex = 2 }
             };
 
-            var shamanSpecs = new List<WarcraftClassSpecification> {
-                new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0 },
-                new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1 },
-                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2 }
-            };
+            //var shamanSpecs = new List<WarcraftClassSpecification> {
+            //    new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0 },
+            //    new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1 },
+            //    new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2 }
+            //};
 
             var warlockSpecs = new List<WarcraftClassSpecification> {
                 new WarcraftClassSpecification { SpecificationName = "Affliction", SpecificationIndex = 0 },
