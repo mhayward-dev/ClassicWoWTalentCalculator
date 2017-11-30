@@ -14,6 +14,7 @@ namespace WoWClassicTalentCalculator.DataAccess
         public DbSet<SpecificationTalent> SpecificationTalents { get; set; }
         public DbSet<TalentRank> TalentRanks { get; set; }
         public DbSet<TalentRequirement> TalentRequirements { get; set; }
+        public DbSet<TalentIcon> TalentIcons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

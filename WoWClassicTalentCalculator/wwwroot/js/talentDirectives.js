@@ -1,4 +1,9 @@
 ﻿app.directive('specificationTable', function () {
+
+    setupCell = function () {
+
+    };
+
     return {
         restrict: 'E',
         link: function ($scope, element, attrs) {
@@ -14,7 +19,8 @@
 
                         var talent = $scope.getTalentByColIndex(i, rowArray);
                         if (talent) {
-                            cellHtml.text('X');
+                            var iconHtml = sprintf('<div class="talent-icon"><img src="%s" /></div>', talent.iconPath);
+                            cellHtml.append(iconHtml);
                         }
 
                         rowHtml.append(cellHtml);

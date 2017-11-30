@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "dotless/1.5.2": {
-        "type": "package",
-        "compile": {
-          "lib/dotless.Core.dll": {}
-        },
-        "runtime": {
-          "lib/dotless.Core.dll": {}
-        }
-      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5052,22 +5043,6 @@
     }
   },
   "libraries": {
-    "dotless/1.5.2": {
-      "sha512": "693HhsCGUyVTyUZua9LrtyG6pjCkEtz+z15jtmfqm25AJe5F40RBufgS6wsqpAj8e5eSTyVAvlPK9fJJBHx2Mw==",
-      "type": "package",
-      "path": "dotless/1.5.2",
-      "files": [
-        "acknowledgements.txt",
-        "content/web.config.install.xdt",
-        "dotless.1.5.2.nupkg.sha512",
-        "dotless.nuspec",
-        "lib/dotless.Core.dll",
-        "lib/dotless.Core.pdb",
-        "license.txt",
-        "tool/dotless.compiler.exe",
-        "tool/dotless.compiler.pdb"
-      ]
-    },
     "Libuv/1.10.0": {
       "sha512": "GsCf4q+eyaI49rCPlgYxdxa1SQCysXFFdSJWdstrwxytg4+VPYLYrXD4AT2rjHVJ+UF7SSWX9CapWEYaU4ejVQ==",
       "type": "package",
@@ -13154,8 +13129,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
-      "dotless >= 1.5.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0"
     ]
   },
   "packageFolders": {
@@ -13210,10 +13184,6 @@
             "target": "Package",
             "version": "2.0.0"
           },
-          "dotless": {
-            "target": "Package",
-            "version": "1.5.2"
-          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "2.0.0"
@@ -13239,17 +13209,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'dotless 1.5.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
-      "libraryId": "dotless",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }

@@ -7,6 +7,7 @@
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "angular": "v1.6.7-build.5497+sha.f876ab7",
-    "lodash": "4.17.4"
+    "lodash": "4.17.4",
+    "sprintf": "v0.7"
   }
 }

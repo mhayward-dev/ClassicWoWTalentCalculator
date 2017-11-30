@@ -39,9 +39,14 @@
             float: left;
         }
 
-        #specifications #spec-inner .specification-pane table td {
-            width: 50px;
-            height: 50px;
-            color: white;
-            text-align: center;
-        }
+            #specifications #spec-inner .specification-pane table td {
+                width: 50px;
+                height: 50px;
+                color: white;
+                text-align: center;
+            }
+
+                #specifications #spec-inner .specification-pane table td img {
+                    width: 38px;
+                    height: 38px;
+                }

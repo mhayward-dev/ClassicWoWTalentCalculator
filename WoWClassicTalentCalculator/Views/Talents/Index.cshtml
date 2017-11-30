@@ -9,7 +9,7 @@
             <div id="class-row" class="row">
                 <div class="col-md-12">
                     <div class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
-                        <img ng-src="{{ c.iconSrc }}" />
+                        <img ng-src="{{ c.iconPath }}" />
                         <div ng-show="c.isSelected" class="highlight-line"></div>
                     </div>
                 </div>

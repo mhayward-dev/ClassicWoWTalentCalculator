@@ -4,7 +4,7 @@ function warcraftClassVm(warcraftClassSpecificationVm) {
     function WarcraftClass(wc) {
         this.id = wc.id;
         this.className = wc.className;
-        this.iconSrc = "images/class-icons/" + wc.className.toLowerCase() + "-class-icon.png";
+        this.iconPath = "images/class-icons/" + wc.className.toLowerCase() + "-class-icon.png";
         this.specifications = wc.specifications ?
             wc.specifications.map(warcraftClassSpecificationVm.build, { className: wc.className }) : [];
         this.isSelected = false;
@@ -42,6 +42,7 @@ function talentRowVm() {
         this.talentName = t.talentName;
         this.colIndex = t.columnIndex;
         this.rowIndex = t.rowIndex;
+        this.iconPath = 'images/talent-icons/inv_misc_questionmark.jpg';
         this.talentRanks = t.talentRanks;
     }
 

@@ -5,7 +5,7 @@ namespace WoWClassicTalentCalculator.DataAccess.DbSeeder
 {
     public static class ShamanClassSeeder
     {
-        public static List<WarcraftClassSpecification> SeedShamanTalents()
+        public static List<WarcraftClassSpecification> SetupSpecifications()
         {
             // Elemental Talents
             var elementalTalents = new List<SpecificationTalent>

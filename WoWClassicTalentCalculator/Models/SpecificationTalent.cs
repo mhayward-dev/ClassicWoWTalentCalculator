@@ -9,6 +9,8 @@ namespace WoWClassicTalentCalculator.Models
         public string TalentName { get; set; }
         public int ColumnIndex { get; set; }
         public int RowIndex { get; set; }
+        public int? TalentIconId { get; set; }
         public List<TalentRank> TalentRanks { get; set; }
+        public TalentIcon TalentIcon { get; set; }
     }
 }

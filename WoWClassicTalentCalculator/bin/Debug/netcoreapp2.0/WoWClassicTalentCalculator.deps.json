@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "5dacd61142f921190c118e65830f8daadebdf6a9"
+    "signature": "cd945696cff90a9745d51031f9ca805e22e8725c"
   },
   "compilationOptions": {
     "defines": [
@@ -28,22 +28,13 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
-          "dotless": "1.5.2"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0"
         },
         "runtime": {
           "WoWClassicTalentCalculator.dll": {}
         },
         "compile": {
           "WoWClassicTalentCalculator.dll": {}
-        }
-      },
-      "dotless/1.5.2": {
-        "runtime": {
-          "lib/dotless.Core.dll": {}
-        },
-        "compile": {
-          "lib/dotless.Core.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4257,13 +4248,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "dotless/1.5.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-693HhsCGUyVTyUZua9LrtyG6pjCkEtz+z15jtmfqm25AJe5F40RBufgS6wsqpAj8e5eSTyVAvlPK9fJJBHx2Mw==",
-      "path": "dotless/1.5.2",
-      "hashPath": "dotless.1.5.2.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",

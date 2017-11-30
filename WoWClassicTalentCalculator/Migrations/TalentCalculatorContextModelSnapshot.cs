@@ -29,15 +29,31 @@ namespace WoWClassicTalentCalculator.Migrations
 
                     b.Property<int>("RowIndex");
 
+                    b.Property<int?>("TalentIconId");
+
                     b.Property<string>("TalentName");
 
                     b.Property<int>("WarcraftClassSpecificationId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TalentIconId");
+
                     b.HasIndex("WarcraftClassSpecificationId");
 
                     b.ToTable("SpecificationTalents");
+                });
+
+            modelBuilder.Entity("WoWClassicTalentCalculator.Models.TalentIcon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FileName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TalentIcons");
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.TalentRank", b =>
@@ -108,6 +124,10 @@ namespace WoWClassicTalentCalculator.Migrations
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.SpecificationTalent", b =>
                 {
+                    b.HasOne("WoWClassicTalentCalculator.Models.TalentIcon", "TalentIcon")
+                        .WithMany()
+                        .HasForeignKey("TalentIconId");
+
                     b.HasOne("WoWClassicTalentCalculator.Models.WarcraftClassSpecification")
                         .WithMany("SpecificationTalents")
                         .HasForeignKey("WarcraftClassSpecificationId")
