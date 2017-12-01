@@ -17,33 +17,39 @@
 #talent-calculator .highlight-line {
   border-bottom: 2px solid;
 }
-#talent-calculator #specifications {
+#talent-calculator #talents-select #specifications {
   margin-top: 20px;
 }
-#talent-calculator #specifications #spec-inner {
+#talent-calculator #talents-select #specifications #spec-inner {
   display: table;
   margin: 0 auto;
 }
-#talent-calculator #specifications #spec-inner .specification-pane {
+#talent-calculator #talents-select #specifications #spec-inner .specification-pane {
   background-repeat: no-repeat;
   background-size: 200px 400px;
   width: 200px;
   height: 400px;
   float: left;
 }
-#talent-calculator #specifications #spec-inner .specification-pane table {
+#talent-calculator #talents-select #specifications #spec-inner .specification-pane table {
   margin-top: 10px;
   text-align: center;
 }
-#talent-calculator #specifications #spec-inner .specification-pane table td {
+#talent-calculator #talents-select #specifications #spec-inner .specification-pane table td {
   width: 50px;
   height: 50px;
 }
-#talent-calculator #specifications #spec-inner .specification-pane table td div.talent-icon img {
+#talent-calculator #talents-select #specifications #spec-inner .specification-pane table td div.talent-icon img {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   width: 36px;
   height: 36px;
   left: 4px;
   top: 4px;
+}
+#talent-calculator #talents-select #talent-hover-dialog {
+  height: 200px;
+  width: 400px;
+  background-color: black;
+  color: white;
 }

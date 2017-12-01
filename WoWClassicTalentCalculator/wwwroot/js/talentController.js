@@ -45,5 +45,9 @@ app.controller('talentController', function ($scope, talentFactory, warcraftClas
         return talent ? talent : null;
     }
 
+    $scope.showTalentInfoDialog = function (event, talentId) {
+        console.log("Id is: " + talentId);
+    }
+
     $scope.fetchClasses();
 });

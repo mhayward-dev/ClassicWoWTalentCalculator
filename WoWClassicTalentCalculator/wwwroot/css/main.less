@@ -21,42 +21,52 @@
         border-bottom: 2px solid;
     }
 
-    #specifications {
-        margin-top: 20px;
+    #talents-select {
+        #specifications {
+            margin-top: 20px;
 
-        #spec-inner {
-            display: table;
-            margin: 0 auto;
+            #spec-inner {
+                display: table;
+                margin: 0 auto;
 
-            .specification-pane {
-                background-repeat: no-repeat;
-                background-size: 200px 400px;
-                width: 200px;
-                height: 400px;
-                float: left;
+                .specification-pane {
+                    background-repeat: no-repeat;
+                    background-size: 200px 400px;
+                    width: 200px;
+                    height: 400px;
+                    float: left;
 
-                table {
-                    margin-top: 10px;
-                    text-align: center;
+                    table {
+                        margin-top: 10px;
+                        text-align: center;
 
-                    td {
-                        width: 50px;
-                        height: 50px;
+                        td {
+                            width: 50px;
+                            height: 50px;
 
-                        div.talent-icon {
+                            div.talent-icon {
 
-                            img {
-                                -webkit-filter: grayscale(100%);
-                                filter: grayscale(100%);
-                                width: 36px;
-                                height: 36px;
-                                left: 4px;
-                                top: 4px;
+                                img {
+                                    -webkit-filter: grayscale(100%);
+                                    filter: grayscale(100%);
+                                    width: 36px;
+                                    height: 36px;
+                                    left: 4px;
+                                    top: 4px;
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+
+        #talent-hover-dialog {
+            display: none;
+            height: 100px;
+            width: 300px;
+            background-color: black;
+            color: white;
         }
     }
 }

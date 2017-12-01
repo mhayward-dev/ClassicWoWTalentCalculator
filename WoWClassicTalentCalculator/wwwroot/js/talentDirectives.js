@@ -1,26 +1,29 @@
-﻿app.directive('specificationTable', function () {
+﻿app.directive('specificationTable', function ($compile) {
 
-    setupCell = function () {
+    var setupIcon = function (t) {
+        var icon = angular.element(sprintf('<div class="talent-icon"><img src="%s" /></div>', t.iconFilePath));
+        icon.attr('ng-mouseenter', sprintf('showTalentInfoDialog($event, %s)', t.id));
 
+        return icon;
     };
 
     return {
         restrict: 'E',
-        link: function ($scope, element, attrs) {
-            $scope.$watch('selectedClass', function (selectedClass) {
-                var tableHtml = $('<table>');
+        link: function (scope, element, attrs) {
+            scope.$watch('selectedClass', function (selectedClass) {
+                var tableHtml = angular.element('<table>');
                 var spec = selectedClass.specifications[Number(attrs.specIndex)];
 
                 $.each(spec.talentRows, function (rowIndex, rowArray) {
-                    var rowHtml = $('<tr>');
+                    var rowHtml = angular.element('<tr>');
 
                     for (var i = 0; i < 4; i++) {
-                        var cellHtml = $('<td>');
+                        var cellHtml = angular.element('<td>');
+                        var talent = scope.getTalentByColIndex(i, rowArray);
 
-                        var talent = $scope.getTalentByColIndex(i, rowArray);
                         if (talent) {
-                            var iconHtml = sprintf('<div class="talent-icon"><img src="%s" /></div>', talent.iconFilePath);
-                            cellHtml.append(iconHtml);
+                            var icon = setupIcon(talent);
+                            cellHtml.append($compile(icon)(scope));
                         }
 
                         rowHtml.append(cellHtml);
