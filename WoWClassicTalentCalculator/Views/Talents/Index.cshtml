@@ -4,7 +4,7 @@
 }
 
 <div id="talent-calculator" class="container" ng-app="talentCalculatorApp">
-    <div ng-controller="talentController">
+    <div ng-controller="talentCalculatorController">
         <section id="class-select">
             <div id="class-row" class="row">
                 <div class="col-md-12">
@@ -27,17 +27,17 @@
                 </div>
             </div>
 
-            @*<div id="talent-hover-dialog">
-                Hello!
-            </div>*@
+            <div id="talent-hover-dialog" ng-show="isInspectingTalent" ng-style="{{ talentInfoPos }}">
+                {{ inspectedTalent.name }}
+            </div>
         </section>
     </div>
 </div>
 
 @section Scripts {
-    <script src="~/js/talentVm.js"></script>
-    <script src="~/js/talentModule.js"></script>
-    <script src="~/js/talentFactory.js"></script>
-    <script src="~/js/talentController.js"></script>
-    <script src="~/js/talentDirectives.js"></script>
+    <script src="~/js/talentCalculatorViewModels.js"></script>
+    <script src="~/js/talentCalculatorModule.js"></script>
+    <script src="~/js/talentCalculatorFactory.js"></script>
+    <script src="~/js/talentCalculatorDirectives.js"></script>
+    <script src="~/js/talentCalculatorController.js"></script>
 }

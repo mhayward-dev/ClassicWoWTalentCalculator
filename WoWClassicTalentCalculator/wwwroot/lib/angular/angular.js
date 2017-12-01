@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.6.7-build.5497+sha.f876ab7
+ * @license AngularJS v1.6.8-build.5508+sha.2e03aed
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -106,7 +106,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.7-build.5497+sha.f876ab7/' +
+    message += '\nhttp://errors.angularjs.org/1.6.8-build.5508+sha.2e03aed/' +
       (module ? module + '/' : '') + code;
 
     for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2774,10 +2774,10 @@ function toDebugString(obj, maxDepth) {
 var version = {
   // These placeholder strings will be replaced by grunt's `build` task.
   // They need to be double- or single-quoted.
-  full: '1.6.7-build.5497+sha.f876ab7',
+  full: '1.6.8-build.5508+sha.2e03aed',
   major: 1,
   minor: 6,
-  dot: 7,
+  dot: 8,
   codeName: 'snapshot'
 };
 
@@ -2924,7 +2924,7 @@ function publishExternalAPI(angular) {
       });
     }
   ])
-  .info({ angularVersion: '1.6.7-build.5497+sha.f876ab7' });
+  .info({ angularVersion: '1.6.8-build.5508+sha.2e03aed' });
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -10768,7 +10768,9 @@ var SPECIAL_CHARS_REGEXP = /[:\-_]+(.)/g;
 function directiveNormalize(name) {
   return name
     .replace(PREFIX_REGEXP, '')
-    .replace(SPECIAL_CHARS_REGEXP, fnCamelCaseReplace);
+    .replace(SPECIAL_CHARS_REGEXP, function(_, letter, offset) {
+      return offset ? letter.toUpperCase() : letter;
+    });
 }
 
 /**
@@ -13944,7 +13946,7 @@ var locationPrototype = {
     }
 
     var match = PATH_MATCH.exec(url);
-    if (match[1] || url === '') this.path(decodeURI(match[1]));
+    if (match[1] || url === '') this.path((this.$$html5 ? decodeURI : decodeURIComponent)(match[1]));
     if (match[2] || match[1] || url === '') this.search(match[3] || '');
     this.hash(match[5] || '');
 
@@ -16378,11 +16380,26 @@ Parser.prototype = {
   constructor: Parser,
 
   parse: function(text) {
-    var ast = this.ast.ast(text);
-    var fn = this.astCompiler.compile(ast);
-    fn.literal = isLiteral(ast);
-    fn.constant = isConstant(ast);
+    var ast = this.getAst(text);
+    var fn = this.astCompiler.compile(ast.ast);
+    fn.literal = isLiteral(ast.ast);
+    fn.constant = isConstant(ast.ast);
+    fn.oneTime = ast.oneTime;
     return fn;
+  },
+
+  getAst: function(exp) {
+    var oneTime = false;
+    exp = exp.trim();
+
+    if (exp.charAt(0) === ':' && exp.charAt(1) === ':') {
+      oneTime = true;
+      exp = exp.substring(2);
+    }
+    return {
+      ast: this.ast.ast(exp),
+      oneTime: oneTime
+    };
   }
 };
 
@@ -16505,10 +16522,11 @@ function $ParseProvider() {
           isIdentifierStart: isFunction(identStart) && identStart,
           isIdentifierContinue: isFunction(identContinue) && identContinue
         };
+    $parse.$$getAst = $$getAst;
     return $parse;
 
     function $parse(exp, interceptorFn) {
-      var parsedExpression, oneTime, cacheKey;
+      var parsedExpression, cacheKey;
 
       switch (typeof exp) {
         case 'string':
@@ -16518,14 +16536,9 @@ function $ParseProvider() {
           parsedExpression = cache[cacheKey];
 
           if (!parsedExpression) {
-            if (exp.charAt(0) === ':' && exp.charAt(1) === ':') {
-              oneTime = true;
-              exp = exp.substring(2);
-            }
             var lexer = new Lexer($parseOptions);
             var parser = new Parser(lexer, $filter, $parseOptions);
             parsedExpression = parser.parse(exp);
-            parsedExpression.oneTime = !!oneTime;
 
             cache[cacheKey] = addWatchDelegate(parsedExpression);
           }
@@ -16537,6 +16550,12 @@ function $ParseProvider() {
         default:
           return addInterceptor(noop, interceptorFn);
       }
+    }
+
+    function $$getAst(exp) {
+      var lexer = new Lexer($parseOptions);
+      var parser = new Parser(lexer, $filter, $parseOptions);
+      return parser.getAst(exp).ast;
     }
 
     function expressionInputDirtyCheck(newValue, oldValueOfValue, compareObjectIdentity) {
@@ -18685,8 +18704,7 @@ function $RootScopeProvider() {
 
           //if any listener on the current scope stops propagation, prevent bubbling
           if (stopPropagation) {
-            event.currentScope = null;
-            return event;
+            break;
           }
           //traverse upwards
           scope = scope.$parent;
@@ -25525,8 +25543,8 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   var maxVal;
 
   if (isDefined(attr.min) || attr.ngMin) {
-    ctrl.$validators.min = function(value) {
-      return ctrl.$isEmpty(value) || isUndefined(minVal) || value >= minVal;
+    ctrl.$validators.min = function(modelValue, viewValue) {
+      return ctrl.$isEmpty(viewValue) || isUndefined(minVal) || viewValue >= minVal;
     };
 
     attr.$observe('min', function(val) {
@@ -25537,8 +25555,8 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
   }
 
   if (isDefined(attr.max) || attr.ngMax) {
-    ctrl.$validators.max = function(value) {
-      return ctrl.$isEmpty(value) || isUndefined(maxVal) || value <= maxVal;
+    ctrl.$validators.max = function(modelValue, viewValue) {
+      return ctrl.$isEmpty(viewValue) || isUndefined(maxVal) || viewValue <= maxVal;
     };
 
     attr.$observe('max', function(val) {
@@ -29278,8 +29296,12 @@ NgModelController.prototype = {
 
     if (isNumber(debounceDelay[trigger])) {
       debounceDelay = debounceDelay[trigger];
-    } else if (isNumber(debounceDelay['default'])) {
+    } else if (isNumber(debounceDelay['default']) &&
+      this.$options.getOption('updateOn').indexOf(trigger) === -1
+    ) {
       debounceDelay = debounceDelay['default'];
+    } else if (isNumber(debounceDelay['*'])) {
+      debounceDelay = debounceDelay['*'];
     }
 
     this.$$timeout.cancel(this.$$pendingDebounce);
@@ -30102,6 +30124,14 @@ defaultModelOptions = new ModelOptions({
  *       debounce: { 'default': 500, 'blur': 0 }
  *     }"
  *     ```
+ *     You can use the `*` key to specify a debounce value that applies to all events that are not
+ *     specifically listed. In the following example, `mouseup` would have a debounce delay of 1000:
+ *     ```
+ *     ng-model-options="{
+ *       updateOn: 'default blur mouseup',
+ *       debounce: { 'default': 500, 'blur': 0, '*': 1000 }
+ *     }"
+ *     ```
  *   - `allowInvalid`: boolean value which indicates that the model can be set with values that did
  *     not validate correctly instead of the default behavior of setting the model to undefined.
  *   - `getterSetter`: boolean value which determines whether or not to treat functions bound to
@@ -30157,9 +30187,10 @@ function defaults(dst, src) {
  *
  * @description
  * The `ngNonBindable` directive tells AngularJS not to compile or bind the contents of the current
- * DOM element. This is useful if the element contains what appears to be AngularJS directives and
- * bindings but which should be ignored by AngularJS. This could be the case if you have a site that
- * displays snippets of code, for instance.
+ * DOM element, including directives on the element itself that have a lower priority than
+ * `ngNonBindable`. This is useful if the element contains what appears to be AngularJS directives
+ * and bindings but which should be ignored by AngularJS. This could be the case if you have a site
+ * that displays snippets of code, for instance.
  *
  * @example
  * In this example there are two locations where a simple interpolation binding (`{{}}`) is present,

@@ -48,8 +48,13 @@
   top: 4px;
 }
 #talent-calculator #talents-select #talent-hover-dialog {
-  height: 200px;
-  width: 400px;
+  position: relative;
+  transition: all linear 0.3s;
+  height: 100px;
+  width: 300px;
   background-color: black;
   color: white;
+}
+#talent-calculator #talents-select #talent-hover-dialog.ng-hide {
+  opacity: 0;
 }

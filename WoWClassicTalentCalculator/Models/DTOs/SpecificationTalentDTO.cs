@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace WoWClassicTalentCalculator.Models.DTOs
 {
@@ -22,7 +23,7 @@ namespace WoWClassicTalentCalculator.Models.DTOs
                 ColumnIndex = st.ColumnIndex,
                 RowIndex = st.RowIndex,
                 IconFilePath = MakeImageUrl(st.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
-                TalentRanks = null
+                TalentRanks = st.TalentRanks.Select(tr => TalentRankDTO.ToDTO(tr))
             };
         }
 

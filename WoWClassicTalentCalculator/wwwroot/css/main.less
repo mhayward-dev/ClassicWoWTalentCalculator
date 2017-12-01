@@ -62,11 +62,16 @@
         }
 
         #talent-hover-dialog {
-            display: none;
+            position: relative;
+            transition: all linear 0.3s;
             height: 100px;
             width: 300px;
             background-color: black;
             color: white;
+        }
+
+        #talent-hover-dialog.ng-hide {
+            opacity: 0;
         }
     }
 }

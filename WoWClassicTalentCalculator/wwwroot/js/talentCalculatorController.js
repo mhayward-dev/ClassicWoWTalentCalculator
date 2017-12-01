@@ -1,11 +1,17 @@
 ﻿
-app.controller('talentController', function ($scope, talentFactory, warcraftClassVm, warcraftClassSpecificationVm) {
+app.controller('talentCalculatorController', function ($scope, talentCalculatorFactory, warcraftClassVm, inspectedTalentVm) {
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
+    $scope.isInspectingTalent = false;
+    $scope.inspectedTalent = null;
+    $scope.talentInfoPos = {
+        top: 0,
+        left: 0
+    };
 
     $scope.fetchClasses = function () {
-        talentFactory.getClasses()
+        talentCalculatorFactory.getClasses()
             .then(function (response) {
                 $scope.classes = response.data.map(warcraftClassVm.build);
                 //$scope.fetchSpecifications($scope.classes[0].id);
@@ -17,7 +23,7 @@ app.controller('talentController', function ($scope, talentFactory, warcraftClas
     }
 
     $scope.fetchSpecifications = function (id) {
-        talentFactory.getSpecifications(id)
+        talentCalculatorFactory.getSpecifications(id)
             .then(function (response) {
                 if ($scope.selectedClassId > 0) {
                     $scope.getClassById($scope.selectedClassId).isSelected = false;
@@ -41,12 +47,25 @@ app.controller('talentController', function ($scope, talentFactory, warcraftClas
     }
 
     $scope.getTalentByColIndex = function (index, talents) {
-        var talent = _.find(talents, { 'colIndex' : index });
+        var talent = _.find(talents, { 'colIndex': index });
         return talent ? talent : null;
     }
 
-    $scope.showTalentInfoDialog = function (event, talentId) {
-        console.log("Id is: " + talentId);
+    $scope.showTalentInfo = function (event, rowIndex, colIndex) {
+        var spec = $scope.selectedClass.specifications[0];
+        var rowForTalents = spec.talentRows[rowIndex];
+        var talent = $scope.getTalentByColIndex(colIndex, rowForTalents);
+
+        $scope.inspectedTalent = inspectedTalentVm.build(talent);
+        $scope.isInspectingTalent = true;
+
+        var position = event.target.getBoundingClientRect();
+        $scope.talentInfoPos.top = position.top + "px";
+        $scope.talentInfoPos.left = position.left + "px";
+    }
+
+    $scope.hideTalentInfo = function () {
+        $scope.isInspectingTalent = false;
     }
 
     $scope.fetchClasses();

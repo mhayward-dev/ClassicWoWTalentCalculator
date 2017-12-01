@@ -1,5 +1,5 @@
 ﻿
-app.factory('talentFactory', ['$http', function ($http) {
+app.factory('talentCalculatorFactory', ['$http', function ($http) {
     var talentFactory = {};
 
     talentFactory.getClasses = function () {
