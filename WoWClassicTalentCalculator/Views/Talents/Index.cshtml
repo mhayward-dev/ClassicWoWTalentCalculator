@@ -9,7 +9,7 @@
             <div id="class-row" class="row">
                 <div class="col-md-12">
                     <div class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
-                        <img ng-src="{{ c.iconPath }}" />
+                        <img ng-src="{{ c.iconFilePath }}" />
                         <div ng-show="c.isSelected" class="highlight-line"></div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div id="spec-container">
                     <div id="spec-inner">
                         <div class="specification-pane" ng-repeat="s in selectedClass.specifications | orderBy:'+index'"
-                             ng-style="{'background-image': 'url(' + s.bgImage + ')'}">
+                             ng-style="{'background-image': 'url(' + s.bgImageFilePath + ')'}">
                             <specification-table spec-index="{{ s.index }}"></specification-table>
                         </div>
                     </div>

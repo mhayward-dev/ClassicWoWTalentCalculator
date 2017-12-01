@@ -10,9 +10,10 @@ namespace WoWClassicTalentCalculator.Models.DTOs
         public string SpecificationName { get; set; }
         public int WarcraftClassId { get; set; }
         public int SpecificationIndex { get; set; }
+        public string bgImageFilePath { get; set; }
         public List<SpecificationTalentDTO[]> TalentRows { get; set; }
 
-        public static WarcraftClassSpecificationDTO ToDTO(WarcraftClassSpecification wcs)
+        public static WarcraftClassSpecificationDTO ToDTO(WarcraftClassSpecification wcs, string className)
         {
             var talentRows = new List<SpecificationTalentDTO[]>();
 
@@ -33,6 +34,7 @@ namespace WoWClassicTalentCalculator.Models.DTOs
                 SpecificationName = wcs.SpecificationName,
                 WarcraftClassId = wcs.WarcraftClassId,
                 SpecificationIndex = wcs.SpecificationIndex,
+                bgImageFilePath = $"images/spec/{className}_{wcs.SpecificationName.Replace(" ", "")}_bg.jpg",
                 TalentRows = talentRows
             };
         }

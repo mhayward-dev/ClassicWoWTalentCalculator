@@ -19,7 +19,7 @@
 
                         var talent = $scope.getTalentByColIndex(i, rowArray);
                         if (talent) {
-                            var iconHtml = sprintf('<div class="talent-icon"><img src="%s" /></div>', talent.iconPath);
+                            var iconHtml = sprintf('<div class="talent-icon"><img src="%s" /></div>', talent.iconFilePath);
                             cellHtml.append(iconHtml);
                         }
 

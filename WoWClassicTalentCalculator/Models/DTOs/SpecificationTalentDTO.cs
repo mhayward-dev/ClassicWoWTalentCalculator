@@ -9,6 +9,7 @@ namespace WoWClassicTalentCalculator.Models.DTOs
         public int ColumnIndex { get; set; }
         public int RowIndex { get; set; }
         public int WarcraftClassSpecificationId { get; set; }
+        public string IconFilePath { get; set; }
         public IEnumerable<TalentRankDTO> TalentRanks { get; set; }
 
         public static SpecificationTalentDTO ToDTO(SpecificationTalent st)
@@ -20,8 +21,14 @@ namespace WoWClassicTalentCalculator.Models.DTOs
                 TalentName = st.TalentName,
                 ColumnIndex = st.ColumnIndex,
                 RowIndex = st.RowIndex,
+                IconFilePath = MakeImageUrl(st.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
                 TalentRanks = null
             };
+        }
+
+        public static string MakeImageUrl(string fileName)
+        {
+            return $"images/talent/{ fileName }.jpg";
         }
     }
 }
