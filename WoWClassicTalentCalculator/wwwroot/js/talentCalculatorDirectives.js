@@ -3,8 +3,8 @@
     var setupIcon = function (t) {
         var icon = angular.element('<div class="talent-icon">');
         icon.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
-        icon.attr('ng-mouseenter', sprintf('showTalentInfo($event, %s, %s)', t.rowIndex, t.colIndex));
-        icon.attr('ng-mouseleave', 'hideTalentInfo()');
+        icon.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s)', t.rowIndex, t.colIndex));
+        icon.attr('ng-mouseleave', 'hideTalentTooltip()');
 
         return icon;
     };

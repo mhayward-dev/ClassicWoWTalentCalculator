@@ -5,7 +5,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.selectedClass = null;
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
-    $scope.talentInfoStyle = {
+    $scope.talentTooltipPos = {
         top: 0,
         left: 0
     };
@@ -51,25 +51,26 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         return talent ? talent : null;
     }
 
-    $scope.showTalentInfo = function (event, rowIndex, colIndex) {
+    $scope.showTalentTooltip = function (event, rowIndex, colIndex) {
         var spec = $scope.selectedClass.specifications[0];
         var rowForTalents = spec.talentRows[rowIndex];
         var talent = $scope.getTalentByColIndex(colIndex, rowForTalents);
 
         $scope.inspectedTalent = inspectedTalentVm.build(talent);
-        $scope.isInspectingTalent = true;
 
         $timeout(function () {
-            var iconPos = event.target.getBoundingClientRect();
+            var iconPos = angular.element(event.target).position();
             var tooltipHeight = angular.element('#talent-tooltip').height();
-            var yBuffer = iconPos.top - tooltipHeight - 5;
+            var scrollTop = angular.element(document).scrollTop();
+            var newTopPos = iconPos.top - tooltipHeight - 5 - scrollTop;
 
-            $scope.talentInfoStyle.top = yBuffer + "px";
-            $scope.talentInfoStyle.left = (iconPos.left + 45) + "px";
-        }, 20);
+            $scope.talentTooltipPos.top = newTopPos + "px";
+            $scope.talentTooltipPos.left = (iconPos.left + 45) + "px";
+            $scope.isInspectingTalent = true;
+        }, 30);
     }
 
-    $scope.hideTalentInfo = function () {
+    $scope.hideTalentTooltip = function () {
         $scope.isInspectingTalent = false;
     }
 
