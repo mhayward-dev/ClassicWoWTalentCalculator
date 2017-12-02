@@ -7,12 +7,14 @@
     <div ng-controller="talentCalculatorController">
         <section id="class-select">
             <div id="class-row" class="row">
-                <div class="col-md-12">
-                    <div class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
-                        <img ng-src="{{ c.iconFilePath }}" />
-                        <div ng-show="c.isSelected" class="highlight-line"></div>
-                    </div>
-                </div>
+                <table class="col-md-8 col-md-offset-2">
+                    <tr>
+                        <td class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
+                            <img ng-src="{{ c.iconFilePath }}" />
+                            <div ng-show="c.isSelected" class="highlight-line"></div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </section>
         <section id="talents-select">
@@ -26,9 +28,28 @@
                     </div>
                 </div>
             </div>
-           
-            <div id="talent-hover-dialog" ng-show="isInspectingTalent" ng-style="talentInfoPos">
-                {{ inspectedTalent.name }}
+
+            <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentInfoStyle">
+                <div class="title-row">
+                    {{ inspectedTalent.name }}
+                </div>
+                <div class="rank-no-row">
+                    Rank {{ inspectedTalent.currentRankNo }}/{{ inspectedTalent.totalRankNo }}
+                </div>
+                <div class="rank-requirement" ng-show="inspectedTalent.requirementText.length > 0">
+                    {{ inspectedTalent.requirementText }}
+                </div>
+                <div class="current-rank-text yellow-detail">
+                    {{ inspectedTalent.description }}
+                </div>
+                <div class="next-rank-text" ng-hide="inspectedTalent.currentRankNo == 0 || inspectedTalent.isMaxRank">
+                    <div>Next Rank:</div>
+                    <div class="yellow-detail">{{ inspectedTalent.nextRankText }}</div>
+                </div>
+                <div class="rank-instruction" ng-show="inspectedTalent.instructionText.length > 0" 
+                     ng-class="inspectedTalent.isMaxRank ? 'can-unlearn' : 'can-learn'">
+                    {{ inspectedTalent.instructionText }}
+                </div>
             </div>
         </section>
     </div>

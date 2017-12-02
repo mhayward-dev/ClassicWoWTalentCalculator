@@ -2,17 +2,12 @@
     margin-top: 70px;
 
     #class-row {
-        display: inline;
 
         .class-icon {
-            float: left;
             text-align: center;
-            width: 100px;
-            margin-left: 10px;
-            margin-right: 10px;
 
             img {
-                width: 100px;
+                width: 70px;
             }
         }
     }
@@ -57,17 +52,47 @@
             }
         }
 
-        #talent-hover-dialog {
-            position: absolute;
-            transition: all linear 0.3s;
-            height: 100px;
-            width: 300px;
-            background-color: black;
-            color: white;
+        #talent-tooltip.fade-out {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 300ms, opacity 300ms;
         }
 
-        #talent-hover-dialog.ng-hide {
-            opacity: 0;
+        #talent-tooltip.fade-in {
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0s linear 0s, opacity 300ms;
+        }
+
+        #talent-tooltip {
+            position: absolute;
+            width: 320px;
+            font-family: Verdana,sans-serif;
+            font-size: 12px;
+            line-height: 20px;
+            color: white;
+            background: black;
+            opacity: 0.9;
+            border-radius: 4px;
+            border: 1px white solid;
+            padding: 5px;
+
+            .yellow-detail {
+                color: #FFD100;
+                line-height: 16px;
+            }
+
+            .title-row {
+                font-size: 15px;
+            }
+
+            .rank-instruction.can-learn {
+                color: #17FD17;
+            }
+
+            .rank-instruction.can-unlearn {
+                color: #FF4040
+            }
         }
     }
 }

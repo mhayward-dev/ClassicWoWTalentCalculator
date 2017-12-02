@@ -75,11 +75,48 @@ function inspectedTalentVm() {
 
         this.id = t.id;
         this.name = t.talentName;
-        this.rankNo = t.selectedRankNo;
-        this.totalRanks = t.talentRanks.length;
-        this.rankText = currentRank ? currentRank.rankDescription : t.talentRanks[0].rankDescription;
-        this.nextRankText = nextRank ? nextRank.rankDescription : null;
-        this.isMaxed = t.selectedRankNo === t.talentRanks.length;
+        this.currentRankNo = t.selectedRankNo;
+        this.totalRankNo = t.talentRanks.length;
+        this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
+        this.description = getCurrentRankText(t);
+        this.nextRankText = getNextRankText(t);
+        this.requirementText = "";
+        this.instructionText = getRankInstruction(t);
+    }
+
+    function getCurrentRankText(t) {
+        if (t.selectedRankNo > 0) {
+            return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }).rankDescription; 
+        }
+
+        return t.talentRanks[0].rankDescription;
+    }
+
+    function getNextRankText(t) {
+        if (t.selectedRankNo < t.talentRanks.length) {
+            return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo + 1 }).rankDescription;
+        }
+
+        return "";
+    }
+
+    function getRankInstruction(t) {
+        if (t.selectedRankNo === 0) {
+            return 'Click to learn'
+        }
+
+        if (t.selectedRankNo === t.talentRanks.length) {
+            return 'Right click to unlearn'
+        }
+
+        return '';
+    }
+
+    InspectedTalent.UpdateRankNo = function (newRankNo) {
+        this.currentRankNo = newRankNo;
+        this.rankText = getCurrentRankText(t);
+        this.nextRankText = getNextRankText(t);
+        this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
     }
 
     InspectedTalent.build = function (data) {

@@ -1,11 +1,11 @@
 ﻿
-app.controller('talentCalculatorController', function ($scope, talentCalculatorFactory, warcraftClassVm, inspectedTalentVm) {
+app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, inspectedTalentVm) {
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
-    $scope.talentInfoPos = {
+    $scope.talentInfoStyle = {
         top: 0,
         left: 0
     };
@@ -52,7 +52,6 @@ app.controller('talentCalculatorController', function ($scope, talentCalculatorF
     }
 
     $scope.showTalentInfo = function (event, rowIndex, colIndex) {
-        console.log("entering...");
         var spec = $scope.selectedClass.specifications[0];
         var rowForTalents = spec.talentRows[rowIndex];
         var talent = $scope.getTalentByColIndex(colIndex, rowForTalents);
@@ -60,13 +59,17 @@ app.controller('talentCalculatorController', function ($scope, talentCalculatorF
         $scope.inspectedTalent = inspectedTalentVm.build(talent);
         $scope.isInspectingTalent = true;
 
-        var position = event.target.getBoundingClientRect();
-        $scope.talentInfoPos.top = (position.top - 100) + "px";
-        $scope.talentInfoPos.left = (position.left + 50) + "px";
+        $timeout(function () {
+            var iconPos = event.target.getBoundingClientRect();
+            var tooltipHeight = angular.element('#talent-tooltip').height();
+            var yBuffer = iconPos.top - tooltipHeight - 5;
+
+            $scope.talentInfoStyle.top = yBuffer + "px";
+            $scope.talentInfoStyle.left = (iconPos.left + 45) + "px";
+        }, 20);
     }
 
     $scope.hideTalentInfo = function () {
-        console.log("leaving...");
         $scope.isInspectingTalent = false;
     }
 
