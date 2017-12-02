@@ -39,6 +39,13 @@
   width: 50px;
   height: 50px;
 }
+#talent-calculator #talents-select #specifications #spec-inner .specification-pane table td div.talent-icon {
+  width: 100%;
+  height: 100%;
+  background-size: 36px !important;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
 #talent-calculator #talents-select #specifications #spec-inner .specification-pane table td div.talent-icon img {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -48,7 +55,7 @@
   top: 4px;
 }
 #talent-calculator #talents-select #talent-hover-dialog {
-  position: relative;
+  position: absolute;
   transition: all linear 0.3s;
   height: 100px;
   width: 300px;

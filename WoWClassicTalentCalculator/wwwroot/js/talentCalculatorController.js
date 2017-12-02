@@ -52,6 +52,7 @@ app.controller('talentCalculatorController', function ($scope, talentCalculatorF
     }
 
     $scope.showTalentInfo = function (event, rowIndex, colIndex) {
+        console.log("entering...");
         var spec = $scope.selectedClass.specifications[0];
         var rowForTalents = spec.talentRows[rowIndex];
         var talent = $scope.getTalentByColIndex(colIndex, rowForTalents);
@@ -60,11 +61,12 @@ app.controller('talentCalculatorController', function ($scope, talentCalculatorF
         $scope.isInspectingTalent = true;
 
         var position = event.target.getBoundingClientRect();
-        $scope.talentInfoPos.top = position.top + "px";
-        $scope.talentInfoPos.left = position.left + "px";
+        $scope.talentInfoPos.top = (position.top - 100) + "px";
+        $scope.talentInfoPos.left = (position.left + 50) + "px";
     }
 
     $scope.hideTalentInfo = function () {
+        console.log("leaving...");
         $scope.isInspectingTalent = false;
     }
 

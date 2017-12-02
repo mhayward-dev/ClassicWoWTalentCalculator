@@ -1,7 +1,8 @@
 ﻿app.directive('specificationTable', function ($compile) {
 
     var setupIcon = function (t) {
-        var icon = angular.element(sprintf('<div class="talent-icon"><img src="%s" /></div>', t.iconFilePath));
+        var icon = angular.element('<div class="talent-icon">');
+        icon.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
         icon.attr('ng-mouseenter', sprintf('showTalentInfo($event, %s, %s)', t.rowIndex, t.colIndex));
         icon.attr('ng-mouseleave', 'hideTalentInfo()');
 
