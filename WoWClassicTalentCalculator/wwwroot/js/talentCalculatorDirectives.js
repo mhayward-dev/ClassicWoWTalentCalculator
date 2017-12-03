@@ -1,12 +1,15 @@
 ﻿app.directive('specificationTable', function ($compile) {
 
     var setupIcon = function (t) {
+        var iconContainer = angular.element('<div class="talent-icon-border">');
+        iconContainer.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s)', t.rowIndex, t.colIndex));
+        iconContainer.attr('ng-mouseleave', 'hideTalentTooltip()');
+
         var icon = angular.element('<div class="talent-icon">');
         icon.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
-        icon.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s)', t.rowIndex, t.colIndex));
-        icon.attr('ng-mouseleave', 'hideTalentTooltip()');
 
-        return icon;
+        iconContainer.append(icon);
+        return iconContainer;
     };
 
     return {
