@@ -9,7 +9,7 @@
             <div id="class-row" class="row">
                 <table class="col-md-8 col-md-offset-2">
                     <tr>
-                        <td class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.id)">
+                        <td class="class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.className)">
                             <img ng-src="{{ c.iconFilePath }}" />
                             <div ng-show="c.isSelected" class="highlight-line"></div>
                         </td>
@@ -34,15 +34,15 @@
                     {{ inspectedTalent.name }}
                 </div>
                 <div class="rank-no-row">
-                    Rank {{ inspectedTalent.currentRankNo }}/{{ inspectedTalent.totalRankNo }}
+                    Rank {{ inspectedTalent.selectedRankNo }}/{{ inspectedTalent.totalRankNo }}
                 </div>
-                <div class="rank-requirement" ng-show="inspectedTalent.requirementText.length > 0">
-                    {{ inspectedTalent.requirementText }}
+                <div class="rank-requirements" ng-show="inspectedTalent.requirementsText.length > 0">
+                    {{ inspectedTalent.requirementsText }}
                 </div>
-                <div class="current-rank-text yellow-detail">
-                    {{ inspectedTalent.description }}
+                <div class="selected-rank-text yellow-detail">
+                    {{ inspectedTalent.selectedRankText }}
                 </div>
-                <div class="next-rank-text" ng-hide="inspectedTalent.currentRankNo == 0 || inspectedTalent.isMaxRank">
+                <div class="next-rank-text" ng-hide="inspectedTalent.selectedRankNo == 0 || inspectedTalent.isMaxRank">
                     <div>Next Rank:</div>
                     <div class="yellow-detail">{{ inspectedTalent.nextRankText }}</div>
                 </div>

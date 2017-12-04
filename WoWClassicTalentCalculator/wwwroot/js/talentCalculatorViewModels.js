@@ -23,7 +23,9 @@ function warcraftClassSpecificationVm(talentVm) {
         this.specName = wcs.specificationName;
         this.index = wcs.specificationIndex;
         this.bgImageFilePath = wcs.bgImageFilePath;
-        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(talents => talents.map(talentVm.build)) : [];
+        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(talents => talents.map(talentVm.build, {
+            specName: wcs.specificationName
+        })) : [];
     }
 
     WarcraftClassSpecification.build = function (data) {
@@ -35,18 +37,20 @@ function warcraftClassSpecificationVm(talentVm) {
 
 function talentVm(talentRankVm) {
 
-    function Talent(t) {
+    function Talent(t, specName) {
         this.id = t.id;
         this.talentName = t.talentName;
+        this.specName = specName;
         this.colIndex = t.columnIndex;
         this.rowIndex = t.rowIndex;
         this.iconFilePath = t.iconFilePath;
         this.talentRanks = t.talentRanks.map(talentRankVm.build);
         this.selectedRankNo = 0;
+        this.isActive = t.rowIndex === 0;
     }
 
     Talent.build = function (data) {
-        return new Talent(data);
+        return new Talent(data, this.specName);
     }
 
     return Talent;
@@ -69,19 +73,23 @@ function talentRankVm() {
 
 function inspectedTalentVm() {
 
-    function InspectedTalent(t) {
+    function InspectedTalent(t, selectedTalents) {
         var currentRank = t.selectedRankNo > 0 ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }) : null;
         var nextRank = t.selectedRankNo < t.talentRanks.length ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo + 1 }) : null;
 
         this.id = t.id;
         this.name = t.talentName;
-        this.currentRankNo = t.selectedRankNo;
+        this.selectedRankNo = t.selectedRankNo;
         this.totalRankNo = t.talentRanks.length;
         this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
-        this.description = getCurrentRankText(t);
+        this.selectedRankText = getCurrentRankText(t);
         this.nextRankText = getNextRankText(t);
-        this.requirementText = "";
-        this.instructionText = getRankInstruction(t);
+        this.instructionText = getInstructionText(t);
+        this.requirementsText = '';
+        this.isLearnable = true;
+        this.isUnlearnable = t.selectedRankNo > 0;
+
+        checkIsLearnable(this, t, selectedTalents);
     }
 
     function getCurrentRankText(t) {
@@ -100,27 +108,70 @@ function inspectedTalentVm() {
         return "";
     }
 
-    function getRankInstruction(t) {
-        if (t.selectedRankNo === 0) {
+    function checkIsLearnable(it, t, selectedTalents) {
+        // TODO - Look for a relationship with TalentRequirements
+        if (t.rowIndex === 1 && selectedTalents.length < 5) {
+            it.requirementsText = 'Requires 5 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        if (t.rowIndex === 2 && selectedTalents.length < 10) {
+            it.requirementsText = 'Requires 10 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        if (t.rowIndex === 3 && selectedTalents.length < 15) {
+            it.requirementsText = 'Requires 15 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        if (t.rowIndex === 4 && selectedTalents.length < 20) {
+            it.requirementsText = 'Requires 20 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        if (t.rowIndex === 5 && selectedTalents.length < 25) {
+            it.requirementsText = 'Requires 25 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        if (t.rowIndex === 6 && selectedTalents.length < 30) {
+            it.requirementsText = 'Requires 30 points in ' + t.specName;
+            it.isSelectable = false;
+            return;
+        }
+
+        it.requirementsText = '';
+        it.isSelectable = true;
+    }
+
+    function getInstructionText(t) {
+        if (t.isActive && t.selectedRankNo === 0) {
             return 'Click to learn'
         }
 
-        if (t.selectedRankNo === t.talentRanks.length) {
+        if (t.isActive && t.selectedRankNo === t.talentRanks.length) {
             return 'Right click to unlearn'
         }
 
         return '';
     }
 
-    InspectedTalent.UpdateRankNo = function (newRankNo) {
-        this.currentRankNo = newRankNo;
-        this.rankText = getCurrentRankText(t);
-        this.nextRankText = getNextRankText(t);
-        this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
+    InspectedTalent.updateRankNo = function (it, t) {
+        it.selectedRankNo = it.selectedRankNo + 1;
+        it.selectedRankText = getCurrentRankText(t);
+        it.nextRankText = getNextRankText(t);
+        it.instructionText = getInstructionText(t);
+        it.isMaxRank = t.selectedRankNo === t.talentRanks.length;
     }
 
-    InspectedTalent.build = function (data) {
-        return new InspectedTalent(data);
+    InspectedTalent.build = function (data, selectedTalents) {
+        return new InspectedTalent(data, selectedTalents);
     }
 
     return InspectedTalent;

@@ -1,14 +1,23 @@
 ﻿app.directive('specificationTable', function ($compile) {
 
-    var setupIcon = function (t) {
-        var iconContainer = angular.element('<div class="talent-icon-border">');
-        iconContainer.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s)', t.rowIndex, t.colIndex));
-        iconContainer.attr('ng-mouseleave', 'hideTalentTooltip()');
-
+    var setupIcon = function (t, specIndex) {
+        var iconContainer = angular.element('<div class="talent-icon-border inactive">');
+  
         var icon = angular.element('<div class="talent-icon">');
         icon.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
-
+        icon.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', specIndex, t.rowIndex, t.colIndex));
+        icon.attr('ng-mouseleave', 'hideTalentTooltip()');
+        icon.attr('ng-click', sprintf('addTalentPoint($event, %s, %s, %s)', specIndex, t.rowIndex, t.colIndex));
         iconContainer.append(icon);
+
+        var rankNo = angular.element(sprintf('<div class="talent-rank-no">%s</div>', t.selectedRankNo));
+        iconContainer.append(rankNo);
+
+        if (t.isActive) {
+            rankNo.show();
+            iconContainer.removeClass('inactive');
+        }
+
         return iconContainer;
     };
 
@@ -27,7 +36,7 @@
                         var talent = scope.getTalentByColIndex(i, rowArray);
 
                         if (talent) {
-                            cellEl.append(setupIcon(talent));
+                            cellEl.append(setupIcon(talent, attrs.specIndex));
                         }
 
                         rowEl.append(cellEl);

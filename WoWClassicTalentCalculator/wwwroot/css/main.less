@@ -43,8 +43,15 @@
                                 width: 40px;
                                 height: 40px;
                                 background: #333;
-                                border-radius: 2px;
+                                border: 1px #17FD17 solid;
+                                border-radius: 4px;
                                 margin: 0 auto;
+                            }
+
+                            div.talent-icon-border.inactive {
+                                -webkit-filter: grayscale(100%);
+                                filter: grayscale(100%);
+                                border: 1px #333 solid;
                             }
 
                             div.talent-icon {
@@ -52,9 +59,25 @@
                                 width: 36px;
                                 height: 36px;
                                 background-size: 36px !important;
-                                -webkit-filter: grayscale(100%);
-                                filter: grayscale(100%);
-                                margin: 2px 0px 0px 2px;
+                                margin: 1px 0px 0px 1px;
+                                border-radius: 4px;
+                                -webkit-filter: inherit;
+                                filter: inherit;
+                            }
+
+                            div.talent-rank-no {
+                                display: none;
+                                color: #17FD17;
+                                z-index: 10;
+                                position: relative;
+                                left: 30px;
+                                top: 30px;
+                                background: #333;
+                                height: 15px;
+                                width: 12px;
+                                border-radius: 4px;
+                                font-size: 10px;
+                                border: 1px #987C08 solid;
                             }
                         }
                     }
@@ -70,12 +93,13 @@
 
         #talent-tooltip.fade-in {
             visibility: visible;
-            opacity: 1;
+            opacity: 0.9;
             transition: visibility 0s linear 0s, opacity 300ms;
         }
 
         #talent-tooltip {
             position: absolute;
+            z-index: 100;
             width: 320px;
             font-family: Verdana,sans-serif;
             font-size: 12px;
@@ -96,12 +120,20 @@
                 font-size: 15px;
             }
 
+            .next-rank-text {
+                margin-top: 20px;
+            }
+
             .rank-instruction.can-learn {
                 color: #17FD17;
             }
 
             .rank-instruction.can-unlearn {
                 color: #FF4040
+            }
+
+            .rank-requirements {
+                color: #FF4040;
             }
         }
     }
