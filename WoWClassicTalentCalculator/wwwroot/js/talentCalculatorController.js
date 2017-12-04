@@ -57,12 +57,17 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         $scope.inspectedTalent = inspectedTalentVm.build(talent, $scope.selectedTalents);
 
         $timeout(function () {
-            var iconPos = angular.element(event.target).position();
             var tooltipHeight = angular.element('#talent-tooltip').height();
-            var scrollTop = angular.element(document).scrollTop();
-            var newTopPos = iconPos.top - tooltipHeight - 10 - scrollTop;
+            var iconPos = angular.element(event.target).position();
+            var iconOffset = angular.element(document).scrollTop();
 
-            $scope.talentTooltipPos.top = newTopPos + "px";
+            var navEl = angular.element('nav');
+            var bottomOfNavPos = navEl.position().top + navEl.offset().top + navEl.outerHeight();
+
+            var calcTop = iconPos.top - tooltipHeight - 10 - iconOffset;
+            calcTop = calcTop < bottomOfNavPos ? bottomOfNavPos : calcTop;
+
+            $scope.talentTooltipPos.top = calcTop + "px";
             $scope.talentTooltipPos.left = (iconPos.left + 45) + "px";
             $scope.isInspectingTalent = true;
         }, 30);
