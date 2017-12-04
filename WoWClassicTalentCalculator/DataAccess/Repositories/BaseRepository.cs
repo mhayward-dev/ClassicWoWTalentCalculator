@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace WoWClassicTalentCalculator.DataAccess.Repositories
 {
@@ -15,6 +16,11 @@ namespace WoWClassicTalentCalculator.DataAccess.Repositories
         public BaseRepository(DbContext context)
         {
             Context = (TalentCalculatorContext)context;
+        }
+
+        public virtual Repository EagerLoad()
+        {
+            return CurrentRepository;
         }
 
         public virtual T Add(T entity)

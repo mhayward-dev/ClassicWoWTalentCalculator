@@ -11,16 +11,23 @@ namespace WoWClassicTalentCalculator.DataAccess.Repositories
             CurrentRepository = this;
         }
 
-        public WarcraftClass GetById(int id, bool eagerLoad = false)
+        public override WarcraftClassRepository EagerLoad()
         {
-            return eagerLoad ? Context.WarcraftClasses.Include(wc => wc.WarcraftClassSpecifications)
-                                                        .ThenInclude(wcs => wcs.SpecificationTalents)
-                                                            .ThenInclude(wcs => wcs.TalentRanks)
-                                                      .Include(wc => wc.WarcraftClassSpecifications)
-                                                        .ThenInclude(wcs => wcs.SpecificationTalents)
-                                                            .ThenInclude(wcs => wcs.TalentIcon)
-                                                      .FirstOrDefault(wc => wc.Id == id)
-                             : base.GetById(id);
+            Query = Query.Include(wc => wc.WarcraftClassSpecifications)
+                            .ThenInclude(wcs => wcs.SpecificationTalents)
+                                .ThenInclude(wcs => wcs.TalentRanks)
+                         .Include(wc => wc.WarcraftClassSpecifications)
+                            .ThenInclude(wcs => wcs.SpecificationTalents)
+                                .ThenInclude(wcs => wcs.TalentIcon);
+
+            return this;
+        }
+
+        public WarcraftClassRepository ForClassName(string className)
+        {
+            Query = Query.Where(wc => wc.ClassName.ToLower() == className.ToLower());
+
+            return this;
         }
     }
 }

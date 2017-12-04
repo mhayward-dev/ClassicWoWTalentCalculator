@@ -31,10 +31,12 @@ namespace WoWClassicTalentCalculator.Controllers.API
             return BadRequest();
         }
 
-        [Route("{classId:int}")]
-        public object GetSelectedSpecificationsForClass(int classId)
+        [Route("{className}")]
+        public object GetSelectedSpecificationsForClass(string className)
         {
-            var warcraftClass = classRepository.GetById(classId, true);
+            var warcraftClass = classRepository.All().EagerLoad()
+                                               .ForClassName(className)
+                                               .Results().FirstOrDefault();
 
             if (warcraftClass.IsNotNull())
             {
