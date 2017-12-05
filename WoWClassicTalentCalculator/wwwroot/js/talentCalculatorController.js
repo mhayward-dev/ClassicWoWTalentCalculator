@@ -4,6 +4,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
     $scope.selectedTalents = [];
+    $scope.colRange = [0, 1, 2, 3];
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
     $scope.talentTooltipPos = {
@@ -20,7 +21,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             }, function (error) {
                 console.log(error);
             });
-    }
+    };
 
     $scope.fetchSpecifications = function (className) {
         talentCalculatorFactory.getSpecifications(className)
@@ -36,19 +37,19 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             }, function (error) {
                 console.log(error);
             });
-    }
+    };
 
     $scope.getClassById = function (id) {
         var selectedClass = _.find($scope.classes, { 'id': id });
         if (selectedClass) return selectedClass;
 
         return null;
-    }
+    };
 
     $scope.getTalentByColIndex = function (index, talents) {
         var talent = _.find(talents, { 'colIndex': index });
         return talent ? talent : null;
-    }
+    };
 
     $scope.showTalentTooltip = function (event, specIndex, rowIndex, colIndex) {
         var spec = $scope.selectedClass.specifications[specIndex];
@@ -71,11 +72,11 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             $scope.talentTooltipPos.left = (iconPos.left + 45) + "px";
             $scope.isInspectingTalent = true;
         }, 30);
-    }
+    };
 
     $scope.hideTalentTooltip = function () {
         $scope.isInspectingTalent = false;
-    }
+    };
 
     $scope.addTalentPoint = function (event, specIndex, rowIndex, colIndex) {
         if ($scope.inspectedTalent && $scope.inspectedTalent.isLearnable && !$scope.inspectedTalent.isMaxRank) {
@@ -84,11 +85,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
             talent.selectedRankNo += 1;
             inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent);
-
-            var parentEl = angular.element(event.target).parent();
-            angular.element(parentEl).find('.talent-rank-no').text(talent.selectedRankNo);
         }
-    }
+    };
 
     $scope.fetchClasses();
 });

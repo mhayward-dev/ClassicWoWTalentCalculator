@@ -1,53 +1,37 @@
-﻿app.directive('specificationTable', function ($compile) {
-
-    var setupIcon = function (t, specIndex) {
-        var iconContainer = angular.element('<div class="talent-icon-border inactive">');
-  
-        var icon = angular.element('<div class="talent-icon">');
-        icon.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
-        icon.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', specIndex, t.rowIndex, t.colIndex));
-        icon.attr('ng-mouseleave', 'hideTalentTooltip()');
-        icon.attr('ng-click', sprintf('addTalentPoint($event, %s, %s, %s)', specIndex, t.rowIndex, t.colIndex));
-        iconContainer.append(icon);
-
-        var rankNo = angular.element(sprintf('<div class="talent-rank-no">%s</div>', t.selectedRankNo));
-        iconContainer.append(rankNo);
-
-        if (t.isActive) {
-            rankNo.show();
-            iconContainer.removeClass('inactive');
-        }
-
-        return iconContainer;
-    };
-
+﻿
+app.directive('talentIcon', function ($parse, $compile) {
     return {
         restrict: 'E',
         link: function (scope, element, attrs) {
-            scope.$watch('selectedClass', function (selectedClass) {
-                var tableEl = angular.element('<table>');
-                var spec = selectedClass.specifications[Number(attrs.specIndex)];
+            if (attrs.talent.length > 0) {
+                attrs.$observe('talent', function (talent) {
+                    var t = $parse(talent)();
+                    var iconContainerEl = angular.element('<div class="talent-icon-border inactive">');
 
-                $.each(spec.talentRows, function (rowIndex, rowArray) {
-                    var rowEl = angular.element('<tr>');
+                    var iconEl = angular.element('<div class="talent-icon">');
+                    iconEl.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
+                    iconEl.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
+                    iconEl.attr('ng-mouseleave', 'hideTalentTooltip()');
+                    iconEl.attr('ng-click', sprintf('addTalentPoint($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
+                    iconContainerEl.append(iconEl);
 
-                    for (var i = 0; i < 4; i++) {
-                        var cellEl = angular.element('<td>');
-                        var talent = scope.getTalentByColIndex(i, rowArray);
+                    var rankNoEl = angular.element(sprintf('<div class="talent-rank-no">%s</div>', t.selectedRankNo));
+                    iconContainerEl.append(rankNoEl);
 
-                        if (talent) {
-                            cellEl.append(setupIcon(talent, attrs.specIndex));
-                        }
-
-                        rowEl.append(cellEl);
+                    if (t.isActive) {
+                        rankNoEl.show();
+                        iconContainerEl.removeClass('inactive');
                     }
 
-                    tableEl.append(rowEl);
-                });
+                    if (t.selectedRankNo == t.talentRanks.length) {
+                        rankNoEl.addClass('is-maxed');
+                        iconContainerEl.addClass('is-maxed');
+                    }
 
-                $compile(tableEl)(scope);
-                element.replaceWith(tableEl);
-            });
+                    element.empty();
+                    element.append($compile(iconContainerEl)(scope));
+                }, true);
+            }
         }
-    };
+    }
 });

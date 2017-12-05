@@ -24,7 +24,7 @@ function warcraftClassSpecificationVm(talentVm) {
         this.index = wcs.specificationIndex;
         this.bgImageFilePath = wcs.bgImageFilePath;
         this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(talents => talents.map(talentVm.build, {
-            specName: wcs.specificationName
+            spec: wcs
         })) : [];
     }
 
@@ -37,10 +37,11 @@ function warcraftClassSpecificationVm(talentVm) {
 
 function talentVm(talentRankVm) {
 
-    function Talent(t, specName) {
+    function Talent(t, spec) {
         this.id = t.id;
         this.talentName = t.talentName;
-        this.specName = specName;
+        this.specName = spec.specificationName;
+        this.specIndex = spec.specificationIndex;
         this.colIndex = t.columnIndex;
         this.rowIndex = t.rowIndex;
         this.iconFilePath = t.iconFilePath;
@@ -50,7 +51,7 @@ function talentVm(talentRankVm) {
     }
 
     Talent.build = function (data) {
-        return new Talent(data, this.specName);
+        return new Talent(data, this.spec);
     }
 
     return Talent;
@@ -163,7 +164,7 @@ function inspectedTalentVm() {
     }
 
     InspectedTalent.updateRankNo = function (it, t) {
-        it.selectedRankNo = it.selectedRankNo + 1;
+        it.selectedRankNo = t.selectedRankNo;
         it.selectedRankText = getCurrentRankText(t);
         it.nextRankText = getNextRankText(t);
         it.instructionText = getInstructionText(t);
