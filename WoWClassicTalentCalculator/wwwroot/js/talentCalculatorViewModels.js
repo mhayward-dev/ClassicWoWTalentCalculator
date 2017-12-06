@@ -72,7 +72,20 @@ function talentRankVm() {
     return TalentRank;
 }
 
-function inspectedTalentVm() {
+function talentReqVm() {
+    this.reqArray =  [
+        { rowIndex: 1, requiredNo: 5 },
+        { rowIndex: 2, requiredNo: 10 },
+        { rowIndex: 3, requiredNo: 15 },
+        { rowIndex: 4, requiredNo: 20 },
+        { rowIndex: 5, requiredNo: 25 },
+        { rowIndex: 6, requiredNo: 30 }
+    ];
+
+    return this;
+}
+
+function inspectedTalentVm(talentReqVm) {
 
     function InspectedTalent(t, selectedTalents) {
         var currentRank = t.selectedRankNo > 0 ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }) : null;
@@ -95,7 +108,7 @@ function inspectedTalentVm() {
 
     function getCurrentRankText(t) {
         if (t.selectedRankNo > 0) {
-            return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }).rankDescription; 
+            return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }).rankDescription;
         }
 
         return t.talentRanks[0].rankDescription;
@@ -110,45 +123,23 @@ function inspectedTalentVm() {
     }
 
     function checkIsLearnable(it, t, selectedTalents) {
+        var isLearnable = true;
+
+        angular.forEach(talentReqVm.reqArray, function (req) {
+            if (t.rowIndex === req.rowIndex && selectedTalents.length < req.requiredNo) {
+                it.requirementsText = sprintf('Requires %s points in %s', req.requiredNo, t.specName);
+                it.isSelectable = false;
+                isLearnable = false;
+                return;
+            }
+        });
+
         // TODO - Look for a relationship with TalentRequirements
-        if (t.rowIndex === 1 && selectedTalents.length < 5) {
-            it.requirementsText = 'Requires 5 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
-        }
 
-        if (t.rowIndex === 2 && selectedTalents.length < 10) {
-            it.requirementsText = 'Requires 10 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
+        if (isLearnable) {
+            it.requirementsText = '';
+            it.isSelectable = true;
         }
-
-        if (t.rowIndex === 3 && selectedTalents.length < 15) {
-            it.requirementsText = 'Requires 15 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
-        }
-
-        if (t.rowIndex === 4 && selectedTalents.length < 20) {
-            it.requirementsText = 'Requires 20 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
-        }
-
-        if (t.rowIndex === 5 && selectedTalents.length < 25) {
-            it.requirementsText = 'Requires 25 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
-        }
-
-        if (t.rowIndex === 6 && selectedTalents.length < 30) {
-            it.requirementsText = 'Requires 30 points in ' + t.specName;
-            it.isSelectable = false;
-            return;
-        }
-
-        it.requirementsText = '';
-        it.isSelectable = true;
     }
 
     function getInstructionText(t) {
