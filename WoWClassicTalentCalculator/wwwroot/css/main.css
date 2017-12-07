@@ -21,7 +21,7 @@ html body #talent-calculator #talent-info #talent-info-container {
   margin-top: 20px;
 }
 html body #talent-calculator #talents-select #specifications {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 html body #talent-calculator #talents-select #specifications .specification-border:nth-child(odd) {
   margin-left: 5px;

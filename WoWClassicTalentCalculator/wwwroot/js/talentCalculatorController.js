@@ -60,17 +60,14 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
         $timeout(function () {
             var tooltipHeight = angular.element('#talent-tooltip').height();
-            var iconPos = event.target.getBoundingClientRect();
-            var iconOffset = angular.element(document).scrollTop();
+            var iconPos = angular.element(event.target).offset();
+            var topOfPage = angular.element(document).scrollTop();
 
-            var navEl = angular.element('nav');
-            var bottomOfNavPos = navEl.position().top + navEl.offset().top + navEl.outerHeight();
-
-            var calcTop = iconPos.y - tooltipHeight - 15 - iconOffset;
-            calcTop = calcTop < bottomOfNavPos ? bottomOfNavPos : calcTop;
+            var calcTop = iconPos.top - tooltipHeight - 15;
+            calcTop = topOfPage > calcTop ? topOfPage + 5 : calcTop;
 
             $scope.talentTooltipPos.top = calcTop + "px";
-            $scope.talentTooltipPos.left = (iconPos.left + 45) + "px";
+            $scope.talentTooltipPos.left = (iconPos.left + 50) + "px";
             $scope.isInspectingTalent = true;
         }, 30);
     };
