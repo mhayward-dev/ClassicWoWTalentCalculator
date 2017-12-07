@@ -2,6 +2,10 @@ html {
   position: relative;
   min-height: 100%;
 }
+html .thin-header {
+  font-size: 1.25em;
+  font-weight: 300;
+}
 html body {
   margin-bottom: 60px;
 }
@@ -10,15 +14,136 @@ html body #talent-calculator {
 }
 html body #talent-calculator #class-select #class-row .class-icon {
   text-align: center;
+  position: relative;
+  z-index: 1;
+  background: transparent;
 }
 html body #talent-calculator #class-select #class-row .class-icon img {
   width: 70px;
 }
+html body #talent-calculator #class-select #class-row .class-icon.druid-bg.selected {
+  background: #FF7D0A;
+}
+html body #talent-calculator #class-select #class-row .class-icon.hunter-bg.selected {
+  background: #ABD473;
+}
+html body #talent-calculator #class-select #class-row .class-icon.mage-bg.selected {
+  background: #69CCF0;
+}
+html body #talent-calculator #class-select #class-row .class-icon.paladin-bg.selected {
+  background: #F58CBA;
+}
+html body #talent-calculator #class-select #class-row .class-icon.priest-bg.selected {
+  background: #D3DBE8;
+}
+html body #talent-calculator #class-select #class-row .class-icon.rogue-bg.selected {
+  background: #F5EB5D;
+}
+html body #talent-calculator #class-select #class-row .class-icon.shaman-bg.selected {
+  background: #0070DE;
+}
+html body #talent-calculator #class-select #class-row .class-icon.warlock-bg.selected {
+  background: #9482C9;
+}
+html body #talent-calculator #class-select #class-row .class-icon.warrior-bg.selected {
+  background: #C79C6E;
+}
+html body #talent-calculator #class-select #class-row .class-icon:before {
+  transition: all .5s;
+}
+html body #talent-calculator #class-select #class-row .class-icon:after {
+  transition: all .5s;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+html body #talent-calculator #class-select #class-row .class-icon.druid-bg:after {
+  background: #FF7D0A;
+}
+html body #talent-calculator #class-select #class-row .class-icon.hunter-bg:after {
+  background: #ABD473;
+}
+html body #talent-calculator #class-select #class-row .class-icon.mage-bg:after {
+  background: #69CCF0;
+}
+html body #talent-calculator #class-select #class-row .class-icon.paladin-bg:after {
+  background: #F58CBA;
+}
+html body #talent-calculator #class-select #class-row .class-icon.priest-bg:after {
+  background: #D3DBE8;
+}
+html body #talent-calculator #class-select #class-row .class-icon.rogue-bg:after {
+  background: #F5EB5D;
+}
+html body #talent-calculator #class-select #class-row .class-icon.shaman-bg:after {
+  background: #0070DE;
+}
+html body #talent-calculator #class-select #class-row .class-icon.warlock-bg:after {
+  background: #9482C9;
+}
+html body #talent-calculator #class-select #class-row .class-icon.warrior-bg:after {
+  background: #C79C6E;
+}
+html body #talent-calculator #class-select #class-row .class-icon:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
 html body #talent-calculator #class-select #class-row .highlight-line {
-  border-bottom: 2px solid;
+  border-bottom: 3px solid;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.deselected {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.selected {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.druid-bg {
+  border-color: #a34d00;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.hunter-bg {
+  border-color: #7aac35;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.mage-bg {
+  border-color: #16a8dd;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.paladin-bg {
+  border-color: #ed2e82;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.priest-bg {
+  border-color: #90a4c5;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.rogue-bg {
+  border-color: #ded10e;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.shaman-bg {
+  border-color: #003d78;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.warlock-bg {
+  border-color: #5c45a0;
+}
+html body #talent-calculator #class-select #class-row .highlight-line.warrior-bg {
+  border-color: #95693a;
 }
 html body #talent-calculator #talent-info #talent-info-container {
   margin-top: 20px;
+}
+html body #talent-calculator #talent-info .thin-header {
+  margin-bottom: 10px;
 }
 html body #talent-calculator #talents-select #specifications {
   margin-top: 30px;

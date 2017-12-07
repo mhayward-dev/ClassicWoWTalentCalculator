@@ -13,6 +13,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     iconEl.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
                     iconEl.attr('ng-mouseleave', 'hideTalentTooltip()');
                     iconEl.attr('ng-click', sprintf('addTalentPoint($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
+                    iconEl.attr('ng-right-click', sprintf('removeTalentPoint($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex))
                     iconContainerEl.append(iconEl);
 
                     var rankNoEl = angular.element(sprintf('<div class="talent-rank-no">%s</div>', t.selectedRankNo));
@@ -34,4 +35,16 @@ app.directive('talentIcon', function ($parse, $compile) {
             }
         }
     }
+});
+
+app.directive('ngRightClick', function ($parse) {
+    return function (scope, element, attrs) {
+        var fn = $parse(attrs.ngRightClick);
+        element.bind('contextmenu', function (event) {
+            scope.$apply(function () {
+                event.preventDefault();
+                fn(scope, { $event: event });
+            });
+        });
+    };
 });

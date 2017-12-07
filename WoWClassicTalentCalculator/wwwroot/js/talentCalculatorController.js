@@ -10,6 +10,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         top: 0,
         left: 0
     };
+    $scope.availablePoints = 51;
+    $scope.requiredLevel = 9;
     $scope.totalPointsPerSpec = [0, 0, 0];
     $scope.selectedTalents = [[], [], []];
 
@@ -34,6 +36,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                 $scope.selectedClass = warcraftClassVm.build(response.data);
                 $scope.getClassById($scope.selectedClass.id).isSelected = true;
                 $scope.selectedClassId = $scope.selectedClass.id;
+
+                setTotalPoints();
 
             }, function (error) {
                 console.log(error);
@@ -82,13 +86,40 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
 
             talent.selectedRankNo += 1;
-            inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent);
+            $scope.selectedTalents[specIndex].push(talent);
+            inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent, $scope.selectedTalents[specIndex]);
 
             updateTalentTree(specIndex);
-            $scope.selectedTalents[specIndex].push(talent);
             $scope.totalPointsPerSpec[specIndex] += 1;
+            $scope.availablePoints -= 1;
+            $scope.requiredLevel += 1;
         }
     };
+
+    $scope.removeTalentPoint = function (event, specIndex, rowIndex, colIndex) {
+        if ($scope.inspectedTalent && $scope.inspectedTalent.isUnlearnable) {
+            var spec = $scope.selectedClass.specifications[specIndex];
+            var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
+
+            talent.selectedRankNo -= 1;
+            inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent, $scope.selectedTalents[specIndex]);
+
+            $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) {
+                return t.id === talent.id;
+            });
+
+            $scope.totalPointsPerSpec[specIndex] -= 1;
+            $scope.availablePoints += 1;
+            $scope.requiredLevel -= 1;
+        }
+    };
+
+    function setTotalPoints() {
+        $scope.availablePoints = 51;
+        $scope.requiredLevel = 9;
+        $scope.totalPointsPerSpec = [0, 0, 0];
+        $scope.selectedTalents = [[], [], []];
+    }
 
     function updateTalentTree(specIndex) {
         var treeTotal = $scope.totalPointsPerSpec[specIndex];

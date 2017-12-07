@@ -7,9 +7,10 @@
 
     <section id="class-select">
         <div id="class-row" class="row bg-light no-gutters">
-            <div class="col-4 col-md class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.className)">
+            <div class="col-4 col-md class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.className)"
+                 ng-class="[(c.className | lowercase)  + '-bg', {'selected' : c.isSelected} ]">
                 <img ng-src="{{ c.iconFilePath }}" />
-                <div ng-show="c.isSelected" class="highlight-line"></div>
+                <div class="highlight-line" ng-class="[(c.className | lowercase)  + '-bg', c.isSelected ? 'selected' : 'deselected']"></div>
             </div>
         </div>
     </section>
@@ -18,22 +19,22 @@
         <div id="talent-info-container" class="container">
             <div class="row justify-content-between">
                 <div class="col-md-4">
-                    <h1 class="display-4">{{ selectedClass.className }}</h1>
+                    <h1 class="display-4 text-center">{{ selectedClass.className }}</h1>
                 </div>
                 <div class="col-md-4">
-                    <p class="lead text-center">
-                        Points Remaining
-                    </p>
+                    <div class="thin-header text-center">
+                        Available Points
+                    </div>
                     <div class="text-center">
-                        <strong>50</strong>
+                        <strong>{{ availablePoints }}</strong>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <p class="lead text-center">
+                    <div class="thin-header text-center">
                         Required Level
-                    </p>
+                    </div>
                     <div class="text-center">
-                        <strong>11</strong>
+                        <strong>{{ requiredLevel > 9 ? requiredLevel : '-'}}</strong>
                     </div>
                 </div>
             </div>
@@ -44,7 +45,7 @@
         <div id="specifications" class="container">
             <div id="spec-container" class="row justify-content-center">
                 <div class="specification-border col-auto" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
-                    <div class="specification-title">{{ s.specName }}</div>
+                    <div class="specification-title thin-header">{{ s.specName }}</div>
                     <div class="specification-count"><strong>{{ totalPointsPerSpec[s.index] }}</strong></div>
                     <div class="specification-pane" ng-style="{'background-image': 'url(' + s.bgImageFilePath + ')'}">
                         <table>

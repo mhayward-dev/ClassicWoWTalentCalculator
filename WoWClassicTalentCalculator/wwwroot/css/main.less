@@ -1,6 +1,21 @@
-﻿html {
+﻿@druid-orange: #FF7D0A;
+@hunter-green: #ABD473;
+@mage-blue: #69CCF0;
+@paladin-pink: #F58CBA;
+@priest-white: #D3DBE8;
+@rogue-yellow: #F5EB5D;
+@shaman-blue: #0070DE;
+@warlock-purple: #9482C9;
+@warrior-brown: #C79C6E;
+
+html {
     position: relative;
     min-height: 100%;
+
+    .thin-header {
+        font-size: 1.25em;
+        font-weight: 300;
+    }
 
     body {
         margin-bottom: 60px;
@@ -12,14 +27,164 @@
                 #class-row {
                     .class-icon {
                         text-align: center;
+                        position: relative;
+                        z-index: 1;
+                        background: transparent;
 
                         img {
                             width: 70px;
                         }
                     }
 
+                    .class-icon.druid-bg.selected {
+                        background: @druid-orange;
+                    }
+
+                    .class-icon.hunter-bg.selected {
+                        background: @hunter-green;
+                    }
+
+                    .class-icon.mage-bg.selected {
+                        background: @mage-blue;
+                    }
+
+                    .class-icon.paladin-bg.selected {
+                        background: @paladin-pink;
+                    }
+
+                    .class-icon.priest-bg.selected {
+                        background: @priest-white;
+                    }
+
+                    .class-icon.rogue-bg.selected {
+                        background: @rogue-yellow;
+                    }
+
+                    .class-icon.shaman-bg.selected {
+                        background: @shaman-blue;
+                    }
+
+                    .class-icon.warlock-bg.selected {
+                        background: @warlock-purple;
+                    }
+
+                    .class-icon.warrior-bg.selected {
+                        background: @warrior-brown;
+                    }
+
+                    .class-icon:before {
+                        transition: all .5s;
+                    }
+
+                    .class-icon:after {
+                        transition: all .5s;
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 1px;
+                        content: '.';
+                        color: transparent;
+                        visibility: hidden;
+                        opacity: 0;
+                        z-index: -1;
+                    }
+
+                    .class-icon.druid-bg:after {
+                        background: @druid-orange;
+                    }
+
+                    .class-icon.hunter-bg:after {
+                        background: @hunter-green;
+                    }
+
+                    .class-icon.mage-bg:after {
+                        background: @mage-blue;
+                    }
+
+                    .class-icon.paladin-bg:after {
+                        background: @paladin-pink;
+                    }
+
+                    .class-icon.priest-bg:after {
+                        background: @priest-white;
+                    }
+
+                    .class-icon.rogue-bg:after {
+                        background: @rogue-yellow;
+                    }
+
+                    .class-icon.shaman-bg:after {
+                        background: @shaman-blue;
+                    }
+
+                    .class-icon.warlock-bg:after {
+                        background: @warlock-purple;
+                    }
+
+                    .class-icon.warrior-bg:after {
+                        background: @warrior-brown;
+                    }
+
+                    .class-icon:hover:after {
+                        opacity: 1;
+                        visibility: visible;
+                        height: 100%;
+                    }
+
                     .highlight-line {
-                        border-bottom: 2px solid;
+                        border-bottom: 3px solid;
+                    }
+
+                    .highlight-line.deselected {
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: visibility 0s linear 300ms, opacity 300ms;
+                    }
+
+                    .highlight-line.selected {
+                        visibility: visible;
+                        opacity: 1;
+                        transition: visibility 0s linear 300ms, opacity 300ms;
+                    }
+
+                    .highlight-line.druid-bg {
+                        border-color: darken(@druid-orange, 20%);
+                    }
+
+                    .highlight-line.hunter-bg {
+                        border-color: darken(@hunter-green, 20%);
+                    }
+
+                    .highlight-line.mage-bg {
+                        border-color: darken(@mage-blue, 20%);
+                    }
+
+                    .highlight-line.paladin-bg {
+                        border-color: darken(@paladin-pink, 20%);
+                    }
+
+                    .highlight-line.priest-bg {
+                        border-color: darken(@priest-white, 20%);
+                    }
+
+                    .highlight-line.rogue-bg {
+                        border-color: darken(@rogue-yellow, 20%);
+                    }
+
+                    .highlight-line.shaman-bg {
+                        border-color: darken(@shaman-blue, 20%);
+                    }
+
+                    .highlight-line.warlock-bg {
+                        border-color: darken(@warlock-purple, 20%);
+                    }
+
+                    .highlight-line.warrior-bg {
+                        border-color: darken(@warrior-brown, 20%);
                     }
                 }
             }
@@ -27,6 +192,10 @@
             #talent-info {
                 #talent-info-container {
                     margin-top: 20px;
+                }
+
+                .thin-header {
+                    margin-bottom: 10px;
                 }
             }
 
