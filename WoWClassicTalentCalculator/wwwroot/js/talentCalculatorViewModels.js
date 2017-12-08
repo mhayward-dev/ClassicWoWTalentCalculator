@@ -87,7 +87,7 @@ function talentReqVm() {
 
 function inspectedTalentVm(talentReqVm) {
 
-    function InspectedTalent(t, selectedTalents) {
+    function InspectedTalent(t, selectedTalents, totalPointsPerSpec) {
         var currentRank = t.selectedRankNo > 0 ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }) : null;
         var nextRank = t.selectedRankNo < t.talentRanks.length ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo + 1 }) : null;
 
@@ -95,16 +95,12 @@ function inspectedTalentVm(talentReqVm) {
         this.name = t.talentName;
         this.selectedRankNo = t.selectedRankNo;
         this.totalRankNo = t.talentRanks.length;
-        this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
-        this.selectedRankText = getCurrentRankText(t);
-        this.nextRankText = getNextRankText(t);
-        this.instructionText = getInstructionText(t);
         this.requirementsText = '';
-        this.isLearnable = hasRequirements(this, t, selectedTalents);
-        this.isUnlearnable = canBeUnlearned(t, selectedTalents);
+
+        this.updateRankNo(t, selectedTalents, totalPointsPerSpec)
     }
 
-    function getCurrentRankText(t) {
+    InspectedTalent.prototype.getCurrentRankText = function(t) {
         if (t.selectedRankNo > 0) {
             return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }).rankDescription;
         }
@@ -112,7 +108,7 @@ function inspectedTalentVm(talentReqVm) {
         return t.talentRanks[0].rankDescription;
     }
 
-    function getNextRankText(t) {
+    InspectedTalent.prototype.getNextRankText = function(t) {
         if (t.selectedRankNo < t.talentRanks.length) {
             return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo + 1 }).rankDescription;
         }
@@ -120,12 +116,13 @@ function inspectedTalentVm(talentReqVm) {
         return "";
     }
 
-    function hasRequirements(it, t, selectedTalents) {
+    InspectedTalent.prototype.hasRequirements = function(t, totalPointsInSpec) {
         var hasReqs = true;
+        var inspecTalent = this;
 
         angular.forEach(talentReqVm.reqArray, function (req) {
-            if (t.rowIndex === req.rowIndex && selectedTalents.length < req.requiredNo) {
-                it.requirementsText = sprintf('Requires %s points in %s', req.requiredNo, t.specName);
+            if (t.rowIndex === req.rowIndex && totalPointsInSpec < req.requiredNo) {
+                inspecTalent.requirementsText = sprintf('Requires %s points in %s', req.requiredNo, t.specName);
                 hasReqs = false;
                 return;
             }
@@ -134,7 +131,7 @@ function inspectedTalentVm(talentReqVm) {
         return hasReqs;
     }
 
-    function canBeUnlearned(t, selectedTalents) {
+    InspectedTalent.prototype.canBeUnlearned = function(t, selectedTalents) {
         if (t.selectedRankNo === 0)
             return false;
 
@@ -145,30 +142,30 @@ function inspectedTalentVm(talentReqVm) {
         return true;
     }
 
-    function getInstructionText(t) {
+    InspectedTalent.prototype.getInstructionText = function(t) {
         if (t.isActive && t.selectedRankNo === 0) {
             return 'Click to learn'
         }
 
-        if (t.isActive && t.selectedRankNo === t.talentRanks.length) {
+        if (this.isUnlearnable && t.isActive && t.selectedRankNo === t.talentRanks.length) {
             return 'Right click to unlearn'
         }
 
         return '';
     }
 
-    InspectedTalent.updateRankNo = function (it, t, selectedTalents) {
-        it.selectedRankNo = t.selectedRankNo;
-        it.selectedRankText = getCurrentRankText(t);
-        it.nextRankText = getNextRankText(t);
-        it.instructionText = getInstructionText(t);
-        it.isMaxRank = t.selectedRankNo === t.talentRanks.length;
-        it.isLearnable = hasRequirements(it, t, selectedTalents);
-        it.isUnlearnable = canBeUnlearned(t, selectedTalents);
+    InspectedTalent.prototype.updateRankNo = function (t, selectedTalents, totalPointsInSpec) {
+        this.selectedRankNo = t.selectedRankNo;
+        this.selectedRankText = this.getCurrentRankText(t);
+        this.nextRankText = this.getNextRankText(t);
+        this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
+        this.isLearnable = this.hasRequirements(t, totalPointsInSpec);
+        this.isUnlearnable = this.canBeUnlearned(t, selectedTalents);
+        this.instructionText = this.getInstructionText(t);
     }
 
-    InspectedTalent.build = function (data, selectedTalents) {
-        return new InspectedTalent(data, selectedTalents);
+    InspectedTalent.build = function (data, selectedTalents, totalPointsInSpec) {
+        return new InspectedTalent(data, selectedTalents, totalPointsInSpec);
     }
 
     return InspectedTalent;

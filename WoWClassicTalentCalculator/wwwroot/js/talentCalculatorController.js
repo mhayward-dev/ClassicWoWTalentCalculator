@@ -1,6 +1,5 @@
 ﻿
-app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, talentReqVm, inspectedTalentVm)
-{
+app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, talentReqVm, inspectedTalentVm) {
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
@@ -10,6 +9,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         top: 0,
         left: 0
     };
+    $scope.isLoadingTooltip = false;
     $scope.availablePoints = 51;
     $scope.requiredLevel = 9;
     $scope.totalPointsPerSpec = [0, 0, 0];
@@ -57,10 +57,11 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     };
 
     $scope.showTalentTooltip = function (event, specIndex, rowIndex, colIndex) {
+        $scope.isLoadingTooltip = true;
         var spec = $scope.selectedClass.specifications[specIndex];
         var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
 
-        $scope.inspectedTalent = inspectedTalentVm.build(talent, $scope.selectedTalents[specIndex]);
+        $scope.inspectedTalent = inspectedTalentVm.build(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
 
         $timeout(function () {
             var tooltipHeight = angular.element('#talent-tooltip').height();
@@ -73,6 +74,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             $scope.talentTooltipPos.top = calcTop + "px";
             $scope.talentTooltipPos.left = (iconPos.left + 50) + "px";
             $scope.isInspectingTalent = true;
+            $scope.isLoadingTooltip = false;
         }, 30);
     };
 
@@ -81,15 +83,27 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     };
 
     $scope.addTalentPoint = function (event, specIndex, rowIndex, colIndex) {
-        if ($scope.inspectedTalent && $scope.inspectedTalent.isLearnable && !$scope.inspectedTalent.isMaxRank) {
+        if (!$scope.isLoadingTooltip && $scope.inspectedTalent
+            && $scope.inspectedTalent.isLearnable && !$scope.inspectedTalent.isMaxRank) {
+
             var spec = $scope.selectedClass.specifications[specIndex];
             var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
 
             talent.selectedRankNo += 1;
-            $scope.selectedTalents[specIndex].push(talent);
-            inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent, $scope.selectedTalents[specIndex]);
 
-            updateTalentTree(specIndex);
+            if (talent.selectedRankNo === 1) {
+                $scope.selectedTalents[specIndex].push(talent);
+            }
+
+            var checkForTierUnlocks = function (treeTotal, req, talentRows) {
+                if (treeTotal < req.requiredNo && treeTotal + 1 === req.requiredNo) {
+                    toggleActiveRow(talentRows[req.rowIndex], true);
+                }
+            };
+
+            updateTalentTree(specIndex, checkForTierUnlocks);
+
+            $scope.inspectedTalent.updateRankNo(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
             $scope.totalPointsPerSpec[specIndex] += 1;
             $scope.availablePoints -= 1;
             $scope.requiredLevel += 1;
@@ -97,17 +111,25 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     };
 
     $scope.removeTalentPoint = function (event, specIndex, rowIndex, colIndex) {
-        if ($scope.inspectedTalent && $scope.inspectedTalent.isUnlearnable) {
+        if (!$scope.isLoadingTooltip && $scope.inspectedTalent && $scope.inspectedTalent.isUnlearnable) {
             var spec = $scope.selectedClass.specifications[specIndex];
             var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
 
             talent.selectedRankNo -= 1;
-            inspectedTalentVm.updateRankNo($scope.inspectedTalent, talent, $scope.selectedTalents[specIndex]);
 
-            $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) {
-                return t.id === talent.id;
-            });
+            if (talent.selectedRankNo === 0) {
+                removeSelectedTalent(talent, specIndex);
+            }
 
+            var checkForTierRemoval = function (treeTotal, req, talentRows) {
+                if (treeTotal === req.requiredNo && treeTotal - 1 < req.requiredNo) {
+                    toggleActiveRow(talentRows[req.rowIndex], false);
+                }
+            };
+
+            updateTalentTree(specIndex, checkForTierRemoval);
+
+            $scope.inspectedTalent.updateRankNo(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
             $scope.totalPointsPerSpec[specIndex] -= 1;
             $scope.availablePoints += 1;
             $scope.requiredLevel -= 1;
@@ -121,14 +143,12 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         $scope.selectedTalents = [[], [], []];
     }
 
-    function updateTalentTree(specIndex) {
+    function updateTalentTree(specIndex, checkTierUpdate) {
         var treeTotal = $scope.totalPointsPerSpec[specIndex];
         var talentRows = $scope.selectedClass.specifications[specIndex].talentRows;
 
         angular.forEach(talentReqVm.reqArray, function (req) {
-            if (treeTotal < req.requiredNo && treeTotal + 1 === req.requiredNo) {
-                toggleActiveRow(talentRows[req.rowIndex], true);
-            }
+            checkTierUpdate(treeTotal, req, talentRows);
         });
     }
 
@@ -136,6 +156,10 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         angular.forEach(row, function (talent) {
             talent.isActive = isActive;
         });
+    }
+
+    function removeSelectedTalent(talent, specIndex) {
+        $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) { return t.id !== talent.id });
     }
 
     $scope.fetchClasses();
