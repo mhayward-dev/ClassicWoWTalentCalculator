@@ -10,8 +10,8 @@ using VanillaReborn.DataAccess;
 
 namespace VanillaReborn.Migrations
 {
-    [DbContext(typeof(TalentCalculatorContext))]
-    [Migration("20171208152954_Initial")]
+    [DbContext(typeof(VanillaRebornContext))]
+    [Migration("20171208184110_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

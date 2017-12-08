@@ -10,8 +10,8 @@ using VanillaReborn.DataAccess;
 
 namespace VanillaReborn.Migrations
 {
-    [DbContext(typeof(TalentCalculatorContext))]
-    partial class TalentCalculatorContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(VanillaRebornContext))]
+    partial class VanillaRebornContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

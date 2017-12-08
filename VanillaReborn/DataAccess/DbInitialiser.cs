@@ -6,7 +6,7 @@ namespace VanillaReborn.DataAccess
 {
     public static class DbInitialiser
     {
-        public static void Initialise(TalentCalculatorContext context)
+        public static void Initialise(VanillaRebornContext context)
         {
             context.Database.EnsureCreated();
 

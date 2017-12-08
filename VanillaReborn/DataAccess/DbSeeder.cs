@@ -9,7 +9,7 @@ namespace VanillaReborn.DataAccess
 {
     public static class DbSeeder
     {
-        public static void Seed(TalentCalculatorContext context)
+        public static void Seed(VanillaRebornContext context)
         {
             var talentIcons = TalentIconSeeder.SetupIcons();
             foreach(var icon in talentIcons)

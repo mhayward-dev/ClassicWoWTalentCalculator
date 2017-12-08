@@ -3,9 +3,9 @@ using VanillaReborn.Models;
 
 namespace VanillaReborn.DataAccess
 {
-    public class TalentCalculatorContext : DbContext
+    public class VanillaRebornContext : DbContext
     {
-        public TalentCalculatorContext(DbContextOptions<TalentCalculatorContext> options)
+        public VanillaRebornContext(DbContextOptions<VanillaRebornContext> options)
             : base(options)
         { }
 

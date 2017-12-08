@@ -9,13 +9,13 @@ namespace VanillaReborn.DataAccess.Repositories
         where T : class
         where Repository : class
     {
-        public TalentCalculatorContext Context { get; private set; }
+        public VanillaRebornContext Context { get; private set; }
         protected Repository CurrentRepository { get; set; }
         public IQueryable<T> Query { get; protected set; }
 
         public BaseRepository(DbContext context)
         {
-            Context = (TalentCalculatorContext)context;
+            Context = (VanillaRebornContext)context;
         }
 
         public virtual Repository EagerLoad()

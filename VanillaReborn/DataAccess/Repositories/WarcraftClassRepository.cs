@@ -6,7 +6,7 @@ namespace VanillaReborn.DataAccess.Repositories
 {
     public class WarcraftClassRepository : BaseRepository<WarcraftClass, WarcraftClassRepository>
     {
-        public WarcraftClassRepository(TalentCalculatorContext context) : base(context)
+        public WarcraftClassRepository(VanillaRebornContext context) : base(context)
         {
             CurrentRepository = this;
         }

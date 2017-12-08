@@ -23,7 +23,7 @@ namespace VanillaReborn
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<TalentCalculatorContext>();
+                    var context = services.GetRequiredService<VanillaRebornContext>();
                     DbInitialiser.Initialise(context);
                 }
                 catch (Exception ex)

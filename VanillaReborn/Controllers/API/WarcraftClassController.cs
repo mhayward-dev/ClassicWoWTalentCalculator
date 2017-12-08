@@ -10,10 +10,10 @@ namespace VanillaReborn.Controllers.API
     [Route("api/Classes")]
     public class WarcraftClassController : Controller
     {
-        private readonly TalentCalculatorContext _context;
+        private readonly VanillaRebornContext _context;
         private WarcraftClassRepository classRepository;
 
-        public WarcraftClassController(TalentCalculatorContext context)
+        public WarcraftClassController(VanillaRebornContext context)
         {
             _context = context;
             classRepository = new WarcraftClassRepository(context);
