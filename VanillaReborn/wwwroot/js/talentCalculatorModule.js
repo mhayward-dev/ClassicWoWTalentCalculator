@@ -1,4 +1,4 @@
-﻿var app = angular.module('talentCalculatorApp', ['ngAnimate']);
+﻿var app = angular.module('talentCalculatorApp', ['ngAnimate', 'ngSanitize']);
 
 app.factory('warcraftClassVm', warcraftClassVm);
 app.factory('warcraftClassSpecificationVm', warcraftClassSpecificationVm);

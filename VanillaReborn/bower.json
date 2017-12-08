@@ -10,10 +10,11 @@
     "sprintf": "v0.7",
     "angular-animate": "v1.6.8-build.5508+sha.2e03aed",
     "bootstrap": "v4.0.0-beta",
-    "popper.js": "v1.13.0-next"
+    "popper.js": "v1.13.0-next",
+    "angular-sanitize": "v1.6.8-build.5512+sha.dde520e"
   },
   "resolutions": {
-    "angular": "1.6.8-build.5508+sha.2e03aed",
+    "angular": "1.6.8-build.5512+sha.dde520e",
     "bootstrap": "v4.0.0-beta"
   }
 }

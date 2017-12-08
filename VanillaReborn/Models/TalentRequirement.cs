@@ -5,5 +5,6 @@
         public int Id { get; set; }
         public int TalentId { get; set; }
         public int RequiredTalentId { get; set; }
+        public Talent RequiredTalent { get; set; }
     }
 }

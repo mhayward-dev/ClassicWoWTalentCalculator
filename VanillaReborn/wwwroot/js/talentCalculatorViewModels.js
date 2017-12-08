@@ -47,6 +47,8 @@ function talentVm(talentRankVm) {
         this.iconFilePath = t.iconFilePath;
         this.talentRanks = t.talentRanks.map(talentRankVm.build);
         this.selectedRankNo = 0;
+        this.requiredTalentId = t.requiredTalentId;
+        this.requiredTalentMessage = t.requiredTalentMessage;
         this.isActive = t.rowIndex === 0;
     }
 
@@ -116,13 +118,20 @@ function inspectedTalentVm(talentReqVm) {
         return "";
     }
 
-    InspectedTalent.prototype.hasRequirements = function(t, totalPointsInSpec) {
+    InspectedTalent.prototype.hasRequirements = function(t, selectedTalents, totalPointsInSpec) {
         var hasReqs = true;
         var inspecTalent = this;
 
+        if (t.requiredTalentId > 0) {
+            var requiredTalent = _.find(selectedTalents, { 'id': t.requiredTalentId });
+            inspecTalent.requirementsText = !requiredTalent ||
+                                             requiredTalent.selectedRankNo !== requiredTalent.talentRanks.length
+                                             ? t.requiredTalentMessage + '<br />' : '';
+        }
+
         angular.forEach(talentReqVm.reqArray, function (req) {
             if (t.rowIndex === req.rowIndex && totalPointsInSpec < req.requiredNo) {
-                inspecTalent.requirementsText = sprintf('Requires %s points in %s', req.requiredNo, t.specName);
+                inspecTalent.requirementsText += sprintf('Requires %s points in %s', req.requiredNo, t.specName);
                 hasReqs = false;
                 return;
             }
@@ -159,7 +168,7 @@ function inspectedTalentVm(talentReqVm) {
         this.selectedRankText = this.getCurrentRankText(t);
         this.nextRankText = this.getNextRankText(t);
         this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
-        this.isLearnable = this.hasRequirements(t, totalPointsInSpec);
+        this.isLearnable = this.hasRequirements(t, selectedTalents, totalPointsInSpec);
         this.isUnlearnable = this.canBeUnlearned(t, selectedTalents);
         this.instructionText = this.getInstructionText(t);
     }

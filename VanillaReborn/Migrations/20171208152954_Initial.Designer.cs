@@ -11,7 +11,7 @@ using VanillaReborn.DataAccess;
 namespace VanillaReborn.Migrations
 {
     [DbContext(typeof(TalentCalculatorContext))]
-    [Migration("20171208150335_Initial")]
+    [Migration("20171208152954_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,6 +86,9 @@ namespace VanillaReborn.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RequiredTalentId")
+                        .IsUnique();
+
                     b.HasIndex("TalentId")
                         .IsUnique();
 
@@ -146,6 +149,11 @@ namespace VanillaReborn.Migrations
 
             modelBuilder.Entity("VanillaReborn.Models.TalentRequirement", b =>
                 {
+                    b.HasOne("VanillaReborn.Models.Talent", "RequiredTalent")
+                        .WithOne()
+                        .HasForeignKey("VanillaReborn.Models.TalentRequirement", "RequiredTalentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("VanillaReborn.Models.Talent")
                         .WithOne("TalentRequirement")
                         .HasForeignKey("VanillaReborn.Models.TalentRequirement", "TalentId")

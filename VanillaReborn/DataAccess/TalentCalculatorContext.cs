@@ -15,5 +15,11 @@ namespace VanillaReborn.DataAccess
         public DbSet<TalentRank> TalentRanks { get; set; }
         public DbSet<TalentRequirement> TalentRequirements { get; set; }
         public DbSet<TalentIcon> TalentIcons { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TalentRequirement>().HasOne(tr => tr.RequiredTalent).WithOne()
+                .HasForeignKey<TalentRequirement>(tr => tr.RequiredTalentId).OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

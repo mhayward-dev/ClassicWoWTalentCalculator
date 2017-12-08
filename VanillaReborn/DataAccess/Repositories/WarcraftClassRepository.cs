@@ -21,7 +21,9 @@ namespace VanillaReborn.DataAccess.Repositories
                                 .ThenInclude(t => t.TalentIcon)
                          .Include(wc => wc.WarcraftClassSpecifications)
                             .ThenInclude(wcs => wcs.Talents)
-                                .ThenInclude(t => t.TalentRequirement);
+                                .ThenInclude(t => t.TalentRequirement)
+                                    .ThenInclude(tr => tr.RequiredTalent)
+                                       .ThenInclude(rt => rt.TalentRanks);
 
             return this;
         }

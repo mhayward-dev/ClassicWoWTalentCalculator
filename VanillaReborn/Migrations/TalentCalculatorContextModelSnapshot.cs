@@ -85,6 +85,9 @@ namespace VanillaReborn.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RequiredTalentId")
+                        .IsUnique();
+
                     b.HasIndex("TalentId")
                         .IsUnique();
 
@@ -145,6 +148,11 @@ namespace VanillaReborn.Migrations
 
             modelBuilder.Entity("VanillaReborn.Models.TalentRequirement", b =>
                 {
+                    b.HasOne("VanillaReborn.Models.Talent", "RequiredTalent")
+                        .WithOne()
+                        .HasForeignKey("VanillaReborn.Models.TalentRequirement", "RequiredTalentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("VanillaReborn.Models.Talent")
                         .WithOne("TalentRequirement")
                         .HasForeignKey("VanillaReborn.Models.TalentRequirement", "TalentId")

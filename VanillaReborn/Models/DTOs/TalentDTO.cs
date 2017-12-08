@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Frameworks.Extensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace VanillaReborn.Models.DTOs
@@ -12,6 +13,7 @@ namespace VanillaReborn.Models.DTOs
         public int WarcraftClassSpecificationId { get; set; }
         public string IconFilePath { get; set; }
         public int? RequiredTalentId { get; set; }
+        public string RequiredTalentMessage { get; set; }
         public IEnumerable<TalentRankDTO> TalentRanks { get; set; }
 
         public static TalentDTO ToDTO(Talent t)
@@ -23,15 +25,28 @@ namespace VanillaReborn.Models.DTOs
                 TalentName = t.TalentName,
                 ColumnIndex = t.ColumnIndex,
                 RowIndex = t.RowIndex,
-                IconFilePath = MakeImageUrl(t.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
+                IconFilePath = FormatImageUrl(t.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
                 TalentRanks = t.TalentRanks.Select(tr => TalentRankDTO.ToDTO(tr)),
-                RequiredTalentId = t.TalentRequirement?.RequiredTalentId
+                RequiredTalentId = t.TalentRequirement?.RequiredTalentId,
+                RequiredTalentMessage = FormatRequirementMessage(t.TalentRequirement?.RequiredTalent ?? null)
             };
         }
 
-        public static string MakeImageUrl(string fileName)
+        public static string FormatImageUrl(string fileName)
         {
             return $"images/talent/{ fileName }.jpg";
+        }
+
+        public static string FormatRequirementMessage(Talent reqTalent)
+        {
+            var message = "";
+
+            if (reqTalent.IsNotNull()) {
+                var rankCount = reqTalent.TalentRanks?.Count ?? 1;
+                message = $"Requires { rankCount } point{ (rankCount > 1 ? "s" : "") } in { reqTalent.TalentName }.";
+            }
+
+            return message;
         }
     }
 }

@@ -120,6 +120,12 @@ namespace VanillaReborn.Migrations
                 {
                     table.PrimaryKey("PK_TalentRequirements", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_TalentRequirements_Talents_RequiredTalentId",
+                        column: x => x.RequiredTalentId,
+                        principalTable: "Talents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_TalentRequirements_Talents_TalentId",
                         column: x => x.TalentId,
                         principalTable: "Talents",
@@ -131,6 +137,12 @@ namespace VanillaReborn.Migrations
                 name: "IX_TalentRanks_TalentId",
                 table: "TalentRanks",
                 column: "TalentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TalentRequirements_RequiredTalentId",
+                table: "TalentRequirements",
+                column: "RequiredTalentId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TalentRequirements_TalentId",
