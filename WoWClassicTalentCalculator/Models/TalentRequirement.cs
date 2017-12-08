@@ -3,7 +3,7 @@
     public class TalentRequirement
     {
         public int Id { get; set; }
-        public int TalentRankId { get; set; }
-        public string RequirementDescription { get; set; }
+        public int TalentId { get; set; }
+        public int RequiredTalentId { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using WoWClassicTalentCalculator.DataAccess;
 namespace WoWClassicTalentCalculator.Migrations
 {
     [DbContext(typeof(TalentCalculatorContext))]
-    [Migration("20171130152419_Initial")]
+    [Migration("20171208144845_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace WoWClassicTalentCalculator.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WoWClassicTalentCalculator.Models.SpecificationTalent", b =>
+            modelBuilder.Entity("WoWClassicTalentCalculator.Models.Talent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -42,7 +42,7 @@ namespace WoWClassicTalentCalculator.Migrations
 
                     b.HasIndex("WarcraftClassSpecificationId");
 
-                    b.ToTable("SpecificationTalents");
+                    b.ToTable("Talents");
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.TalentIcon", b =>
@@ -66,11 +66,11 @@ namespace WoWClassicTalentCalculator.Migrations
 
                     b.Property<int>("RankNo");
 
-                    b.Property<int?>("SpecificationTalentId");
+                    b.Property<int>("TalentId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecificationTalentId");
+                    b.HasIndex("TalentId");
 
                     b.ToTable("TalentRanks");
                 });
@@ -80,13 +80,14 @@ namespace WoWClassicTalentCalculator.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("RequirementDescription");
+                    b.Property<int>("RequiredTalentId");
 
-                    b.Property<int>("TalentRankId");
+                    b.Property<int>("TalentId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TalentRankId");
+                    b.HasIndex("TalentId")
+                        .IsUnique();
 
                     b.ToTable("TalentRequirements");
                 });
@@ -123,30 +124,31 @@ namespace WoWClassicTalentCalculator.Migrations
                     b.ToTable("WarcraftClassSpecifications");
                 });
 
-            modelBuilder.Entity("WoWClassicTalentCalculator.Models.SpecificationTalent", b =>
+            modelBuilder.Entity("WoWClassicTalentCalculator.Models.Talent", b =>
                 {
                     b.HasOne("WoWClassicTalentCalculator.Models.TalentIcon", "TalentIcon")
                         .WithMany()
                         .HasForeignKey("TalentIconId");
 
                     b.HasOne("WoWClassicTalentCalculator.Models.WarcraftClassSpecification")
-                        .WithMany("SpecificationTalents")
+                        .WithMany("Talents")
                         .HasForeignKey("WarcraftClassSpecificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.TalentRank", b =>
                 {
-                    b.HasOne("WoWClassicTalentCalculator.Models.SpecificationTalent")
+                    b.HasOne("WoWClassicTalentCalculator.Models.Talent")
                         .WithMany("TalentRanks")
-                        .HasForeignKey("SpecificationTalentId");
+                        .HasForeignKey("TalentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WoWClassicTalentCalculator.Models.TalentRequirement", b =>
                 {
-                    b.HasOne("WoWClassicTalentCalculator.Models.TalentRank")
-                        .WithMany("TalentRequirements")
-                        .HasForeignKey("TalentRankId")
+                    b.HasOne("WoWClassicTalentCalculator.Models.Talent")
+                        .WithOne("TalentRequirement")
+                        .HasForeignKey("WoWClassicTalentCalculator.Models.TalentRequirement", "TalentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

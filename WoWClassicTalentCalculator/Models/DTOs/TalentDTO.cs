@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WoWClassicTalentCalculator.Models.DTOs
 {
-    public class SpecificationTalentDTO
+    public class TalentDTO
     {
         public int Id { get; set; }
         public string TalentName { get; set; }
@@ -11,19 +11,21 @@ namespace WoWClassicTalentCalculator.Models.DTOs
         public int RowIndex { get; set; }
         public int WarcraftClassSpecificationId { get; set; }
         public string IconFilePath { get; set; }
+        public int? RequiredTalentId { get; set; }
         public IEnumerable<TalentRankDTO> TalentRanks { get; set; }
 
-        public static SpecificationTalentDTO ToDTO(SpecificationTalent st)
+        public static TalentDTO ToDTO(Talent t)
         {
-            return new SpecificationTalentDTO
+            return new TalentDTO
             {
-                Id = st.Id,
-                WarcraftClassSpecificationId = st.WarcraftClassSpecificationId,
-                TalentName = st.TalentName,
-                ColumnIndex = st.ColumnIndex,
-                RowIndex = st.RowIndex,
-                IconFilePath = MakeImageUrl(st.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
-                TalentRanks = st.TalentRanks.Select(tr => TalentRankDTO.ToDTO(tr))
+                Id = t.Id,
+                WarcraftClassSpecificationId = t.WarcraftClassSpecificationId,
+                TalentName = t.TalentName,
+                ColumnIndex = t.ColumnIndex,
+                RowIndex = t.RowIndex,
+                IconFilePath = MakeImageUrl(t.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
+                TalentRanks = t.TalentRanks.Select(tr => TalentRankDTO.ToDTO(tr)),
+                RequiredTalentId = t.TalentRequirement?.RequiredTalentId
             };
         }
 

@@ -10,7 +10,6 @@ namespace WoWClassicTalentCalculator.Models.DTOs
         public int Id { get; set; }
         public string RankDescription { get; set; }
         public int RankNo { get; set; }
-        public List<TalentRequirement> TalentRequirements { get; set; }
 
         public static TalentRankDTO ToDTO(TalentRank tr)
         {
@@ -18,8 +17,7 @@ namespace WoWClassicTalentCalculator.Models.DTOs
             {
                 Id = tr.Id,
                 RankDescription = tr.RankDescription,
-                RankNo = tr.RankNo,
-                TalentRequirements = null
+                RankNo = tr.RankNo
             };
         }
     }

@@ -14,11 +14,14 @@ namespace WoWClassicTalentCalculator.DataAccess.Repositories
         public override WarcraftClassRepository EagerLoad()
         {
             Query = Query.Include(wc => wc.WarcraftClassSpecifications)
-                            .ThenInclude(wcs => wcs.SpecificationTalents)
-                                .ThenInclude(wcs => wcs.TalentRanks)
+                            .ThenInclude(wcs => wcs.Talents)
+                                .ThenInclude(t => t.TalentRanks)
                          .Include(wc => wc.WarcraftClassSpecifications)
-                            .ThenInclude(wcs => wcs.SpecificationTalents)
-                                .ThenInclude(wcs => wcs.TalentIcon);
+                            .ThenInclude(wcs => wcs.Talents)
+                                .ThenInclude(t => t.TalentIcon)
+                         .Include(wc => wc.WarcraftClassSpecifications)
+                            .ThenInclude(wcs => wcs.Talents)
+                                .ThenInclude(t => t.TalentRequirement);
 
             return this;
         }

@@ -11,18 +11,18 @@ namespace WoWClassicTalentCalculator.Models.DTOs
         public int WarcraftClassId { get; set; }
         public int SpecificationIndex { get; set; }
         public string bgImageFilePath { get; set; }
-        public List<SpecificationTalentDTO[]> TalentRows { get; set; }
+        public List<TalentDTO[]> TalentRows { get; set; }
 
         public static WarcraftClassSpecificationDTO ToDTO(WarcraftClassSpecification wcs, string className)
         {
-            var talentRows = new List<SpecificationTalentDTO[]>();
+            var talentRows = new List<TalentDTO[]>();
 
-            if (wcs.SpecificationTalents.HasItems())
+            if (wcs.Talents.HasItems())
             {
-                for (var i = 0; i <= wcs.SpecificationTalents.Max(st => st.RowIndex); i++)
+                for (var i = 0; i <= wcs.Talents.Max(st => st.RowIndex); i++)
                 {
-                    var talents = wcs.SpecificationTalents.Where(st => st.RowIndex == i)
-                                                          .Select(st => SpecificationTalentDTO.ToDTO(st))
+                    var talents = wcs.Talents.Where(st => st.RowIndex == i)
+                                                          .Select(st => TalentDTO.ToDTO(st))
                                                           .ToArray();
                     talentRows.Add(talents);
                 }
