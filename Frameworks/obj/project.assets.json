@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Code\\WoWClassicTalentCalculator\\Frameworks\\Frameworks.csproj",
+      "projectUniqueName": "C:\\Code\\VanillaReborn\\Frameworks\\Frameworks.csproj",
       "projectName": "Frameworks",
-      "projectPath": "C:\\Code\\WoWClassicTalentCalculator\\Frameworks\\Frameworks.csproj",
+      "projectPath": "C:\\Code\\VanillaReborn\\Frameworks\\Frameworks.csproj",
       "packagesPath": "C:\\Users\\MHayward\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\WoWClassicTalentCalculator\\Frameworks\\obj\\",
+      "outputPath": "C:\\Code\\VanillaReborn\\Frameworks\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
