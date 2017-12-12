@@ -15,6 +15,9 @@ namespace VanillaReborn.DataAccess
         public DbSet<TalentRank> TalentRanks { get; set; }
         public DbSet<TalentRequirement> TalentRequirements { get; set; }
         public DbSet<TalentIcon> TalentIcons { get; set; }
+        public DbSet<NewsStory> NewsStories { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<NewsTag> NewsTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

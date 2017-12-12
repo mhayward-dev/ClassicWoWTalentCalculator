@@ -1,0 +1,23 @@
+﻿@model VanillaReborn.Models.DTOs.NewsStoryDTO
+
+<div class="news-story-item card">
+    <div class="card-body row">
+        <div class="col-8">
+            <h4 class="thin-text text-muted">@Model.StoryTypeDescription</h4>
+            <h4 class="card-title">@Model.Title</h4>
+        </div>
+        <div class="col-4 row no-gutters">
+            <div class="col-8 author-details text-right">
+                <div class="text-muted">By @Model.Author.Name</div>
+                <div class="text-muted">@Model.PublishedDate</div>
+            </div>
+            <div class="author-avatar col-4 text-right">
+                <img src="@Model.Author.AvatarImage" />
+            </div>
+        </div>
+        <div class="col-12 story-content">
+            <p class="card-text">@Html.Raw(Model.PreviewHtml)</p>
+            <button type="button" class="btn btn-dark float-right">@Html.ActionLink("Read more", "ViewStory", new { id = Model.Id, title = Model.TitleUrl })</button>
+        </div>       
+    </div>
+</div>

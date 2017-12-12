@@ -24,7 +24,7 @@ namespace VanillaReborn
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<VanillaRebornContext>(options => 
+            services.AddDbContext<VanillaRebornContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("VanillaRebornDatabase")));
         }
 
@@ -47,7 +47,7 @@ namespace VanillaReborn
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Talents}/{action=Index}/{id?}");
+                    template: "{controller=News}/{action=Index}");
             });
         }
     }

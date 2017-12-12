@@ -1,0 +1,34 @@
+﻿@model VanillaReborn.Models.DTOs.NewsStoryDTO
+@{
+    ViewData["Title"] = "News";
+}
+
+<div id="view-story-page" class="container-fluid">
+    <div id="story-title" class="row">
+        <h2 class="col-12 thin-text text-muted text-center">@Model.StoryTypeDescription</h2>
+        <h1 class="col-12 text-center">@Model.Title</h1>
+    </div>
+
+    <div id="story-top-section" class="row">
+        @Html.Raw(Model.TopSectionHtml)
+    </div>
+
+    <div id="story-mid-section" class="row">
+        <div class="col-md-2"></div>
+
+        <div id="story-content" class="col-md-8">
+           @Html.Raw(Model.MidSectionHtml)
+        </div>
+
+        <div id="author-details-panel" class="col-md-2 col-sm-12">
+            <div class="author-avatar col-12 text-center">
+                <img src="@Model.Author.AvatarImage" />
+            </div>
+            <div class="author-details col-12 text-center text-muted">
+                <div class="font-weight-bold">By @Model.Author.Name</div>
+                <div class="font-weight-bold">@Model.Author.RoleName</div>
+                <div>@Model.PublishedDate</div>
+            </div>
+        </div>
+    </div>
+</div>

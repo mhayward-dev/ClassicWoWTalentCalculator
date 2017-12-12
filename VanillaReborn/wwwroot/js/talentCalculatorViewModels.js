@@ -118,7 +118,7 @@ function inspectedTalentVm(talentReqVm) {
         return "";
     }
 
-    InspectedTalent.prototype.hasRequirements = function(t, selectedTalents, totalPointsInSpec) {
+    InspectedTalent.prototype.validateRequirements = function(t, selectedTalents, totalPointsInSpec) {
         var hasReqs = true;
         var inspecTalent = this;
 
@@ -126,7 +126,8 @@ function inspectedTalentVm(talentReqVm) {
             var requiredTalent = _.find(selectedTalents, { 'id': t.requiredTalentId });
             inspecTalent.requirementsText = !requiredTalent ||
                                              requiredTalent.selectedRankNo !== requiredTalent.talentRanks.length
-                                             ? t.requiredTalentMessage + '<br />' : '';
+                ? t.requiredTalentMessage + '<br />' : '';
+            hasReqs = false;
         }
 
         angular.forEach(talentReqVm.reqArray, function (req) {
@@ -168,7 +169,7 @@ function inspectedTalentVm(talentReqVm) {
         this.selectedRankText = this.getCurrentRankText(t);
         this.nextRankText = this.getNextRankText(t);
         this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
-        this.isLearnable = this.hasRequirements(t, selectedTalents, totalPointsInSpec);
+        this.isLearnable = this.validateRequirements(t, selectedTalents, totalPointsInSpec);
         this.isUnlearnable = this.canBeUnlearned(t, selectedTalents);
         this.instructionText = this.getInstructionText(t);
     }

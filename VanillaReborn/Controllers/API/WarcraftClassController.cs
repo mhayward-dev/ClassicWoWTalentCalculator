@@ -21,11 +21,11 @@ namespace VanillaReborn.Controllers.API
 
         public object GetWarcraftClasses()
         {
-            var allClasses = classRepository.All().Results();
+            var allClasses = classRepository.All().SelectResults(wc => WarcraftClassDTO.ToDTO(wc));
 
             if (allClasses.IsNotNull())
             {
-                return Ok(allClasses.Select(wc => WarcraftClassDTO.ToDTO(wc)));
+                return Ok(allClasses);
             }
 
             return BadRequest();
@@ -34,9 +34,10 @@ namespace VanillaReborn.Controllers.API
         [Route("{className}")]
         public object GetSelectedSpecificationsForClass(string className)
         {
-            var warcraftClass = classRepository.All().EagerLoad()
+            var warcraftClass = classRepository.All()
+                                               .EagerLoad()
                                                .ForClassName(className)
-                                               .Results().FirstOrDefault();
+                                               .FirstResult();
 
             if (warcraftClass.IsNotNull())
             {

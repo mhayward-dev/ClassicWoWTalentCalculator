@@ -6,7 +6,7 @@
 <div id="talent-calculator" ng-app="talentCalculatorApp" ng-controller="talentCalculatorController">
 
     <section id="class-select">
-        <div id="class-row" class="row bg-light no-gutters">
+        <div id="class-row" class="bg-light row no-gutters">
             <div class="col-4 col-md class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.className)"
                  ng-class="[(c.className | lowercase)  + '-bg', {'selected' : c.isSelected} ]">
                 <img ng-src="{{ c.iconFilePath }}" />
@@ -22,17 +22,17 @@
                     <h1 class="display-4 text-center">{{ selectedClass.className }}</h1>
                 </div>
                 <div class="col-md-4">
-                    <div class="thin-header text-center">
+                    <h4 class="thin-text text-center">
                         Available Points
-                    </div>
+                    </h4>
                     <div class="text-center">
                         <strong>{{ availablePoints }}</strong>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="thin-header text-center">
+                    <h4 class="thin-text text-center">
                         Required Level
-                    </div>
+                    </h4>
                     <div class="text-center">
                         <strong>{{ requiredLevel > 9 ? requiredLevel : '-'}}</strong>
                     </div>
@@ -45,7 +45,7 @@
         <div id="specifications" class="container">
             <div id="spec-container" class="row justify-content-center">
                 <div class="specification-border col-auto" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
-                    <div class="specification-title thin-header">{{ s.specName }}</div>
+                    <div class="specification-title thin-text">{{ s.specName }}</div>
                     <div class="specification-count"><strong>{{ totalPointsPerSpec[s.index] }}</strong></div>
                     <div class="specification-pane" ng-style="{'background-image': 'url(' + s.bgImageFilePath + ')'}">
                         <table>

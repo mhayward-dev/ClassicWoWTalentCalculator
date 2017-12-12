@@ -8,6 +8,8 @@ namespace VanillaReborn.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.CurrentPage = "Talents";
+
             return View();
         }
 

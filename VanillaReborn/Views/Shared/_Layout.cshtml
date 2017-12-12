@@ -24,10 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
+                    <a id="news-nav-link" class="nav-link" asp-area="" asp-controller="News" asp-action="Index">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" asp-area="" asp-controller="Talents" asp-action="Index">Talents</a>
+                    <a id="talents-nav-link" class="nav-link" asp-area="" asp-controller="Talents" asp-action="Index">Talents</a>
                 </li>
             </ul>
         </div>
@@ -66,6 +66,11 @@
         <script src="~/lib/lodash/lodash.js"></script>
         <script src="~/lib/sprintf/src/sprintf.js"></script>
     </environment>
+
+    <script type="text/javascript">
+        var currentPage = '@ViewBag.CurrentPage';
+        angular.element(sprintf("#%s-nav-link", currentPage.toLowerCase())).addClass('active');
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

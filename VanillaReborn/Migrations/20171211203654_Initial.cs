@@ -10,6 +10,21 @@ namespace VanillaReborn.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Authors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AvatarImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Authors", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TalentIcons",
                 columns: table => new
                 {
@@ -37,6 +52,33 @@ namespace VanillaReborn.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NewsStories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    MidSectionHtml = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PreviewHtml = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublishedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SecondaryTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StoryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StoryType = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TopSectionHtml = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NewsStories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_NewsStories_Authors_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "Authors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WarcraftClassSpecifications",
                 columns: table => new
                 {
@@ -55,6 +97,26 @@ namespace VanillaReborn.Migrations
                         principalTable: "WarcraftClasses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NewsTags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    NewsStoryId = table.Column<int>(type: "int", nullable: true),
+                    TagName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NewsTags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_NewsTags_NewsStories_NewsStoryId",
+                        column: x => x.NewsStoryId,
+                        principalTable: "NewsStories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -134,6 +196,16 @@ namespace VanillaReborn.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_NewsStories_AuthorId",
+                table: "NewsStories",
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NewsTags_NewsStoryId",
+                table: "NewsTags",
+                column: "NewsStoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TalentRanks_TalentId",
                 table: "TalentRanks",
                 column: "TalentId");
@@ -169,13 +241,22 @@ namespace VanillaReborn.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "NewsTags");
+
+            migrationBuilder.DropTable(
                 name: "TalentRanks");
 
             migrationBuilder.DropTable(
                 name: "TalentRequirements");
 
             migrationBuilder.DropTable(
+                name: "NewsStories");
+
+            migrationBuilder.DropTable(
                 name: "Talents");
+
+            migrationBuilder.DropTable(
+                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "TalentIcons");

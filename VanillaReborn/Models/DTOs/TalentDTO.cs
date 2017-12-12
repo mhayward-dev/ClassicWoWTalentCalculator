@@ -43,7 +43,7 @@ namespace VanillaReborn.Models.DTOs
 
             if (reqTalent.IsNotNull()) {
                 var rankCount = reqTalent.TalentRanks?.Count ?? 1;
-                message = $"Requires { rankCount } point{ (rankCount > 1 ? "s" : "") } in { reqTalent.TalentName }.";
+                message = $"Requires { rankCount } point{ (rankCount > 1 ? "s" : "") } in { reqTalent.TalentName }";
             }
 
             return message;

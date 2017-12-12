@@ -2,15 +2,63 @@ html {
   position: relative;
   min-height: 100%;
 }
-html .thin-header {
-  font-size: 1.25em;
-  font-weight: 300;
-}
 html body {
   margin-bottom: 60px;
 }
+html body .thin-text {
+  font-weight: 300;
+}
+html body #news-page {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+html body #news-page #main-news-container .example {
+  height: 400px;
+  background: #CCC;
+}
+html body #news-page #main-news-container #news-story-container {
+  margin-top: 15px;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item {
+  margin-bottom: 15px;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .author-avatar img {
+  width: 55px;
+  border-radius: 50%;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .story-content {
+  margin-top: 10px;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .story-content .btn a {
+  color: white;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .story-content .btn a:hover {
+  text-decoration: none;
+}
+html body #news-page #main-news-container #news-pagination {
+  margin-top: 15px;
+}
+html body #view-story-page #story-title {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+html body #view-story-page #story-top-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+html body #view-story-page #story-mid-section {
+  padding-bottom: 30px;
+}
+html body #view-story-page #author-details-panel .author-avatar img {
+  width: 100%;
+  border-radius: 50%;
+  margin-top: 15px;
+}
+html body #view-story-page #author-details-panel .author-details {
+  margin-top: 10px;
+}
 html body #talent-calculator {
-  padding-bottom: 14px;
+  padding-bottom: 15px;
 }
 html body #talent-calculator #class-select #class-row .class-icon {
   text-align: center;
@@ -100,7 +148,7 @@ html body #talent-calculator #class-select #class-row .class-icon:hover:after {
   height: 100%;
 }
 html body #talent-calculator #class-select #class-row .highlight-line {
-  border-bottom: 3px solid;
+  border-bottom: 5px solid;
 }
 html body #talent-calculator #class-select #class-row .highlight-line.deselected {
   visibility: hidden;

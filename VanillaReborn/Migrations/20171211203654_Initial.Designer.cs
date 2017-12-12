@@ -11,7 +11,7 @@ using VanillaReborn.DataAccess;
 namespace VanillaReborn.Migrations
 {
     [DbContext(typeof(VanillaRebornContext))]
-    [Migration("20171208184110_Initial")]
+    [Migration("20171211203654_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,68 @@ namespace VanillaReborn.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("VanillaReborn.Models.Author", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AvatarImage");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("RoleName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("VanillaReborn.Models.NewsStory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AuthorId");
+
+                    b.Property<string>("MidSectionHtml");
+
+                    b.Property<string>("PreviewHtml");
+
+                    b.Property<DateTime>("PublishedDate");
+
+                    b.Property<string>("SecondaryTitle");
+
+                    b.Property<string>("StoryImage");
+
+                    b.Property<int>("StoryType");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("TopSectionHtml");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("NewsStories");
+                });
+
+            modelBuilder.Entity("VanillaReborn.Models.NewsTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("NewsStoryId");
+
+                    b.Property<string>("TagName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewsStoryId");
+
+                    b.ToTable("NewsTags");
+                });
 
             modelBuilder.Entity("VanillaReborn.Models.Talent", b =>
                 {
@@ -125,6 +187,21 @@ namespace VanillaReborn.Migrations
                     b.HasIndex("WarcraftClassId");
 
                     b.ToTable("WarcraftClassSpecifications");
+                });
+
+            modelBuilder.Entity("VanillaReborn.Models.NewsStory", b =>
+                {
+                    b.HasOne("VanillaReborn.Models.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("VanillaReborn.Models.NewsTag", b =>
+                {
+                    b.HasOne("VanillaReborn.Models.NewsStory")
+                        .WithMany("Tags")
+                        .HasForeignKey("NewsStoryId");
                 });
 
             modelBuilder.Entity("VanillaReborn.Models.Talent", b =>

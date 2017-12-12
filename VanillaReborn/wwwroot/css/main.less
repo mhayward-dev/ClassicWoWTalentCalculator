@@ -12,16 +12,85 @@ html {
     position: relative;
     min-height: 100%;
 
-    .thin-header {
-        font-size: 1.25em;
-        font-weight: 300;
-    }
-
     body {
         margin-bottom: 60px;
 
+        .thin-text {
+            font-weight: 300;
+        }
+
+        #news-page {
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            #main-news-container {
+                .example {
+                    height: 400px;
+                    background: #CCC;
+                }
+
+                #news-story-container {
+                    margin-top: 15px;
+
+                    .news-story-item {
+                        margin-bottom: 15px;
+
+                        .author-avatar img {
+                            width: 55px;
+                            border-radius: 50%;
+                        }
+
+                        .story-content {
+                            margin-top: 10px;
+
+                            .btn a {
+                                color: white;
+                            }
+
+                            .btn a:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+
+                #news-pagination {
+                    margin-top: 15px;
+                }
+            }
+        }
+
+        #view-story-page {
+
+            #story-title {
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            #story-top-section {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            #story-mid-section {
+                padding-bottom: 30px;
+            }
+
+            #author-details-panel {
+                .author-avatar img {
+                    width: 80px;
+                    border-radius: 40px;
+                    margin-top: 15px;
+                }
+
+                .author-details {
+                    margin-top: 10px;
+                }
+            }
+        }
+
         #talent-calculator {
-            padding-bottom: 14px;
+            padding-bottom: 15px;
 
             #class-select {
                 #class-row {
@@ -136,7 +205,7 @@ html {
                     }
 
                     .highlight-line {
-                        border-bottom: 3px solid;
+                        border-bottom: 5px solid;
                     }
 
                     .highlight-line.deselected {
