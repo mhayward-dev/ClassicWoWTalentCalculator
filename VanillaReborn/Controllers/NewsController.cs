@@ -8,6 +8,7 @@ using VanillaReborn.DataAccess.Repositories;
 using VanillaReborn.ViewModels;
 using Frameworks.Extensions;
 using System;
+using System.Collections.Generic;
 
 namespace VanillaReborn.Controllers
 {
@@ -15,11 +16,14 @@ namespace VanillaReborn.Controllers
     {
         private readonly VanillaRebornContext _context;
         private NewsStoryRepository newsRepository;
+        private readonly int pageSize = 10;
+        private int totalPages;
 
         public NewsController(VanillaRebornContext context)
         {
             _context = context;
             newsRepository = new NewsStoryRepository(context);
+            totalPages = CalculateTotalPages().Result;
         }
 
         public async Task<IActionResult> Index()
@@ -27,16 +31,33 @@ namespace VanillaReborn.Controllers
             var stories = await newsRepository.All().EagerLoad().ForPage(1).ResultsAsync();
 
             ViewBag.CurrentPage = "News";
-            return View(stories.Select(s => NewsStoryDTO.ToDTO(s)));
+            ViewBag.CurrentPageNo = 1;
+
+            return View(new NewsViewModel()
+            {
+                Stories = stories.Select(s => NewsStoryDTO.ToDTO(s)),
+                PageNumbers = GetPageNumbers()
+            });
         }
 
         [HttpGet("News/Page/{pageNo}")]
         public async Task<IActionResult> Page(int pageNo)
         {
-            var stories = await newsRepository.All().ForPage(pageNo).ResultsAsync();
+            if (pageNo == 1)
+            {
+                return RedirectToActionPermanent("Index");
+            }
+
+            var stories = await newsRepository.All().EagerLoad().ForPage(pageNo).ResultsAsync();
 
             ViewBag.CurrentPage = "News";
-            return View(stories.Select(s => NewsStoryDTO.ToDTO(s)));
+            ViewBag.CurrentPageNo = pageNo;
+
+            return View(new NewsViewModel()
+            {
+                Stories = stories.Select(s => NewsStoryDTO.ToDTO(s)),
+                PageNumbers = GetPageNumbers()
+            });
         }
 
         [HttpGet("News/{id}/{title}")]
@@ -58,6 +79,28 @@ namespace VanillaReborn.Controllers
 
             ViewBag.CurrentPage = "News";
             return View(NewsStoryDTO.ToDTO(article));
+        }
+
+        private async Task<int> CalculateTotalPages()
+        {
+            var totalStories = await newsRepository.CountAsync();
+            return (totalStories + pageSize - 1) / pageSize;
+        }
+
+        private List<int> GetPageNumbers()
+        {
+            var pageNumbers = new List<int>();
+
+            var minPage = 1;
+            var minRange = Math.Max(minPage, ViewBag.CurrentPageNo - 2);
+            var maxRange = Math.Min(totalPages, ViewBag.CurrentPageNo + 2);
+
+            for (int i = minRange; i <= maxRange; i++)
+            {
+                pageNumbers.Add(i);
+            }
+
+            return pageNumbers;
         }
     }
 }

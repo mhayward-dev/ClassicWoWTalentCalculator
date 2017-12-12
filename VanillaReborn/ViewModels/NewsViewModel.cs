@@ -9,6 +9,6 @@ namespace VanillaReborn.ViewModels
     public class NewsViewModel
     {
         public IEnumerable<NewsStoryDTO> Stories { get; set; }
-        public NewsStoryDTO SingleStory { get; set; }
+        public List<int> PageNumbers { get; set; }
     }
 }

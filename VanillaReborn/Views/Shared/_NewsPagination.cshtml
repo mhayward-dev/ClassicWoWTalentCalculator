@@ -1,0 +1,20 @@
+﻿@model VanillaReborn.ViewModels.NewsViewModel
+
+<div id="news-pagination" class="float-right">
+    <div class="">Page</div>
+
+    @foreach (var pageNo in Model.PageNumbers)
+    {
+        <div class="news-page-no @(pageNo == ViewBag.CurrentPageNo ? "active-page" : "")">
+            @if (pageNo == 1)
+            {
+                @Html.ActionLink(pageNo.ToString(), "Index")
+            }
+            else
+            {
+                @Html.ActionLink(pageNo.ToString(), "Page", new { pageNo = pageNo })
+            }
+        </div>
+    }
+
+</div>

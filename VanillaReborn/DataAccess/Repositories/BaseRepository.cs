@@ -33,6 +33,11 @@ namespace VanillaReborn.DataAccess.Repositories
             return entity;
         }
 
+        public virtual Task<int> CountAsync()
+        {
+            return Context.Set<T>().CountAsync();
+        }
+
         public virtual T GetById(int id)
         {
             return Context.Set<T>().Find(id);

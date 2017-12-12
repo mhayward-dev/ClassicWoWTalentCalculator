@@ -1,0 +1,26 @@
+﻿@model VanillaReborn.ViewModels.NewsViewModel
+@{
+    ViewData["Title"] = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="news-page" class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 hidden-sm"></div>
+
+        <div id="main-news-container" class="col-lg-8 col-sm-12">
+            <h2>Archived News  - Page @ViewBag.CurrentPageNo</h2>
+  
+            <div id="news-story-container">
+                @foreach (var story in Model.Stories)
+                {
+                    @Html.Partial("_NewsStoryItem", story)
+                }
+            </div>
+
+            @Html.Partial("_NewsPagination", Model)
+        </div>
+
+        <div class="col-md-2 hidden-sm"></div>
+    </div>
+</div>

@@ -8,6 +8,9 @@
 @warlock-purple: #9482C9;
 @warrior-brown: #C79C6E;
 
+@site-yellow: #FFD100;
+@site-black: #343A40;
+
 html {
     position: relative;
     min-height: 100%;
@@ -35,9 +38,13 @@ html {
                     .news-story-item {
                         margin-bottom: 15px;
 
-                        .author-avatar img {
-                            width: 55px;
-                            border-radius: 50%;
+                        .author-details {
+                            padding-top: 10px;
+
+                            .author-avatar img {
+                                width: 55px;
+                                border-radius: 50%;
+                            }
                         }
 
                         .story-content {
@@ -56,6 +63,39 @@ html {
 
                 #news-pagination {
                     margin-top: 15px;
+                    display: inline-flex;
+
+                    .news-page-no {
+                        width: 26px;
+                        text-align: center;
+                        height: 26px;
+                        margin-left: 10px;
+                        border: 1px solid;
+                        line-height: 23px;
+                        border-radius: 13px;
+
+                        a {
+                            color: black;
+                            display: inline-block;
+                            width: 100%;
+                        }
+
+                        a:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                    .news-page-no:hover {
+                        background: #CCC;
+                    }
+
+                    .news-page-no.active-page {
+                        background: @site-black !important;
+
+                        a {
+                            color: white !important;
+                        }
+                    }
                 }
             }
         }

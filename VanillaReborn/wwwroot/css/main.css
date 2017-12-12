@@ -22,7 +22,10 @@ html body #news-page #main-news-container #news-story-container {
 html body #news-page #main-news-container #news-story-container .news-story-item {
   margin-bottom: 15px;
 }
-html body #news-page #main-news-container #news-story-container .news-story-item .author-avatar img {
+html body #news-page #main-news-container #news-story-container .news-story-item .author-details {
+  padding-top: 10px;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .author-details .author-avatar img {
   width: 55px;
   border-radius: 50%;
 }
@@ -37,6 +40,33 @@ html body #news-page #main-news-container #news-story-container .news-story-item
 }
 html body #news-page #main-news-container #news-pagination {
   margin-top: 15px;
+  display: inline-flex;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no {
+  width: 26px;
+  text-align: center;
+  height: 26px;
+  margin-left: 10px;
+  border: 1px solid;
+  line-height: 23px;
+  border-radius: 13px;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no a {
+  color: black;
+  display: inline-block;
+  width: 100%;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no a:hover {
+  text-decoration: none;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no:hover {
+  background: #CCC;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no.active-page {
+  background: #343A40 !important;
+}
+html body #news-page #main-news-container #news-pagination .news-page-no.active-page a {
+  color: white !important;
 }
 html body #view-story-page #story-title {
   margin-top: 15px;
@@ -50,8 +80,8 @@ html body #view-story-page #story-mid-section {
   padding-bottom: 30px;
 }
 html body #view-story-page #author-details-panel .author-avatar img {
-  width: 100%;
-  border-radius: 50%;
+  width: 80px;
+  border-radius: 40px;
   margin-top: 15px;
 }
 html body #view-story-page #author-details-panel .author-details {
