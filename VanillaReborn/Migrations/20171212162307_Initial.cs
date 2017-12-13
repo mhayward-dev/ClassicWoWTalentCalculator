@@ -175,6 +175,7 @@ namespace VanillaReborn.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ClassId = table.Column<int>(type: "int", nullable: false),
                     RequiredTalentId = table.Column<int>(type: "int", nullable: false),
                     TalentId = table.Column<int>(type: "int", nullable: false)
                 },

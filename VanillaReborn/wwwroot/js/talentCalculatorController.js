@@ -1,15 +1,16 @@
 ﻿
-app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, talentReqVm, inspectedTalentVm) {
+app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, rowAllocationArray, inspectedTalentVm) {
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
+
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
     $scope.talentTooltipPos = {
         top: 0,
         left: 0
     };
-    $scope.isLoadingTooltip = false;
+
     $scope.availablePoints = 51;
     $scope.requiredLevel = 9;
     $scope.totalPointsPerSpec = [0, 0, 0];
@@ -147,7 +148,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         var treeTotal = $scope.totalPointsPerSpec[specIndex];
         var talentRows = $scope.selectedClass.specifications[specIndex].talentRows;
 
-        angular.forEach(talentReqVm.reqArray, function (req) {
+        angular.forEach(rowAllocationArray, function (req) {
             checkTierUpdate(treeTotal, req, talentRows);
         });
     }

@@ -11,7 +11,7 @@ using VanillaReborn.DataAccess;
 namespace VanillaReborn.Migrations
 {
     [DbContext(typeof(VanillaRebornContext))]
-    [Migration("20171211203654_Initial")]
+    [Migration("20171212162307_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,6 +141,8 @@ namespace VanillaReborn.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ClassId");
 
                     b.Property<int>("RequiredTalentId");
 

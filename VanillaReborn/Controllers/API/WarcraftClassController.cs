@@ -4,6 +4,7 @@ using VanillaReborn.DataAccess.Repositories;
 using VanillaReborn.DataAccess;
 using Frameworks.Extensions;
 using VanillaReborn.Models.DTOs;
+using VanillaReborn.ViewModels;
 
 namespace VanillaReborn.Controllers.API
 {

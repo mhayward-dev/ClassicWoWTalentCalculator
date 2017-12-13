@@ -35,7 +35,7 @@ function warcraftClassSpecificationVm(talentVm) {
     return WarcraftClassSpecification;
 }
 
-function talentVm(talentRankVm) {
+function talentVm(talentRankVm, talentReqVm) {
 
     function Talent(t, spec) {
         this.id = t.id;
@@ -46,9 +46,8 @@ function talentVm(talentRankVm) {
         this.rowIndex = t.rowIndex;
         this.iconFilePath = t.iconFilePath;
         this.talentRanks = t.talentRanks.map(talentRankVm.build);
+        this.talentRequirement = t.talentRequirement !== null ? talentReqVm.build(t.talentRequirement) : null;
         this.selectedRankNo = 0;
-        this.requiredTalentId = t.requiredTalentId;
-        this.requiredTalentMessage = t.requiredTalentMessage;
         this.isActive = t.rowIndex === 0;
     }
 
@@ -75,7 +74,25 @@ function talentRankVm() {
 }
 
 function talentReqVm() {
-    this.reqArray =  [
+
+    function TalentRequirement(req) {
+        this.id = req.id;
+        this.talentId = req.talentId;
+        this.requiredTalentId = req.requiredTalentId;
+        this.endColIndex = req.requiredTalentColumnIndex;
+        this.endRowIndex = req.requiredTalentRowIndex;
+        this.requiredTalentMessage = req.requiredTalentMessage;
+    }
+
+    TalentRequirement.build = function (data) {
+        return new TalentRequirement(data);
+    }
+
+    return TalentRequirement;
+}
+
+function rowAllocationArray() {
+    return [
         { rowIndex: 1, requiredNo: 5 },
         { rowIndex: 2, requiredNo: 10 },
         { rowIndex: 3, requiredNo: 15 },
@@ -83,11 +100,9 @@ function talentReqVm() {
         { rowIndex: 5, requiredNo: 25 },
         { rowIndex: 6, requiredNo: 30 }
     ];
-
-    return this;
 }
 
-function inspectedTalentVm(talentReqVm) {
+function inspectedTalentVm(talentReqVm, rowAllocationArray) {
 
     function InspectedTalent(t, selectedTalents, totalPointsPerSpec) {
         var currentRank = t.selectedRankNo > 0 ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }) : null;
@@ -102,7 +117,7 @@ function inspectedTalentVm(talentReqVm) {
         this.updateRankNo(t, selectedTalents, totalPointsPerSpec)
     }
 
-    InspectedTalent.prototype.getCurrentRankText = function(t) {
+    InspectedTalent.prototype.getCurrentRankText = function (t) {
         if (t.selectedRankNo > 0) {
             return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }).rankDescription;
         }
@@ -110,7 +125,7 @@ function inspectedTalentVm(talentReqVm) {
         return t.talentRanks[0].rankDescription;
     }
 
-    InspectedTalent.prototype.getNextRankText = function(t) {
+    InspectedTalent.prototype.getNextRankText = function (t) {
         if (t.selectedRankNo < t.talentRanks.length) {
             return _.find(t.talentRanks, { 'rankNo': t.selectedRankNo + 1 }).rankDescription;
         }
@@ -118,19 +133,18 @@ function inspectedTalentVm(talentReqVm) {
         return "";
     }
 
-    InspectedTalent.prototype.validateRequirements = function(t, selectedTalents, totalPointsInSpec) {
+    InspectedTalent.prototype.validateRequirements = function (t, selectedTalents, totalPointsInSpec) {
         var hasReqs = true;
         var inspecTalent = this;
 
-        if (t.requiredTalentId > 0) {
-            var requiredTalent = _.find(selectedTalents, { 'id': t.requiredTalentId });
-            inspecTalent.requirementsText = !requiredTalent ||
-                                             requiredTalent.selectedRankNo !== requiredTalent.talentRanks.length
-                ? t.requiredTalentMessage + '<br />' : '';
+        if (t.talentRequirement !== null) {
+            var requiredTalent = _.find(selectedTalents, { 'id': t.talentRequirement.requiredTalentId });
+            inspecTalent.requirementsText = !requiredTalent || requiredTalent.selectedRankNo !== requiredTalent.talentRanks.length
+                                            ? t.talentRequirement.requiredTalentMessage + '<br />' : '';
             hasReqs = false;
         }
 
-        angular.forEach(talentReqVm.reqArray, function (req) {
+        angular.forEach(rowAllocationArray, function (req) {
             if (t.rowIndex === req.rowIndex && totalPointsInSpec < req.requiredNo) {
                 inspecTalent.requirementsText += sprintf('Requires %s points in %s', req.requiredNo, t.specName);
                 hasReqs = false;
@@ -141,7 +155,7 @@ function inspectedTalentVm(talentReqVm) {
         return hasReqs;
     }
 
-    InspectedTalent.prototype.canBeUnlearned = function(t, selectedTalents) {
+    InspectedTalent.prototype.canBeUnlearned = function (t, selectedTalents) {
         if (t.selectedRankNo === 0)
             return false;
 
@@ -152,7 +166,7 @@ function inspectedTalentVm(talentReqVm) {
         return true;
     }
 
-    InspectedTalent.prototype.getInstructionText = function(t) {
+    InspectedTalent.prototype.getInstructionText = function (t) {
         if (t.isActive && t.selectedRankNo === 0) {
             return 'Click to learn'
         }

@@ -141,6 +141,8 @@ namespace VanillaReborn.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("ClassId");
+
                     b.Property<int>("RequiredTalentId");
 
                     b.Property<int>("TalentId");

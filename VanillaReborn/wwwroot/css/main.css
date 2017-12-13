@@ -218,7 +218,7 @@ html body #talent-calculator #class-select #class-row .highlight-line.warrior-bg
   border-color: #95693a;
 }
 html body #talent-calculator #talent-info #talent-info-container {
-  margin-top: 20px;
+  margin-top: 55px;
 }
 html body #talent-calculator #talent-info .thin-header {
   margin-bottom: 10px;
@@ -226,12 +226,11 @@ html body #talent-calculator #talent-info .thin-header {
 html body #talent-calculator #talents-select #specifications {
   margin-top: 30px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border:nth-child(odd) {
-  margin-left: 5px;
-  margin-right: 5px;
+html body #talent-calculator #talents-select #specifications .specification-border {
+  margin-left: 2px;
+  margin-right: 2px;
 }
 html body #talent-calculator #talents-select #specifications .specification-border {
-  padding: 0;
   background-color: #333;
   height: 506px;
   border-radius: 3px;
@@ -246,11 +245,12 @@ html body #talent-calculator #talents-select #specifications .specification-bord
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane {
   background-repeat: no-repeat;
-  background-size: 248px 448px;
-  width: 248px;
-  height: 448px;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 450px;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table {
+  width: 100%;
   margin-top: 5px;
   text-align: center;
 }
@@ -265,6 +265,7 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   border: 1px #17FD17 solid;
   border-radius: 4px;
   margin: 0 auto;
+  z-index: 10;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-icon-border.inactive {
   -webkit-filter: grayscale(100%);
@@ -280,9 +281,10 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   border-radius: 4px;
   -webkit-filter: inherit;
   filter: inherit;
+  z-index: 10;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-rank-no {
-  display: none;
+  visibility: hidden;
   color: #17FD17;
   z-index: 10;
   position: relative;
@@ -300,6 +302,20 @@ html body #talent-calculator #talents-select #specifications .specification-bord
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td .is-maxed {
   color: #e7ba00 !important;
   border: 1px #e7ba00 solid !important;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-pane .requirement-arrow {
+  position: relative;
+  background-color: #333;
+  z-index: 20;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-pane .requirement-arrow .arrow-down {
+  position: relative;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid #333;
 }
 html body #talent-calculator #talents-select #talent-tooltip.fade-out {
   visibility: hidden;

@@ -116,13 +116,15 @@ namespace VanillaReborn.DataAccess.DataSeeder
             wcs[0].Talents.First(t => t.TalentName == "Lightning Mastery").TalentRequirement =
             new TalentRequirement()
             {
-                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Call of Thunder").Id
+                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Call of Thunder").Id,
+                ClassId = wcs[0].WarcraftClassId
             };
 
             wcs[0].Talents.First(t => t.TalentName == "Elemental Mastery").TalentRequirement =
             new TalentRequirement()
             {
-                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Elemental Fury").Id
+                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Elemental Fury").Id,
+                ClassId = wcs[0].WarcraftClassId
             };
         }
     }
