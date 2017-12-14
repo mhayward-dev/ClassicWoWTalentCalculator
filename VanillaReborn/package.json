@@ -2,6 +2,16 @@
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,
+  "dependencies": {
+    "angular": "1.6.7",
+    "angular-animate": "1.6.7",
+    "angular-sanitize": "1.6.7",
+    "bootstrap": "4.0.0-beta.2",
+    "jquery": "3.2.1",
+    "lodash": "4.17.4",
+    "popper.js": "1.12.9",
+    "sprintf-js": "1.1.1"
+  },
   "devDependencies": {
     "gulp": "3.9.1",
     "gulp-less": "3.3.0"
