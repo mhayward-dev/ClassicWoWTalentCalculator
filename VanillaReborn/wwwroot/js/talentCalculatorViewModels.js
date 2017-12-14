@@ -139,9 +139,9 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
 
         if (t.talentRequirement !== null) {
             var requiredTalent = _.find(selectedTalents, { 'id': t.talentRequirement.requiredTalentId });
-            inspecTalent.requirementsText = !requiredTalent || requiredTalent.selectedRankNo !== requiredTalent.talentRanks.length
-                                            ? t.talentRequirement.requiredTalentMessage + '<br />' : '';
-            hasReqs = false;
+            hasReqs = requiredTalent !== null || requiredTalent.selectedRankNo === requiredTalent.talentRanks.length;
+
+            inspecTalent.requirementsText = !hasReqs ? t.talentRequirement.requiredTalentMessage + '<br />' : '';
         }
 
         angular.forEach(rowAllocationArray, function (req) {
