@@ -220,6 +220,9 @@ html body #talent-calculator #class-select #class-row .highlight-line.warrior-bg
 html body #talent-calculator #talent-info #talent-info-container {
   margin-top: 55px;
 }
+html body #talent-calculator #talent-info #talent-info-container .class-title h1 {
+  line-height: 0.8;
+}
 html body #talent-calculator #talent-info .thin-header {
   margin-bottom: 10px;
 }
@@ -229,10 +232,8 @@ html body #talent-calculator #talents-select #specifications {
 html body #talent-calculator #talents-select #specifications .specification-border {
   margin-left: 2px;
   margin-right: 2px;
-}
-html body #talent-calculator #talents-select #specifications .specification-border {
   background-color: #333;
-  height: 506px;
+  height: 555px;
   border-radius: 3px;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-title {
@@ -242,6 +243,18 @@ html body #talent-calculator #talents-select #specifications .specification-bord
 html body #talent-calculator #talents-select #specifications .specification-border .specification-count {
   color: white;
   text-align: center;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  margin-top: 4px;
+  border-radius: 15px;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane {
   background-repeat: no-repeat;

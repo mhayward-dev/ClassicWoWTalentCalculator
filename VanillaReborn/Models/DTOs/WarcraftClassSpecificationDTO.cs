@@ -10,7 +10,8 @@ namespace VanillaReborn.Models.DTOs
         public string SpecificationName { get; set; }
         public int WarcraftClassId { get; set; }
         public int SpecificationIndex { get; set; }
-        public string bgImageFilePath { get; set; }
+        public string BackgroundImage { get; set; }
+        public string SpecificationIcon { get; set; }
         public List<TalentDTO[]> TalentRows { get; set; }
 
         public static WarcraftClassSpecificationDTO ToDTO(WarcraftClassSpecification wcs, string className)
@@ -34,7 +35,8 @@ namespace VanillaReborn.Models.DTOs
                 SpecificationName = wcs.SpecificationName,
                 WarcraftClassId = wcs.WarcraftClassId,
                 SpecificationIndex = wcs.SpecificationIndex,
-                bgImageFilePath = $"images/spec/{className}_{wcs.SpecificationName.Replace(" ", "")}_bg.jpg",
+                SpecificationIcon = $"images/talent/{wcs.SpecificationIcon}",
+                BackgroundImage = $"images/spec/{className}_{wcs.SpecificationName.Replace(" ", "")}_bg.jpg",
                 TalentRows = talentRows
             };
         }

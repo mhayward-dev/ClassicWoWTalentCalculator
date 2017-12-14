@@ -11,9 +11,9 @@ namespace VanillaReborn.DataAccess.DataSeeder
         public static List<WarcraftClassSpecification> Setup(List<TalentIcon> icons)
         {
             return new List<WarcraftClassSpecification> {
-                new WarcraftClassSpecification { SpecificationName = "Balance", SpecificationIndex = 0 },
-                new WarcraftClassSpecification { SpecificationName = "Feral Combat", SpecificationIndex = 1 },
-                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2 }
+                new WarcraftClassSpecification { SpecificationName = "Balance", SpecificationIndex = 0, SpecificationIcon = "spell_nature_starfall.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Feral Combat", SpecificationIndex = 1, SpecificationIcon = "ability_racial_bearform.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg" }
             };
         }
     }

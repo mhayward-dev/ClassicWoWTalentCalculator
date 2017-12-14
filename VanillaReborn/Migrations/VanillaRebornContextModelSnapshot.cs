@@ -177,6 +177,8 @@ namespace VanillaReborn.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("SpecificationIcon");
+
                     b.Property<int>("SpecificationIndex");
 
                     b.Property<string>("SpecificationName");

@@ -105,9 +105,9 @@ namespace VanillaReborn.DataAccess.DataSeeder
             };
 
             return new List<WarcraftClassSpecification> {
-                new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0, Talents = elementalTalents },
-                new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1 },
-                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2 }
+                new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0, SpecificationIcon = "spell_nature_lightning.jpg", Talents = elementalTalents },
+                new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1, SpecificationIcon = "spell_nature_lightningshield.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg" }
             };
         }
 

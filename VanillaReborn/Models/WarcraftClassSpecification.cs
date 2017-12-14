@@ -10,6 +10,7 @@ namespace VanillaReborn.Models
         public int WarcraftClassId { get; set; }
         public string SpecificationName { get; set; }
         public int SpecificationIndex { get; set; }
+        public string SpecificationIcon { get; set; }
         public List<Talent> Talents { get; set; }
     }
 }

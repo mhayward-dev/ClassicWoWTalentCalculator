@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using VanillaReborn.Models;
 
 namespace VanillaReborn.DataAccess.DataSeeder
@@ -11,9 +8,9 @@ namespace VanillaReborn.DataAccess.DataSeeder
         public static List<WarcraftClassSpecification> Setup(List<TalentIcon> icons)
         {
             return new List<WarcraftClassSpecification> {
-                new WarcraftClassSpecification { SpecificationName = "Affliction", SpecificationIndex = 0 },
-                new WarcraftClassSpecification { SpecificationName = "Demonology", SpecificationIndex = 1 },
-                new WarcraftClassSpecification { SpecificationName = "Destruction", SpecificationIndex = 2 }
+                new WarcraftClassSpecification { SpecificationName = "Affliction", SpecificationIndex = 0, SpecificationIcon = "spell_shadow_deathcoil.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Demonology", SpecificationIndex = 1, SpecificationIcon = "spell_shadow_metamorphosis.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Destruction", SpecificationIndex = 2, SpecificationIcon = "spell_shadow_rainoffire.jpg" }
             };
         }
     }
