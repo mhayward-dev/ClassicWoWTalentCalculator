@@ -15,11 +15,11 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid">
         <section id="talent-info">
             <div id="talent-info-container">
-                <div class="row justify-content-center no-gutters">
-                    <div id="class-title" class="col-md-3 text-center">
+                <div class="row justify-content-center">
+                    <div id="class-title" class="col-lg-3 text-center">
                         <h1 class="display-4">{{ selectedClass.className }}</h1>
                     </div>
                     <div class="col-lg-3 text-center">
@@ -38,13 +38,14 @@
                             <strong>{{ requiredLevel > 9 ? requiredLevel : '-'}}</strong>
                         </div>
                     </div>
+                    <div class="col-lg-2 col-md-8"></div>
                 </div>
             </div>
         </section>
 
         <section id="talents-select">
-            <div id="specifications" class="row justify-content-center no-gutters">
-                <div id="spec-container" class="col-lg-3 col-md-8" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
+            <div id="specifications" class="row justify-content-center">
+                <div id="spec-container" class="col-lg-3 col-md-8 d-flex justify-content-center" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
                     <div class="specification-border">
                         <div class="specification-title thin-text">{{ s.specName }}</div>
                         <div class="specification-count"><strong>{{ totalPointsPerSpec[s.index] }}</strong></div>
@@ -62,28 +63,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-lg-2 col-md-8 justify-content-center">
+                    <button type="button" class="btn btn-success w-100">Save &amp; Share</button>
+                    <button type="button" class="btn btn-secondary w-100 mt-2">Reset</button>
+                </div>
 
-            <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentTooltipPos">
-                <div class="title-row">
-                    {{ inspectedTalent.name }}
-                </div>
-                <div class="rank-no-row">
-                    Rank {{ inspectedTalent.selectedRankNo }}/{{ inspectedTalent.totalRankNo }}
-                </div>
-                <div class="rank-requirements" ng-show="inspectedTalent.requirementsText.length > 0"
-                     ng-bind-html="inspectedTalent.requirementsText">
-                </div>
-                <div class="selected-rank-text yellow-detail">
-                    {{ inspectedTalent.selectedRankText }}
-                </div>
-                <div class="next-rank-text" ng-hide="inspectedTalent.selectedRankNo == 0 || inspectedTalent.isMaxRank">
-                    <div>Next Rank:</div>
-                    <div class="yellow-detail">{{ inspectedTalent.nextRankText }}</div>
-                </div>
-                <div class="rank-instruction" ng-show="inspectedTalent.instructionText.length > 0"
-                     ng-class="inspectedTalent.isMaxRank ? 'can-unlearn' : 'can-learn'">
-                    {{ inspectedTalent.instructionText }}
+                <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentTooltipPos">
+                    <div class="title-row">
+                        {{ inspectedTalent.name }}
+                    </div>
+                    <div class="rank-no-row">
+                        Rank {{ inspectedTalent.selectedRankNo }}/{{ inspectedTalent.totalRankNo }}
+                    </div>
+                    <div class="rank-requirements" ng-show="inspectedTalent.requirementsText.length > 0"
+                         ng-bind-html="inspectedTalent.requirementsText">
+                    </div>
+                    <div class="selected-rank-text yellow-detail">
+                        {{ inspectedTalent.selectedRankText }}
+                    </div>
+                    <div class="next-rank-text" ng-hide="inspectedTalent.selectedRankNo == 0 || inspectedTalent.isMaxRank">
+                        <div>Next Rank:</div>
+                        <div class="yellow-detail">{{ inspectedTalent.nextRankText }}</div>
+                    </div>
+                    <div class="rank-instruction" ng-show="inspectedTalent.instructionText.length > 0"
+                         ng-class="inspectedTalent.isMaxRank ? 'can-unlearn' : 'can-learn'">
+                        {{ inspectedTalent.instructionText }}
+                    </div>
                 </div>
             </div>
         </section>
