@@ -66,7 +66,7 @@
                             <img ng-src="{{ s.specificationIcon }}" ng-class="(selectedClass.className | lowercase)  + '-border'" />
                         </div>
                         <div class="specification-reset">
-                            <button type="button" class="btn btn-link text-muted">Reset</button>
+                            <button type="button" class="btn btn-link text-muted" ng-click="resetSpecificationTree(s.index)">Reset</button>
                         </div>
                     </div>
  
@@ -74,7 +74,7 @@
 
                 <div class="col-lg-3 col-sm-5 text-center">
                     <button type="button" class="btn btn-success w-75">Save &amp; Share</button>
-                    <button type="button" class="btn btn-light w-75 mt-2">Reset All</button>
+                    <button type="button" class="btn btn-light w-75 mt-2" ng-click="resetAllTalents()">Reset All Points</button>
                 </div>
 
                 <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentTooltipPos">

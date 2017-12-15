@@ -1,5 +1,5 @@
 ﻿
-app.controller('talentCalculatorController', function ($scope, $timeout, talentCalculatorFactory, warcraftClassVm, rowAllocationArray, inspectedTalentVm) {
+app.controller('talentCalculatorController', function($scope, $timeout, talentCalculatorFactory, warcraftClassVm, rowAllocationArray, inspectedTalentVm) {
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
@@ -16,20 +16,20 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.totalPointsPerSpec = [0, 0, 0];
     $scope.selectedTalents = [[], [], []];
 
-    $scope.fetchClasses = function () {
+    $scope.fetchClasses = function() {
         talentCalculatorFactory.getClasses()
-            .then(function (response) {
+            .then(function(response) {
                 $scope.classes = response.data.map(warcraftClassVm.build);
                 $scope.fetchSpecifications('Shaman');
 
-            }, function (error) {
+            }, function(error) {
                 console.log(error);
             });
     };
 
-    $scope.fetchSpecifications = function (className) {
+    $scope.fetchSpecifications = function(className) {
         talentCalculatorFactory.getSpecifications(className)
-            .then(function (response) {
+            .then(function(response) {
                 if ($scope.selectedClassId > 0) {
                     $scope.getClassById($scope.selectedClassId).isSelected = false;
                 }
@@ -38,33 +38,33 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                 $scope.getClassById($scope.selectedClass.id).isSelected = true;
                 $scope.selectedClassId = $scope.selectedClass.id;
 
-                setTotalPoints();
+                resetTotalPoints();
 
-            }, function (error) {
+            }, function(error) {
                 console.log(error);
             });
     };
 
-    $scope.getClassById = function (id) {
+    $scope.getClassById = function(id) {
         var selectedClass = _.find($scope.classes, { 'id': id });
         if (selectedClass) return selectedClass;
 
         return null;
     };
 
-    $scope.getTalentByColIndex = function (index, talents) {
+    $scope.getTalentByColIndex = function(index, talents) {
         var talent = _.find(talents, { 'colIndex': index });
         return talent ? talent : null;
     };
 
-    $scope.showTalentTooltip = function (event, specIndex, rowIndex, colIndex) {
+    $scope.showTalentTooltip = function(event, specIndex, rowIndex, colIndex) {
         $scope.isLoadingTooltip = true;
         var spec = $scope.selectedClass.specifications[specIndex];
         var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
 
         $scope.inspectedTalent = inspectedTalentVm.build(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
 
-        $timeout(function () {
+        $timeout(function() {
             var tooltipHeight = angular.element('#talent-tooltip').height();
             var iconPos = angular.element(event.target).offset();
             var topOfPage = angular.element(document).scrollTop();
@@ -79,11 +79,11 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         }, 30);
     };
 
-    $scope.hideTalentTooltip = function () {
+    $scope.hideTalentTooltip = function() {
         $scope.isInspectingTalent = false;
     };
 
-    $scope.addTalentPoint = function (event, specIndex, rowIndex, colIndex) {
+    $scope.addTalentPoint = function(event, specIndex, rowIndex, colIndex) {
         if (!$scope.isLoadingTooltip && $scope.inspectedTalent
             && $scope.inspectedTalent.isLearnable && !$scope.inspectedTalent.isMaxRank) {
 
@@ -96,13 +96,13 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                 $scope.selectedTalents[specIndex].push(talent);
             }
 
-            var checkForTierUnlocks = function (treeTotal, req, talentRows) {
+            var checkForTierUnlockCallback = function(treeTotal, req, talentRows) {
                 if (treeTotal < req.requiredNo && treeTotal + 1 === req.requiredNo) {
                     toggleActiveRow(talentRows[req.rowIndex], true);
                 }
             };
 
-            updateTalentTree(specIndex, checkForTierUnlocks);
+            updateTalentTree(specIndex, checkForTierUnlockCallback);
 
             $scope.inspectedTalent.updateRankNo(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
             $scope.totalPointsPerSpec[specIndex] += 1;
@@ -111,7 +111,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         }
     };
 
-    $scope.removeTalentPoint = function (event, specIndex, rowIndex, colIndex) {
+    $scope.removeTalentPoint = function(event, specIndex, rowIndex, colIndex) {
         if (!$scope.isLoadingTooltip && $scope.inspectedTalent && $scope.inspectedTalent.isUnlearnable) {
             var spec = $scope.selectedClass.specifications[specIndex];
             var talent = $scope.getTalentByColIndex(colIndex, spec.talentRows[rowIndex]);
@@ -122,13 +122,13 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                 removeSelectedTalent(talent, specIndex);
             }
 
-            var checkForTierRemoval = function (treeTotal, req, talentRows) {
+            var checkForTierRemovalCallback = function(treeTotal, req, talentRows) {
                 if (treeTotal === req.requiredNo && treeTotal - 1 < req.requiredNo) {
                     toggleActiveRow(talentRows[req.rowIndex], false);
                 }
             };
 
-            updateTalentTree(specIndex, checkForTierRemoval);
+            updateTalentTree(specIndex, checkForTierRemovalCallback);
 
             $scope.inspectedTalent.updateRankNo(talent, $scope.selectedTalents[specIndex], $scope.totalPointsPerSpec[specIndex]);
             $scope.totalPointsPerSpec[specIndex] -= 1;
@@ -137,30 +137,66 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         }
     };
 
-    function setTotalPoints() {
+    $scope.resetSpecificationTree = function(specIndex) {
+        var pointsInSpec = $scope.totalPointsPerSpec[specIndex];
+
+        var resetCallback = function(treeTotal, req, talentRows) {
+            if (req.rowIndex > 0) {
+                toggleActiveRow(talentRows[req.rowIndex], false, true);
+            } else {
+                toggleActiveRow(talentRows[req.rowIndex], true, true);
+            }
+        };
+
+        updateTalentTree(specIndex, resetCallback);
+
+        $scope.availablePoints += pointsInSpec;
+        $scope.requiredLevel -= pointsInSpec;
+        $scope.totalPointsPerSpec[specIndex] = 0;
+        $scope.selectedTalents[specIndex] = [];
+    };
+
+    $scope.resetAllTalents = function() {
+        var resetCallback = function(treeTotal, req, talentRows) {
+            if (req.rowIndex > 0) {
+                toggleActiveRow(talentRows[req.rowIndex], false, true);
+            } else {
+                toggleActiveRow(talentRows[req.rowIndex], true, true);
+            }
+        };
+
+        for (var i = 0; i < 3; i++) {
+            updateTalentTree(i, resetCallback);
+        }
+
+        resetTotalPoints();
+    };
+
+    function resetTotalPoints() {
         $scope.availablePoints = 51;
         $scope.requiredLevel = 9;
         $scope.totalPointsPerSpec = [0, 0, 0];
         $scope.selectedTalents = [[], [], []];
     }
 
-    function updateTalentTree(specIndex, checkTierUpdate) {
+    function updateTalentTree(specIndex, callback) {
         var treeTotal = $scope.totalPointsPerSpec[specIndex];
         var talentRows = $scope.selectedClass.specifications[specIndex].talentRows;
 
-        angular.forEach(rowAllocationArray, function (req) {
-            checkTierUpdate(treeTotal, req, talentRows);
+        angular.forEach(rowAllocationArray, function(req) {
+            callback(treeTotal, req, talentRows);
         });
     }
 
-    function toggleActiveRow(row, isActive) {
-        angular.forEach(row, function (talent) {
+    function toggleActiveRow(row, isActive, removePoints) {
+        angular.forEach(row, function(talent) {
             talent.isActive = isActive;
+            talent.selectedRankNo = removePoints ? 0 : talent.selectedRankNo;
         });
     }
 
     function removeSelectedTalent(talent, specIndex) {
-        $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) { return t.id !== talent.id });
+        $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function(t) { return t.id !== talent.id });
     }
 
     $scope.fetchClasses();
