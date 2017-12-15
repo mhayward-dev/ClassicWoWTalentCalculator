@@ -16,6 +16,7 @@
     </section>
 
     <div class="container-fluid">
+
         <section id="talent-info">
             <div id="talent-info-container">
                 <div class="row justify-content-center">
@@ -38,14 +39,17 @@
                             <strong>{{ requiredLevel > 9 ? requiredLevel : '-'}}</strong>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-8"></div>
+                    <div class="col-lg-3 text-center">
+                        <h1 class="display-4">{{ totalPointsPerSpec[0] + ' / ' + totalPointsPerSpec[1] + ' / ' +  totalPointsPerSpec[2] }}</h1>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="talents-select">
             <div id="specifications" class="row justify-content-center">
-                <div id="spec-container" class="col-lg-3 col-md-8 d-flex justify-content-center" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
+
+                <div class="specification-container col-lg-3 col-md-8 d-flex justify-content-center" ng-repeat="s in selectedClass.specifications | orderBy:'+index'">
                     <div class="specification-border">
                         <div class="specification-title thin-text">{{ s.specName }}</div>
                         <div class="specification-count"><strong>{{ totalPointsPerSpec[s.index] }}</strong></div>
@@ -61,11 +65,16 @@
                         <div class="specification-icon">
                             <img ng-src="{{ s.specificationIcon }}" ng-class="(selectedClass.className | lowercase)  + '-border'" />
                         </div>
+                        <div class="specification-reset">
+                            <button type="button" class="btn btn-link text-muted">Reset</button>
+                        </div>
                     </div>
+ 
                 </div>
-                <div class="col-lg-2 col-md-8 justify-content-center">
-                    <button type="button" class="btn btn-success w-100">Save &amp; Share</button>
-                    <button type="button" class="btn btn-secondary w-100 mt-2">Reset</button>
+
+                <div class="col-lg-3 col-sm-5 text-center">
+                    <button type="button" class="btn btn-success w-75">Save &amp; Share</button>
+                    <button type="button" class="btn btn-light w-75 mt-2">Reset All</button>
                 </div>
 
                 <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentTooltipPos">
@@ -92,6 +101,7 @@
                 </div>
             </div>
         </section>
+
     </div>
 </div>
 

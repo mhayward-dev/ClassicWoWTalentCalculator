@@ -220,7 +220,7 @@ html body #talent-calculator #class-select #class-row .highlight-line.warrior-bg
 html body #talent-calculator #talent-info #talent-info-container {
   margin-top: 55px;
 }
-html body #talent-calculator #talent-info #talent-info-container .class-title h1 {
+html body #talent-calculator #talent-info #talent-info-container #class-title h1 {
   line-height: 0.8;
 }
 html body #talent-calculator #talent-info .thin-header {
@@ -229,7 +229,10 @@ html body #talent-calculator #talent-info .thin-header {
 html body #talent-calculator #talents-select #specifications {
   margin-top: 30px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border {
+html body #talent-calculator #talents-select #specifications .specification-container {
+  height: 610px;
+}
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border {
   width: 325px;
   margin-left: 2px;
   margin-right: 2px;
@@ -238,70 +241,74 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   border-radius: 6px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-title {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-title {
   color: white;
   text-align: center;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-count {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-count {
   color: white;
   text-align: center;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon {
   height: 40px;
   width: 40px;
   margin: 0 auto;
   margin-top: 4px;
   border-radius: 15px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img {
   height: 100%;
   width: 100%;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.druid-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.druid-border {
   border: 2px #FF7D0A solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.hunter-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.hunter-border {
   border: 2px #ABD473 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.mage-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.mage-border {
   border: 2px #69CCF0 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.paladin-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.paladin-border {
   border: 2px #F58CBA solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.priest-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.priest-border {
   border: 2px #D3DBE8 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.rogue-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.rogue-border {
   border: 2px #F5EB5D solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.shaman-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.shaman-border {
   border: 2px #0070DE solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.warlock-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.warlock-border {
   border: 2px #9482C9 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.warrior-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-icon img.warrior-border {
   border: 2px #C79C6E solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-reset {
+  text-align: center;
+  margin-top: 15px;
+}
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 450px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table {
   width: 100%;
   margin-top: 5px;
   text-align: center;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td {
   width: 62px;
   height: 62px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-icon-border {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td div.talent-icon-border {
   width: 46px;
   height: 46px;
   background: #333;
@@ -310,12 +317,12 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   margin: 0 auto;
   z-index: 10;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-icon-border.inactive {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td div.talent-icon-border.inactive {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   border: 1px #333 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-icon {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td div.talent-icon {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -326,7 +333,7 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   filter: inherit;
   z-index: 10;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td div.talent-rank-no {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td div.talent-rank-no {
   visibility: hidden;
   color: #17FD17;
   z-index: 10;
@@ -342,16 +349,17 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   line-height: 15px;
   border: 1px #987C08 solid;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane table td .is-maxed {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane table td .is-maxed {
   color: #e7ba00 !important;
   border: 1px #e7ba00 solid !important;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane .requirement-arrow {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane .requirement-arrow {
   position: relative;
   background-color: #333;
   z-index: 20;
+  box-shadow: 5px -3px 10px;
 }
-html body #talent-calculator #talents-select #specifications .specification-border .specification-pane .requirement-arrow .arrow-down {
+html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane .requirement-arrow .arrow-down {
   position: relative;
   right: 10px;
   width: 0;
