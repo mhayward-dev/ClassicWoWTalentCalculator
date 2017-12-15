@@ -233,8 +233,9 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   margin-left: 2px;
   margin-right: 2px;
   background-color: #333;
-  height: 555px;
-  border-radius: 3px;
+  height: 560px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-title {
   color: white;
@@ -255,6 +256,34 @@ html body #talent-calculator #talents-select #specifications .specification-bord
   height: 100%;
   width: 100%;
   border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.druid-border {
+  border: 2px #FF7D0A solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.hunter-border {
+  border: 2px #ABD473 solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.mage-border {
+  border: 2px #69CCF0 solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.paladin-border {
+  border: 2px #F58CBA solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.priest-border {
+  border: 2px #D3DBE8 solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.rogue-border {
+  border: 2px #F5EB5D solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.shaman-border {
+  border: 2px #0070DE solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.warlock-border {
+  border: 2px #9482C9 solid;
+}
+html body #talent-calculator #talents-select #specifications .specification-border .specification-icon img.warrior-border {
+  border: 2px #C79C6E solid;
 }
 html body #talent-calculator #talents-select #specifications .specification-border .specification-pane {
   background-repeat: no-repeat;

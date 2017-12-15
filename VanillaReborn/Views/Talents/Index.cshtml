@@ -58,7 +58,7 @@
                             </table>
                         </div>
                         <div class="specification-icon">
-                            <img ng-src="{{ s.specificationIcon }}" />
+                            <img ng-src="{{ s.specificationIcon }}" ng-class="(selectedClass.className | lowercase)  + '-border'" />
                         </div>
                     </div>
                 </div>
