@@ -104,9 +104,113 @@ namespace VanillaReborn.DataAccess.DataSeeder
                  } }
             };
 
+            // Enhancement
+            var enhancementTalents = new List<Talent> {
+                new Talent { TalentName = "Ancestral Knowledge", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_shadow_grimward").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your maximum Mana by 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your maximum Mana by 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your maximum Mana by 3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases your maximum Mana by 4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases your maximum Mana by 5%." }
+                } },
+                new Talent { TalentName = "Shield Specialization", ColumnIndex = 2, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "inv_shield_06").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your chance to block attacks with shields by 1% and increases the amount blocked by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your chance to block attacks with shields by 2% and increases the amount blocked by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your chance to block attacks with shields by 3% and increases the amount blocked by 15%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases your chance to block attacks with shields by 4% and increases the amount blocked by 20%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases your chance to block attacks with shields by 5% and increases the amount blocked by 25%." }
+                } },
+                new Talent { TalentName = "Guardian Totems", ColumnIndex = 0, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_stoneskintotem").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 10% and reduces the cooldown of your Grounding Totem by 1 sec." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 20% and reduces the cooldown of your Grounding Totem by 2 sec." }
+                } },
+                new Talent { TalentName = "Thundering Strikes", ColumnIndex = 1, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "ability_thunderbolt").Id,
+                     TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Improves your chance to get a critical strike with your weapons by 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Improves your chance to get a critical strike with your weapons by 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Improves your chance to get a critical strike with your weapons by 3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Improves your chance to get a critical strike with your weapons by 4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Improves your chance to get a critical strike with your weapons by 5%." }
+                } },
+                new Talent { TalentName = "Improved Ghost Wolf", ColumnIndex = 2, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_spiritwolf").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the cast time of your Ghost Wolf spell by 1 sec." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the cast time of your Ghost Wolf spell by 2 sec." }
+                } },
+                new Talent { TalentName = "Improved Lightning Shield", ColumnIndex = 3, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_lightningshield").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the damage done by your Lightning Shield orbs by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the damage done by your Lightning Shield orbs by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the damage done by your Lightning Shield orbs by 15%." }
+                } },
+                new Talent { TalentName = "Enhancing Totems", ColumnIndex = 0, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_earthbindtotem").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effect if your Strength of Earth and Grace of Air totems by 8%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effect if your Strength of Earth and Grace of Air totems by 15%." },
+                    } },
+                new Talent { TalentName = "Two-Handed Axes and Maces", ColumnIndex = 2, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "inv_axe_10").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Allows you to use Two-Handed Axes and Two-Handed Maces" }
+                    } },
+                new Talent { TalentName = "Anticipation", ColumnIndex = 3, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_mirrorimage").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your chance to dodge by an additional 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your chance to dodge by an additional 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your chance to dodge by an additional 3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases your chance to dodge by an additional 4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases your chance to dodge by an additional 5%." }
+                    } },
+                new Talent { TalentName = "Flurry", ColumnIndex = 1, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "ability_ghoulfrenzy").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your attack speed by 10% for your next 3 swings after dealing a critical strike." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your attack speed by 15% for your next 3 swings after dealing a critical strike." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your attack speed by 20% for your next 3 swings after dealing a critical strike." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases your attack speed by 25% for your next 3 swings after dealing a critical strike." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases your attack speed by 30% for your next 3 swings after dealing a critical strike." }
+                    } },
+                new Talent { TalentName = "Toughness", ColumnIndex = 2, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_holy_devotion").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your armour value from items by 2%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your armour value from items by 4%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your armour value from items by 6%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases your armour value from items by 8%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases your armour value from items by 10%." }
+                    } },
+                new Talent { TalentName = "Improved Weapon Totems", ColumnIndex = 0, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_fire_enchantweapon").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the melee attack power bonus of your Windfury Totem by 15% and increases the damage caused by Flametongue totem by 6%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the melee attack power bonus of your Windfury Totem by 30% and increases the damage caused by Flametongue totem by 12%." }
+                    } },
+                new Talent { TalentName = "Elemental Weapons", ColumnIndex = 1, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_fire_flametounge").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the melee attack power bonus of your Rockbiter Weapon by 7%, your Windfury Weapons effect by 13% and increases the damage by your Flametongue weapon and Frostband weapon by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the melee attack power bonus of your Rockbiter Weapon by 14%, your Windfury Weapons effect by 27% and increases the damage by your Flametongue weapon and Frostband weapon by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the melee attack power bonus of your Rockbiter Weapon by 20%, your Windfury Weapons effect by 40% and increases the damage by your Flametongue weapon and Frostband weapon by 15%." }
+                    } },
+                new Talent { TalentName = "Parry", ColumnIndex = 2, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "ability_parry").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Gives a chance to parry enemy melee attacks." },
+                    } },
+                new Talent { TalentName = "Weapon Mastery", ColumnIndex = 2, RowIndex = 5, TalentIconId = icons.First(i => i.FileName == "ability_hunter_swiftstrike").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the damage you deal with all weapons by 2%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the damage you deal with all weapons by 4%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the damage you deal with all weapons by 6%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the damage you deal with all weapons by 8%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the damage you deal with all weapons by 10%." }
+                    } },
+                new Talent { TalentName = "Stormstrike", ColumnIndex = 1, RowIndex = 6, TalentIconId = icons.First(i => i.FileName == "spell_holy_sealofmight").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Gives you an extra attack. In addition, the next 2 sources of Nature damage dealt to the target are increased by 20%. Lasts 12 sec." },
+                    } }
+            };
+
             return new List<WarcraftClassSpecification> {
                 new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0, SpecificationIcon = "spell_nature_lightning.jpg", Talents = elementalTalents },
-                new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1, SpecificationIcon = "spell_nature_lightningshield.jpg" },
+                new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1, SpecificationIcon = "spell_nature_lightningshield.jpg", Talents = enhancementTalents },
                 new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg" }
             };
         }
@@ -125,6 +229,20 @@ namespace VanillaReborn.DataAccess.DataSeeder
             {
                 RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Elemental Fury").Id,
                 ClassId = wcs[0].WarcraftClassId
+            };
+
+            wcs[1].Talents.First(t => t.TalentName == "Flurry").TalentRequirement =
+            new TalentRequirement()
+            {
+                RequiredTalentId = wcs[1].Talents.First(t => t.TalentName == "Thundering Strikes").Id,
+                ClassId = wcs[1].WarcraftClassId
+            };
+
+            wcs[1].Talents.First(t => t.TalentName == "Stormstrike").TalentRequirement =
+            new TalentRequirement()
+            {
+                RequiredTalentId = wcs[1].Talents.First(t => t.TalentName == "Elemental Weapons").Id,
+                ClassId = wcs[1].WarcraftClassId
             };
         }
     }

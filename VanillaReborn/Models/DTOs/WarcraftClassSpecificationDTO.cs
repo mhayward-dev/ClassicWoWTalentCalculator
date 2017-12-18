@@ -13,6 +13,7 @@ namespace VanillaReborn.Models.DTOs
         public string BackgroundImage { get; set; }
         public string SpecificationIcon { get; set; }
         public List<TalentDTO[]> TalentRows { get; set; }
+        public IEnumerable<TalentDTO> TalentsWithRequirements { get; set; }
 
         public static WarcraftClassSpecificationDTO ToDTO(WarcraftClassSpecification wcs, string className)
         {
@@ -37,7 +38,8 @@ namespace VanillaReborn.Models.DTOs
                 SpecificationIndex = wcs.SpecificationIndex,
                 SpecificationIcon = $"images/talent/{wcs.SpecificationIcon}",
                 BackgroundImage = $"images/spec/{className}_{wcs.SpecificationName.Replace(" ", "")}_bg.jpg",
-                TalentRows = talentRows
+                TalentRows = talentRows,
+                TalentsWithRequirements = wcs.Talents.Where(t => t.TalentRequirement.IsNotNull()).Select(t => TalentDTO.ToDTO(t))
             };
         }
     }

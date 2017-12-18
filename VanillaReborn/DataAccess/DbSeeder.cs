@@ -8,6 +8,7 @@ namespace VanillaReborn.DataAccess
     {
         public static void Seed(VanillaRebornContext context)
         {
+            // 1. Add Talent Icons
             var talentIcons = TalentIconSeeder.SetupIcons();
             foreach(var icon in talentIcons)
             {
@@ -16,6 +17,7 @@ namespace VanillaReborn.DataAccess
 
             context.SaveChanges();
 
+            // 2. Add Classes and their Talents
             var druid = new WarcraftClass { ClassName = "Druid", WarcraftClassSpecifications = DruidClassSeeder.Setup(talentIcons), Order = 1 };
             var hunter = new WarcraftClass { ClassName = "Hunter", WarcraftClassSpecifications = HunterClassSeeder.Setup(talentIcons), Order = 2 };
             var mage = new WarcraftClass { ClassName = "Mage", WarcraftClassSpecifications = MageClassSeeder.Setup(talentIcons), Order = 3 };
@@ -35,6 +37,7 @@ namespace VanillaReborn.DataAccess
 
             context.SaveChanges();
 
+            // 3. Setup Talent Requirement links between Talents
             ShamanClassSeeder.SetupTalentRequirements(shaman.WarcraftClassSpecifications);
 
             context.SaveChanges();
