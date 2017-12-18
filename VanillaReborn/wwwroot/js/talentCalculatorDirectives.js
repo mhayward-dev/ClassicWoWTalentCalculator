@@ -40,8 +40,6 @@ app.directive('talentIcon', function ($parse, $compile) {
                             var colsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
                             var pixelDistance = 34 + (colsBetweenCount * 62);
                             var lineHeight = pixelDistance - 18;
-                            // 17px padding between the icon and the cell (multiply by 2)
-                            // 62px total height of a full cell
 
                             arrowEl.width(10);
                             arrowEl.height(lineHeight);
@@ -62,47 +60,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     element.empty();
                     element.append($compile(iconContainerEl)(scope));
                 }, true);
-
-                scope.talentsLoadedCount += 1;
             }
-        }
-    };
-});
-
-app.directive('specifications', function ($timeout) {
-
-    function createTalentRequirementArrows(reqs, el) {
-        var elementsExist = false;
-
-        angular.forEach(reqs, function (r) {
-            var startEl = el.find(sprintf('[data-talent-id="%s"]', r.requiredTalentId));
-            var endEl = el.find(sprintf('[data-talent-id="%s"]', r.talentId));
-
-            if (startEl.length > 0 && endEl.length > 0) {
-                reqIcons.push({ id: r.requiredTalentId, startRect: startEl.getClientBoundingRect(), endRect: endEl.getClientBoundingRect() });
-                elementsExist = true;
-            } else {
-                elementsExist = false;
-                return;
-            }
-        });
-
-        if (elementsExist) {
-            console.log('They exist, plot arrows');
-        } else {
-            //$timeout(createTalentRequirementArrows(reqs, el), 10000);
-        }
-    }
-
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            scope.$watch('isLoadingTalents()', function (isLoading) {
-                if (!isLoading) {
-                    //createTalentRequirementArrows(reqs, element);
-                    console.log('No longer loading');
-                }
-            });
         }
     };
 });
