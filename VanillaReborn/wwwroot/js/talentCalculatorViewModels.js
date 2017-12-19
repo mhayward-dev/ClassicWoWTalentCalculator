@@ -158,12 +158,15 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
         return hasReqs;
     }
 
-    InspectedTalent.prototype.canBeUnlearned = function(t, selectedTalents) {
+    InspectedTalent.prototype.canBeUnlearned = function(t, selectedTalents, totalPointsInSpec) {
         if (t.selectedRankNo === 0)
             return false;
 
-        var maxRow = Math.max.apply(Math, selectedTalents.map(function(t) { return t.rowIndex; }))
-        if (t.rowIndex !== maxRow)
+        var topTalent = _.maxBy(selectedTalents, function (t) { return t.rowIndex; });
+        var requiredPointsForTopTalent = totalPointsInSpec - topTalent.selectedRankNo;
+        var requirements = _.find(rowAllocationArray, { 'rowIndex': topTalent.rowIndex });
+
+        if (requirements.requiredNo === requiredPointsForTopTalent && topTalent.rowIndex !== t.rowIndex)
             return false;
 
         return true;
@@ -187,7 +190,7 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
         this.nextRankText = this.getNextRankText(t);
         this.isMaxRank = t.selectedRankNo === t.talentRanks.length;
         this.isLearnable = this.validateRequirements(t, selectedTalents, totalPointsInSpec);
-        this.isUnlearnable = this.canBeUnlearned(t, selectedTalents);
+        this.isUnlearnable = this.canBeUnlearned(t, selectedTalents, totalPointsInSpec);
         this.instructionText = this.getInstructionText(t);
     }
 
