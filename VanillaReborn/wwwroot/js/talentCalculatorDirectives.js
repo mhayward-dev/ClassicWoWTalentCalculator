@@ -30,7 +30,6 @@ app.directive('talentIcon', function ($parse, $compile) {
                         iconContainerEl.addClass('is-maxed');
                     }
 
-                    // Only do this once...
                     if (t.talentRequirement !== null) {
                         var req = t.talentRequirement;
                         var arrowEl = angular.element('<div class="requirement-arrow">');
@@ -40,14 +39,17 @@ app.directive('talentIcon', function ($parse, $compile) {
                             var colsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
                             var pixelDistance = 34 + (colsBetweenCount * 62);
                             var lineHeight = pixelDistance - 18;
+                            var bgColour = t.isActive ? '#bba911' : '#444';
 
                             arrowEl.width(10);
                             arrowEl.height(lineHeight);
                             arrowEl.css('bottom', pixelDistance + 'px');
                             arrowEl.css('left', '16px');
+                            arrowEl.css('background-color', bgColour);
 
                             var arrowPointEl = angular.element('<div class="arrow-down">');
-                            arrowPointEl.css('top', lineHeight - 10);
+                            arrowPointEl.css('top', lineHeight - 5);
+                            arrowPointEl.css('border-top-color', bgColour);
                             arrowEl.append(arrowPointEl);
 
                         } else {
