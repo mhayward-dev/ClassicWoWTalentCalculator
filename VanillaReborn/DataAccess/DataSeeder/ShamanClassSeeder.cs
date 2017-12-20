@@ -8,7 +8,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
     {
         public static List<WarcraftClassSpecification> Setup(List<TalentIcon> icons)
         {
-            // Elemental Talents
+            // Elemental
             var elementalTalents = new List<Talent>
             {
                 new Talent { TalentName = "Convection", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_nature_wispsplode").Id,
@@ -208,10 +208,111 @@ namespace VanillaReborn.DataAccess.DataSeeder
                     } }
             };
 
+            // Restoration
+            var restorationTalents = new List<Talent> {
+                new Talent { TalentName = "Improved Healing Wave", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_nature_magicimmunity").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the casting time of your Healing Wave spell by 0.1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the casting time of your Healing Wave spell by 0.2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the casting time of your Healing Wave spell by 0.3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the casting time of your Healing Wave spell by 0.4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the casting time of your Healing Wave spell by 0.5%." }
+                } },
+                new Talent { TalentName = "Tidal Focus", ColumnIndex = 2, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_frost_manarecharge").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the Mana cost of your healing spells by 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the Mana cost of your healing spells by 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the Mana cost of your healing spells by 3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the Mana cost of your healing spells by 4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the Mana cost of your healing spells by 5%." }
+                } },
+                new Talent { TalentName = "Improved Reincarnation", ColumnIndex = 0, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_reincarnation").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the cooldown of your Reincarnation spell by 10 min and increases the amount of health and mana you Reincarnate by an additional 10%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the cooldown of your Reincarnation spell by 20 min and increases the amount of health and mana you Reincarnate by an additional 20%." }
+                } },
+                new Talent { TalentName = "Ancestral Healing", ColumnIndex = 1, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_undyingstrength").Id,
+                     TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your target's armour value by 8% for 15 sec after getting a critical effect from one of your healing spells." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your target's armour value by 16% for 15 sec after getting a critical effect from one of your healing spells." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your target's armour value by 25% for 15 sec after getting a critical effect from one of your healing spells." }
+                } },
+                new Talent { TalentName = "Totemic Focus", ColumnIndex = 2, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_moonglow").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the mana cost of your Totems by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the mana cost of your Totems by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the mana cost of your Totems by 15%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the mana cost of your Totems by 20%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the mana cost of your Totems by 25%." }
+                } },
+                new Talent { TalentName = "Nature's Guidance", ColumnIndex = 0, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_frost_stun").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases your chance to hit with melee attacks and spells by 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases your chance to hit with melee attacks and spells by 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases your chance to hit with melee attacks and spells by 3%." }
+                } },
+                new Talent { TalentName = "Healing Focus", ColumnIndex = 1, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_healingwavelesser").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting any healing spell." },
+                        new TalentRank { RankNo = 2, RankDescription = "Gives you a 28% chance to avoid interruption caused by damage while casting any healing spell." },
+                        new TalentRank { RankNo = 3, RankDescription = "Gives you a 42% chance to avoid interruption caused by damage while casting any healing spell." },
+                        new TalentRank { RankNo = 4, RankDescription = "Gives you a 56% chance to avoid interruption caused by damage while casting any healing spell." },
+                        new TalentRank { RankNo = 5, RankDescription = "Gives you a 70% chance to avoid interruption caused by damage while casting any healing spell." }
+                    } },
+                new Talent { TalentName = "Totemic Mastery", ColumnIndex = 2, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_nullward").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "The radius of your totems that affect friendly targets is increased by 30 yd." }
+                    } },
+                new Talent { TalentName = "Healing Grace", ColumnIndex = 3, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_healingtouch").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the threat generated by your healing spells by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the threat generated by your healing spells by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the threat generated by your healing spells by 15%." }
+                    } },
+                new Talent { TalentName = "Restorative Totems", ColumnIndex = 1, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_nature_manaregentotem").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effect of your Mana Spring and Healing Stream Totems by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effect of your Mana Spring and Healing Stream Totems by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the effect of your Mana Spring and Healing Stream Totems by 15%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the effect of your Mana Spring and Healing Stream Totems by 20%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the effect of your Mana Spring and Healing Stream Totems by 25%." }
+                    } },
+                new Talent { TalentName = "Tidal Mastery", ColumnIndex = 2, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_nature_tranquility").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the critical effect chance of your healing and lightning spells by 1%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the critical effect chance of your healing and lightning spells by 2%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the critical effect chance of your healing and lightning spells by 3%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the critical effect chance of your healing and lightning spells by 4%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the critical effect chance of your healing and lightning spells by 5%." }
+                    } },
+                new Talent { TalentName = "Healing Way", ColumnIndex = 0, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_healingway").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Your Healing Wave spells have a 33% chance to increase the effect of subsequent Healing Wave spells on the target by 6% for 15 sec. This effect will stack up to 15001 times." },
+                        new TalentRank { RankNo = 2, RankDescription = "Your Healing Wave spells have a 66% chance to increase the effect of subsequent Healing Wave spells on the target by 6% for 15 sec. This effect will stack up to 15001 times." },
+                        new TalentRank { RankNo = 3, RankDescription = "Your Healing Wave spells have a 100% chance to increase the effect of subsequent Healing Wave spells on the target by 6% for 15 sec. This effect will stack up to 15001 times." }
+                    } },
+                new Talent { TalentName = "Nature's Swiftness", ColumnIndex = 2, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_ravenform").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "When activated your next Healing spell with cast time less than 10 sec. becomes an instant cast spell." }
+                     } },
+                new Talent { TalentName = "Purification", ColumnIndex = 2, RowIndex = 5, TalentIconId = icons.First(i => i.FileName == "spell_frost_wizardmark").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effectiveness of your healing spells by 2%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effectiveness of your healing spells by 4%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the effectiveness of your healing spells by 6%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the effectiveness of your healing spells by 8%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the effectiveness of your healing spells by 10%." }
+                    } },
+                new Talent { TalentName = "Mana Tide Totem", ColumnIndex = 1, RowIndex = 6, TalentIconId = icons.First(i => i.FileName == "spell_frost_summonwaterelemental").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Summons a Mana Tide Totem with 5 health at the feet of the caster for 12 sec that restores 170 mana every 3 seconds to group members within 20 yards." },
+                    } }
+            };
+
             return new List<WarcraftClassSpecification> {
                 new WarcraftClassSpecification { SpecificationName = "Elemental", SpecificationIndex = 0, SpecificationIcon = "spell_nature_lightning.jpg", Talents = elementalTalents },
                 new WarcraftClassSpecification { SpecificationName = "Enhancement", SpecificationIndex = 1, SpecificationIcon = "spell_nature_lightningshield.jpg", Talents = enhancementTalents },
-                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg" }
+                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg", Talents = restorationTalents }
             };
         }
 
@@ -243,6 +344,13 @@ namespace VanillaReborn.DataAccess.DataSeeder
             {
                 RequiredTalentId = wcs[1].Talents.First(t => t.TalentName == "Elemental Weapons").Id,
                 ClassId = wcs[1].WarcraftClassId
+            };
+
+            wcs[2].Talents.First(t => t.TalentName == "Mana Tide Totem").TalentRequirement =
+            new TalentRequirement()
+            {
+                RequiredTalentId = wcs[2].Talents.First(t => t.TalentName == "Restorative Totems").Id,
+                ClassId = wcs[2].WarcraftClassId
             };
         }
     }

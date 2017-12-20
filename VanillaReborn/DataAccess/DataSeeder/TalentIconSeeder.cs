@@ -38,7 +38,22 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "spell_fire_flametounge" },
                 new TalentIcon { FileName = "ability_parry" },
                 new TalentIcon { FileName = "ability_hunter_swiftstrike" },
-                new TalentIcon { FileName = "spell_holy_sealofmight" }
+                new TalentIcon { FileName = "spell_holy_sealofmight" },
+                new TalentIcon { FileName = "spell_nature_magicimmunity" },
+                new TalentIcon { FileName = "spell_frost_manarecharge" },
+                new TalentIcon { FileName = "spell_nature_reincarnation" },
+                new TalentIcon { FileName = "spell_nature_undyingstrength" },
+                new TalentIcon { FileName = "spell_nature_moonglow" },
+                new TalentIcon { FileName = "spell_frost_stun" },
+                new TalentIcon { FileName = "spell_nature_healingwavelesser" },
+                new TalentIcon { FileName = "spell_nature_nullward" },
+                new TalentIcon { FileName = "spell_nature_healingtouch" },
+                new TalentIcon { FileName = "spell_nature_manaregentotem" },
+                new TalentIcon { FileName = "spell_nature_tranquility" },
+                new TalentIcon { FileName = "spell_nature_healingway" },
+                new TalentIcon { FileName = "spell_nature_ravenform" },
+                new TalentIcon { FileName = "spell_frost_wizardmark" },
+                new TalentIcon { FileName = "spell_frost_summonwaterelemental" }
             };
         }
     }
