@@ -73,7 +73,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                     TalentRanks = new List<TalentRank> {
                         new TalentRank { RankNo = 1, RankDescription = "Gives you a 33% chance to gain the Focused Casting effect that lasts for 6 sec. after being the victim of a physical or physical critical strike. The Focused Casting effect prevents you from losing casting time when taking damage." },
                         new TalentRank { RankNo = 2, RankDescription = "Gives you a 66% chance to gain the Focused Casting effect that lasts for 6 sec. after being the victim of a physical or physical critical strike. The Focused Casting effect prevents you from losing casting time when taking damage." },
-                        new TalentRank { RankNo = 3, RankDescription = "Gives you a 100% chance to gain the Focused Casting effect that lasts for 6 sec.after being the victim of a physical or physical critical strike.The Focused Casting effect prevents you from losing casting time when taking damage." }
+                        new TalentRank { RankNo = 3, RankDescription = "Gives you a 100% chance to gain the Focused Casting effect that lasts for 6 sec. after being the victim of a physical or physical critical strike. The Focused Casting effect prevents you from losing casting time when taking damage." }
                 } },
                 new Talent { TalentName = "Elemental Devastation", ColumnIndex = 3, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_fire_elementaldevastation").Id,
                     TalentRanks = new List<TalentRank> {
