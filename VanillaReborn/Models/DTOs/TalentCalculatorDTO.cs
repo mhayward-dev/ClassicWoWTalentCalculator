@@ -9,7 +9,6 @@ namespace VanillaReborn.Models.DTOs
     {
         public WarcraftClassDTO SelectedClass { get; set; }
         public int TotalTalentCount { get; set; }
-        public Dictionary<int, string> ArrowDirections { get; set; }
 
         public static TalentCalculatorDTO ToDTO(WarcraftClass wc)
         {
@@ -19,8 +18,7 @@ namespace VanillaReborn.Models.DTOs
             return new TalentCalculatorDTO
             {
                 SelectedClass = WarcraftClassDTO.ToDTO(wc),
-                TotalTalentCount = totalTalentCount,
-                ArrowDirections = EnumExtensions.ToDictionary<RequirementArrowDirections>()
+                TotalTalentCount = totalTalentCount
             };
         }
     }

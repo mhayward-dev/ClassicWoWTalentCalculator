@@ -1,4 +1,5 @@
 ﻿using VanillaReborn.Models.Enums;
+using Frameworks.Extensions;
 
 namespace VanillaReborn.Models.DTOs
 {
@@ -10,7 +11,7 @@ namespace VanillaReborn.Models.DTOs
         public int RequiredTalentColumnIndex { get; set; }
         public int RequiredTalentRowIndex { get; set; }
         public string RequiredTalentMessage { get; set; }
-        public int ArrowDirection { get; set; }
+        public string ArrowDirection { get; set; }
 
         public static TalentRequirementDTO ToDTO (TalentRequirement tr, Talent t)
         {
@@ -32,15 +33,17 @@ namespace VanillaReborn.Models.DTOs
             return $"Requires { rankCount } point{ (rankCount > 1 ? "s" : "") } in { reqTalent.TalentName }";
         }
 
-        public static int GetArrowDirection(Talent reqTalent, Talent t)
+        public static string GetArrowDirection(Talent reqTalent, Talent t)
         {
+            var direction = RequirementArrowDirections.DownRight;
+
             if (reqTalent.ColumnIndex == t.ColumnIndex)
-                return (int)RequirementArrowDirections.Down;
+                direction = RequirementArrowDirections.Down;
 
             if (reqTalent.RowIndex == t.RowIndex)
-                return (int)RequirementArrowDirections.Right;
+                direction = RequirementArrowDirections.Right;
 
-            return (int)RequirementArrowDirections.DownRight;
+            return direction.FormattedName();
         }
     }
 }

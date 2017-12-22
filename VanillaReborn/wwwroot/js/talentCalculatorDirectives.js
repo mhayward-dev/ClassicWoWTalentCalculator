@@ -1,37 +1,46 @@
 ﻿
 app.directive('talentIcon', function ($parse, $compile) {
 
-    function createArrowForDirection(direction, t) {
+    function createArrowForDirection(t) {
         var req = t.talentRequirement;
         var arrowEl = angular.element('<div class="requirement-arrow">');
         var bgColour = t.isActive ? '#bba911' : '#444';
 
-        if (direction === 'Down') {
-            var colsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
-            var pixelDistance = 34 + (colsBetweenCount * 62);
+        if (req.arrowDirection === 'Down') {
+            var rowsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
+            var pixelDistance = 34 + (rowsBetweenCount * 62);
             var lineHeight = pixelDistance - 18;
 
             arrowEl.width(10);
             arrowEl.height(lineHeight);
             arrowEl.css('bottom', pixelDistance + 'px');
             arrowEl.css('left', '16px');
-            arrowEl.css('background-color', bgColour);
-
+          
             var arrowPointEl = angular.element('<div class="arrow-down">');
             arrowPointEl.css('top', lineHeight - 5);
             arrowPointEl.css('border-top-color', bgColour);
             arrowEl.append(arrowPointEl);
         }
 
-        if (direction === 'Right') {
-            console.log('TODO - Right arrow');
+        if (req.arrowDirection === 'Right') {
+            var colsBetweenCount = (t.colIndex - req.endColIndex) - 1;
+            var pixelDistance = 35 + (colsBetweenCount * 80);
 
+            arrowEl.height(10);
+            arrowEl.width(pixelDistance);
+            arrowEl.css('right', pixelDistance + 'px');
+
+            var arrowPointEl = angular.element('<div class="arrow-right">');
+            arrowPointEl.css('left', pixelDistance - 8);
+            arrowPointEl.css('border-left-color', bgColour);
+            arrowEl.append(arrowPointEl);
         }
 
-        if (direction === 'DownRight') {
+        if (req.arrowDirection === 'DownRight') {
             console.log('TODO - DownRight arrow');
         }
 
+        arrowEl.css('background-color', bgColour);
         return arrowEl;
     }
 
@@ -66,8 +75,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     }
 
                     if (t.talentRequirement !== null) {
-                        var direction = _.get(scope.arrowDirections, t.talentRequirement.arrowDirection);
-                        iconContainerEl.append(createArrowForDirection(direction, t));
+                        iconContainerEl.append(createArrowForDirection(t));
                     }
 
                     element.empty();

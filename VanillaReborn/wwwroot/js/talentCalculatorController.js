@@ -3,7 +3,6 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
-    $scope.arrowDirections = [];
 
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
@@ -22,7 +21,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         talentCalculatorFactory.getClasses()
             .then(function (response) {
                 $scope.classes = response.data.map(warcraftClassVm.build);
-                $scope.fetchSpecifications('Shaman');
+                $scope.fetchSpecifications('Druid');
 
             }, function (error) {
                 console.log(error);
@@ -38,7 +37,6 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
                 var dto = response.data;
                 $scope.selectedClass = warcraftClassVm.build(dto.selectedClass);
-                $scope.arrowDirections = dto.arrowDirections;
 
                 $scope.getClassById($scope.selectedClass.id).isSelected = true;
                 $scope.selectedClassId = $scope.selectedClass.id;
