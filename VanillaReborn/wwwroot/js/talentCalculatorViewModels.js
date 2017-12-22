@@ -158,15 +158,32 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
         return hasReqs;
     }
 
-    InspectedTalent.prototype.canBeUnlearned = function(t, selectedTalents, totalPointsInSpec) {
+    InspectedTalent.prototype.canBeUnlearned = function (t, selectedTalents, totalPointsInSpec) {
+        // 1. Has a RankNo greater than 0
         if (t.selectedRankNo === 0)
             return false;
 
+        // 2. Does not have a selected Talent on a higher row that requires X points.
         var topTalent = _.maxBy(selectedTalents, function (t) { return t.rowIndex; });
         var requiredPointsForTopTalent = totalPointsInSpec - topTalent.selectedRankNo;
         var requirements = _.find(rowAllocationArray, { 'rowIndex': topTalent.rowIndex });
 
         if (requirements.requiredNo === requiredPointsForTopTalent && topTalent.rowIndex !== t.rowIndex)
+            return false;
+
+        // 3. The Talent is not part of a Talent Requirement where the next talent has points allocated.
+        var hasRequisiteTalent = false;
+
+        angular.forEach(selectedTalents, function (st) {
+            var req = st.talentRequirement;
+
+            if (req !== null && req.requiredTalentId === t.id) {
+                hasRequisiteTalent = true;
+                return;
+            }
+        });
+
+        if (hasRequisiteTalent)
             return false;
 
         return true;
