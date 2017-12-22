@@ -318,40 +318,15 @@ namespace VanillaReborn.DataAccess.DataSeeder
 
         public static void SetupTalentRequirements(List<WarcraftClassSpecification> wcs)
         {
-            wcs[0].Talents.First(t => t.TalentName == "Lightning Mastery").TalentRequirement =
-            new TalentRequirement()
-            {
-                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Call of Thunder").Id,
-                ClassId = wcs[0].WarcraftClassId
-            };
+            wcs[0].Talents.First(t => t.TalentName == "Lightning Mastery").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Call of Thunder");
 
-            wcs[0].Talents.First(t => t.TalentName == "Elemental Mastery").TalentRequirement =
-            new TalentRequirement()
-            {
-                RequiredTalentId = wcs[0].Talents.First(t => t.TalentName == "Elemental Fury").Id,
-                ClassId = wcs[0].WarcraftClassId
-            };
+            wcs[0].Talents.First(t => t.TalentName == "Elemental Mastery").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Elemental Fury");
 
-            wcs[1].Talents.First(t => t.TalentName == "Flurry").TalentRequirement =
-            new TalentRequirement()
-            {
-                RequiredTalentId = wcs[1].Talents.First(t => t.TalentName == "Thundering Strikes").Id,
-                ClassId = wcs[1].WarcraftClassId
-            };
+            wcs[1].Talents.First(t => t.TalentName == "Flurry").RequiredTalent = wcs[1].Talents.First(t => t.TalentName == "Thundering Strikes");
 
-            wcs[1].Talents.First(t => t.TalentName == "Stormstrike").TalentRequirement =
-            new TalentRequirement()
-            {
-                RequiredTalentId = wcs[1].Talents.First(t => t.TalentName == "Elemental Weapons").Id,
-                ClassId = wcs[1].WarcraftClassId
-            };
+            wcs[1].Talents.First(t => t.TalentName == "Stormstrike").RequiredTalent = wcs[1].Talents.First(t => t.TalentName == "Elemental Weapons");
 
-            wcs[2].Talents.First(t => t.TalentName == "Mana Tide Totem").TalentRequirement =
-            new TalentRequirement()
-            {
-                RequiredTalentId = wcs[2].Talents.First(t => t.TalentName == "Restorative Totems").Id,
-                ClassId = wcs[2].WarcraftClassId
-            };
+            wcs[2].Talents.First(t => t.TalentName == "Mana Tide Totem").RequiredTalent = wcs[2].Talents.First(t => t.TalentName == "Restorative Totems");
         }
     }
 }

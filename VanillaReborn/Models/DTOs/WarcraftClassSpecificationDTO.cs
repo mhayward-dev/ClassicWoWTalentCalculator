@@ -39,7 +39,7 @@ namespace VanillaReborn.Models.DTOs
                 SpecificationIcon = $"images/talent/{wcs.SpecificationIcon}",
                 BackgroundImage = $"images/spec/{className}_{wcs.SpecificationName.Replace(" ", "")}_bg.jpg",
                 TalentRows = talentRows,
-                TalentsWithRequirements = wcs.Talents.Where(t => t.TalentRequirement.IsNotNull()).Select(t => TalentDTO.ToDTO(t))
+                TalentsWithRequirements = wcs.Talents.Where(t => t.RequiredTalent.IsNotNull()).Select(t => TalentDTO.ToDTO(t))
             };
         }
     }

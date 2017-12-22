@@ -13,7 +13,8 @@ namespace VanillaReborn.Models
         public int RowIndex { get; set; }
         public int? TalentIconId { get; set; }
         public TalentIcon TalentIcon { get; set; }
-        public TalentRequirement TalentRequirement { get; set; }
+        public int? RequiredTalentId { get; set; }
+        public Talent RequiredTalent { get; set; }
         public List<TalentRank> TalentRanks { get; set; }
     }
 }

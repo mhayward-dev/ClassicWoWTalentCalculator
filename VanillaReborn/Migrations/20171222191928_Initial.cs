@@ -84,7 +84,7 @@ namespace VanillaReborn.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SpecificationImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SpecificationIcon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SpecificationIndex = table.Column<int>(type: "int", nullable: false),
                     SpecificationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WarcraftClassId = table.Column<int>(type: "int", nullable: false)
@@ -127,6 +127,7 @@ namespace VanillaReborn.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ColumnIndex = table.Column<int>(type: "int", nullable: false),
+                    RequiredTalentId = table.Column<int>(type: "int", nullable: true),
                     RowIndex = table.Column<int>(type: "int", nullable: false),
                     TalentIconId = table.Column<int>(type: "int", nullable: true),
                     TalentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -135,6 +136,12 @@ namespace VanillaReborn.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Talents", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Talents_Talents_RequiredTalentId",
+                        column: x => x.RequiredTalentId,
+                        principalTable: "Talents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Talents_TalentIcons_TalentIconId",
                         column: x => x.TalentIconId,
@@ -170,33 +177,6 @@ namespace VanillaReborn.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "TalentRequirements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClassId = table.Column<int>(type: "int", nullable: false),
-                    RequiredTalentId = table.Column<int>(type: "int", nullable: false),
-                    TalentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TalentRequirements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TalentRequirements_Talents_RequiredTalentId",
-                        column: x => x.RequiredTalentId,
-                        principalTable: "Talents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_TalentRequirements_Talents_TalentId",
-                        column: x => x.TalentId,
-                        principalTable: "Talents",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_NewsStories_AuthorId",
                 table: "NewsStories",
@@ -213,16 +193,9 @@ namespace VanillaReborn.Migrations
                 column: "TalentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TalentRequirements_RequiredTalentId",
-                table: "TalentRequirements",
-                column: "RequiredTalentId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TalentRequirements_TalentId",
-                table: "TalentRequirements",
-                column: "TalentId",
-                unique: true);
+                name: "IX_Talents_RequiredTalentId",
+                table: "Talents",
+                column: "RequiredTalentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Talents_TalentIconId",
@@ -247,9 +220,6 @@ namespace VanillaReborn.Migrations
 
             migrationBuilder.DropTable(
                 name: "TalentRanks");
-
-            migrationBuilder.DropTable(
-                name: "TalentRequirements");
 
             migrationBuilder.DropTable(
                 name: "NewsStories");

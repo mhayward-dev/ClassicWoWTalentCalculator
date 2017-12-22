@@ -89,6 +89,8 @@ namespace VanillaReborn.Migrations
 
                     b.Property<int>("ColumnIndex");
 
+                    b.Property<int?>("RequiredTalentId");
+
                     b.Property<int>("RowIndex");
 
                     b.Property<int?>("TalentIconId");
@@ -98,6 +100,8 @@ namespace VanillaReborn.Migrations
                     b.Property<int>("WarcraftClassSpecificationId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RequiredTalentId");
 
                     b.HasIndex("TalentIconId");
 
@@ -134,28 +138,6 @@ namespace VanillaReborn.Migrations
                     b.HasIndex("TalentId");
 
                     b.ToTable("TalentRanks");
-                });
-
-            modelBuilder.Entity("VanillaReborn.Models.TalentRequirement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ClassId");
-
-                    b.Property<int>("RequiredTalentId");
-
-                    b.Property<int>("TalentId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RequiredTalentId")
-                        .IsUnique();
-
-                    b.HasIndex("TalentId")
-                        .IsUnique();
-
-                    b.ToTable("TalentRequirements");
                 });
 
             modelBuilder.Entity("VanillaReborn.Models.WarcraftClass", b =>
@@ -209,6 +191,10 @@ namespace VanillaReborn.Migrations
 
             modelBuilder.Entity("VanillaReborn.Models.Talent", b =>
                 {
+                    b.HasOne("VanillaReborn.Models.Talent", "RequiredTalent")
+                        .WithMany()
+                        .HasForeignKey("RequiredTalentId");
+
                     b.HasOne("VanillaReborn.Models.TalentIcon", "TalentIcon")
                         .WithMany()
                         .HasForeignKey("TalentIconId");
@@ -224,19 +210,6 @@ namespace VanillaReborn.Migrations
                     b.HasOne("VanillaReborn.Models.Talent")
                         .WithMany("TalentRanks")
                         .HasForeignKey("TalentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("VanillaReborn.Models.TalentRequirement", b =>
-                {
-                    b.HasOne("VanillaReborn.Models.Talent", "RequiredTalent")
-                        .WithOne()
-                        .HasForeignKey("VanillaReborn.Models.TalentRequirement", "RequiredTalentId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("VanillaReborn.Models.Talent")
-                        .WithOne("TalentRequirement")
-                        .HasForeignKey("VanillaReborn.Models.TalentRequirement", "TalentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

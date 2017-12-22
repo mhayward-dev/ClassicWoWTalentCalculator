@@ -27,7 +27,7 @@ namespace VanillaReborn.Models.DTOs
                 RowIndex = t.RowIndex,
                 IconFilePath = FormatImageUrl(t.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
                 TalentRanks = t.TalentRanks.OrderBy(tr => tr.RankNo).Select(tr => TalentRankDTO.ToDTO(tr)),
-                TalentRequirement = t.TalentRequirement.IsNotNull() ? TalentRequirementDTO.ToDTO(t.TalentRequirement, t) : null
+                TalentRequirement = t.RequiredTalent.IsNotNull() ? TalentRequirementDTO.ToDTO(t) : null
             };
         }
 

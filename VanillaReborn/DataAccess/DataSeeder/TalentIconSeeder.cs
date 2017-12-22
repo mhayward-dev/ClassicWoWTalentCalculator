@@ -11,7 +11,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "spell_nature_wispsplode" },
                 new TalentIcon { FileName = "spell_fire_fireball" },
                 new TalentIcon { FileName = "spell_nature_stoneclawtotem" },
-                new TalentIcon {FileName =  "spell_nature_spiritarmor" },
+                new TalentIcon { FileName =  "spell_nature_spiritarmor" },
                 new TalentIcon { FileName = "spell_fire_immolation" },
                 new TalentIcon { FileName = "spell_shadow_manaburn" },
                 new TalentIcon { FileName = "spell_frost_frostward" },
@@ -66,7 +66,21 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "spell_arcane_starfire" },
                 new TalentIcon { FileName = "spell_nature_naturesblessing" },
                 new TalentIcon { FileName = "spell_nature_sentinal" },
-                new TalentIcon { FileName = "spell_nature_forceofnature" }
+                new TalentIcon { FileName = "spell_nature_forceofnature" },
+                new TalentIcon { FileName = "ability_hunter_pet_hyena" },
+                new TalentIcon { FileName = "ability_druid_demoralizingroar" },
+                new TalentIcon { FileName = "ability_ambush" },
+                new TalentIcon { FileName = "ability_druid_bash" },
+                new TalentIcon { FileName = "inv_misc_pelt_bear_03" },
+                new TalentIcon { FileName = "ability_hunter_pet_bear" },
+                new TalentIcon { FileName = "inv_misc_monsterclaw_04" },
+                new TalentIcon { FileName = "spell_shadow_vampiricaura" },
+                new TalentIcon { FileName = "ability_hunter_pet_cat" },
+                new TalentIcon { FileName = "ability_racial_cannibalize" },
+                new TalentIcon { FileName = "ability_druid_ravage" },
+                new TalentIcon { FileName = "spell_nature_faeriefire" },
+                new TalentIcon { FileName = "spell_holy_blessingofagility" },
+                new TalentIcon { FileName = "spell_nature_unyeildingstamina" }
             };
         }
     }

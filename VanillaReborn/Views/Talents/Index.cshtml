@@ -86,8 +86,7 @@
                     <div class="rank-requirements" ng-show="inspectedTalent.requirementsText.length > 0"
                          ng-bind-html="inspectedTalent.requirementsText">
                     </div>
-                    <div class="selected-rank-text yellow-detail">
-                        {{ inspectedTalent.selectedRankText }}
+                    <div class="selected-rank-text yellow-detail" ng-bind-html="inspectedTalent.selectedRankText">
                     </div>
                     <div class="next-rank-text" ng-hide="inspectedTalent.selectedRankNo == 0 || inspectedTalent.isMaxRank">
                         <div>Next Rank:</div>
