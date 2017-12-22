@@ -185,9 +185,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         var pointsInSpec = $scope.totalPointsPerSpec[specIndex];
 
         var resetCallback = function (treeTotal, req, talentRows) {
-            var remainActive = req.rowIndex === 0;
-
             angular.forEach(talentRows[req.rowIndex], function (t) {
+                var remainActive = t.rowIndex === 0 && t.talentRequirement === null;
                 toggleActiveTalent(t, remainActive, true);
             });
         };
@@ -202,9 +201,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
     $scope.resetAllTalents = function () {
         var resetCallback = function (treeTotal, req, talentRows) {
-            var remainActive = req.rowIndex === 0;
-
             angular.forEach(talentRows[req.rowIndex], function (t) {
+                var remainActive = t.rowIndex === 0 && t.talentRequirement === null;
                 toggleActiveTalent(t, remainActive, true);
             });
         };

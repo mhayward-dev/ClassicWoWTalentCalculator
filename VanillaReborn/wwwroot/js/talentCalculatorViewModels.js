@@ -61,7 +61,7 @@ function talentVm(talentRankVm, talentReqVm) {
         this.talentRanks = t.talentRanks.map(talentRankVm.build);
         this.talentRequirement = t.talentRequirement !== null ? talentReqVm.build(t.talentRequirement) : null;
         this.selectedRankNo = 0;
-        this.isActive = t.rowIndex === 0;
+        this.isActive = t.rowIndex === 0 && t.talentRequirement === null;
     }
 
     Talent.build = function(data) {

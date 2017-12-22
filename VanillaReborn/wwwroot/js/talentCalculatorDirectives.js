@@ -25,6 +25,7 @@ app.directive('talentIcon', function ($parse, $compile) {
 
         if (direction === 'Right') {
             console.log('TODO - Right arrow');
+
         }
 
         if (direction === 'DownRight') {
