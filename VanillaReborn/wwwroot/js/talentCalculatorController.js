@@ -15,7 +15,6 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.requiredLevel = 9;
     $scope.totalPointsPerSpec = [0, 0, 0];
     $scope.selectedTalents = [[], [], []];
-    $scope.talentsWaitingUnlock = [];
 
     $scope.fetchClasses = function () {
         talentCalculatorFactory.getClasses()
@@ -103,7 +102,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             angular.forEach(spec.talentsWithRequirements, function (t) {
                 var requirement = _.find(rowAllocationArray, { 'rowIndex': t.rowIndex });
 
-                if (t.talentRequirement.requiredTalentId === talent.id
+                if (t.requiredTalent.id === talent.id
                     && talent.selectedRankNo === talent.talentRanks.length
                     && $scope.totalPointsPerSpec[specIndex] >= requirement.requiredNo) {
 
@@ -121,8 +120,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                     angular.forEach(rowTalents, function (t) {
                         var isActive = true;
 
-                        if (t.talentRequirement !== null) {
-                            var requiredTalent = _.find($scope.selectedTalents[t.specIndex], { 'id': t.talentRequirement.requiredTalentId });
+                        if (t.requiredTalent !== null) {
+                            var requiredTalent = _.find($scope.selectedTalents[t.specIndex], { 'id': t.requiredTalent.id });
                             isActive = requiredTalent && requiredTalent.selectedRankNo === requiredTalent.talentRanks.length;
                         }
 
@@ -154,7 +153,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
             // Check if talent requirements no longer met
             angular.forEach(spec.talentsWithRequirements, function (t) {
-                if (t.talentRequirement.requiredTalentId === talent.id && talent.selectedRankNo !== talent.talentRanks.length) {
+                if (t.requiredTalent.id === talent.id && talent.selectedRankNo !== talent.talentRanks.length) {
                     var lockedTalent = $scope.getTalentByColIndex(t.columnIndex, spec.talentRows[t.rowIndex]);
                     toggleActiveTalent(lockedTalent, false);
                 }
@@ -184,7 +183,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
 
         var resetCallback = function (treeTotal, req, talentRows) {
             angular.forEach(talentRows[req.rowIndex], function (t) {
-                var remainActive = t.rowIndex === 0 && t.talentRequirement === null;
+                var remainActive = t.rowIndex === 0 && t.requiredTalent === null;
                 toggleActiveTalent(t, remainActive, true);
             });
         };
@@ -200,7 +199,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.resetAllTalents = function () {
         var resetCallback = function (treeTotal, req, talentRows) {
             angular.forEach(talentRows[req.rowIndex], function (t) {
-                var remainActive = t.rowIndex === 0 && t.talentRequirement === null;
+                var remainActive = t.rowIndex === 0 && t.requiredTalent === null;
                 toggleActiveTalent(t, remainActive, true);
             });
         };

@@ -3,22 +3,17 @@ using Frameworks.Extensions;
 
 namespace VanillaReborn.Models.DTOs
 {
-    public class TalentRequirementDTO
+    public class RequiredTalentDTO : TalentDTO
     {
-        public int Id { get; set; }
-        public int TalentId { get; set; }
-        public int RequiredTalentId { get; set; }
-        public int RequiredTalentColumnIndex { get; set; }
-        public int RequiredTalentRowIndex { get; set; }
         public string RequiredTalentMessage { get; set; }
         public string ArrowDirection { get; set; }
 
-        public static TalentRequirementDTO ToDTO (Talent t)
+        public new static RequiredTalentDTO ToDTO (Talent t)
         {
-            return new TalentRequirementDTO {
-                RequiredTalentId = t.RequiredTalent.Id,
-                RequiredTalentColumnIndex = t.RequiredTalent.ColumnIndex,
-                RequiredTalentRowIndex = t.RequiredTalent.RowIndex,
+            return new RequiredTalentDTO {
+                Id = t.RequiredTalent.Id,
+                ColumnIndex = t.RequiredTalent.ColumnIndex,
+                RowIndex = t.RequiredTalent.RowIndex,
                 RequiredTalentMessage = FormatRequirementMessage(t.RequiredTalent),
                 ArrowDirection = GetArrowDirection(t)
             };

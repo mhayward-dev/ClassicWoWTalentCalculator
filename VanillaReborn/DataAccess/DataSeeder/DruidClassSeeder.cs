@@ -193,7 +193,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                         new TalentRank { RankNo = 1, RankDescription = "Increases the damage caused by your Claw, Rake, Swipe and Maul abilities by 10%." },
                         new TalentRank { RankNo = 2, RankDescription = "Increases the damage caused by your Claw, Rake, Swipe and Maul abilities by 20%." }
                 } },
-                new Talent { TalentName = "Faerie Fire (Feral)", ColumnIndex = 2, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_sentinal").Id,
+                new Talent { TalentName = "Faerie Fire (Feral)", ColumnIndex = 2, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_faeriefire").Id,
                     TalentRanks = new List<TalentRank> {
                         new TalentRank { RankNo = 1, RankDescription = "Decrease the armour of the target by 175 for 40 sec. While affected, the enemy cannot stealth or turn invisible." }
                 } },
@@ -205,7 +205,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                         new TalentRank { RankNo = 4, RankDescription = "Increases your Intellect by 16%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 16% and while in Cat Form your Strength is increased by 16%." },
                         new TalentRank { RankNo = 5, RankDescription = "Increases your Intellect by 20%. In addition, while in Bear or Dire Bear Form your Stamina is increased by 20% and while in Cat Form your Strength is increased by 20%." }
                  } },
-                new Talent { TalentName = "Leader of the Pack", ColumnIndex = 1, RowIndex = 6, TalentIconId = icons.First(i => i.FileName == "spell_nature_forceofnature").Id,
+                new Talent { TalentName = "Leader of the Pack", ColumnIndex = 1, RowIndex = 6, TalentIconId = icons.First(i => i.FileName == "spell_nature_unyeildingstamina").Id,
                     TalentRanks = new List<TalentRank> {
                         new TalentRank { RankNo = 1, RankDescription = "While in Cat, Bear or Dire Bear Form, the Leader of the Pack increases ranged and melee critical strike chance of all party members within 45 yards by 3%." }
                  } }

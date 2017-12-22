@@ -13,7 +13,7 @@ namespace VanillaReborn.Models.DTOs
         public int WarcraftClassSpecificationId { get; set; }
         public string IconFilePath { get; set; }
 
-        public TalentRequirementDTO TalentRequirement { get; set; }
+        public RequiredTalentDTO RequiredTalent { get; set; }
         public IEnumerable<TalentRankDTO> TalentRanks { get; set; }
 
         public static TalentDTO ToDTO(Talent t)
@@ -27,7 +27,7 @@ namespace VanillaReborn.Models.DTOs
                 RowIndex = t.RowIndex,
                 IconFilePath = FormatImageUrl(t.TalentIcon?.FileName ?? "inv_misc_questionmark.jpg"),
                 TalentRanks = t.TalentRanks.OrderBy(tr => tr.RankNo).Select(tr => TalentRankDTO.ToDTO(tr)),
-                TalentRequirement = t.RequiredTalent.IsNotNull() ? TalentRequirementDTO.ToDTO(t) : null
+                RequiredTalent = t.RequiredTalent.IsNotNull() ? RequiredTalentDTO.ToDTO(t) : null
             };
         }
 

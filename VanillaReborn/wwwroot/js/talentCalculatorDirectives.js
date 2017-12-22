@@ -2,12 +2,12 @@
 app.directive('talentIcon', function ($parse, $compile) {
 
     function createArrowForDirection(t) {
-        var req = t.talentRequirement;
+        var rt = t.requiredTalent;
         var arrowEl = angular.element('<div class="requirement-arrow">');
         var bgColour = t.isActive ? '#bba911' : '#5a5a5a';
 
-        if (req.arrowDirection === 'Down') {
-            var rowsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
+        if (rt.arrowDirection === 'Down') {
+            var rowsBetweenCount = (t.rowIndex - rt.rowIndex) - 1;
             var pixelDistance = 34 + (rowsBetweenCount * 62);
             var lineHeight = pixelDistance - 18;
 
@@ -22,8 +22,8 @@ app.directive('talentIcon', function ($parse, $compile) {
             arrowEl.append(arrowPointEl);
         }
 
-        if (req.arrowDirection === 'Right') {
-            var colsBetweenCount = (t.colIndex - req.endColIndex) - 1;
+        if (rt.arrowDirection === 'Right') {
+            var colsBetweenCount = (t.colIndex - rt.colIndex) - 1;
             var pixelDistance = 35 + (colsBetweenCount * 80);
 
             arrowEl.height(10);
@@ -36,7 +36,7 @@ app.directive('talentIcon', function ($parse, $compile) {
             arrowEl.append(arrowPointEl);
         }
 
-        if (req.arrowDirection === 'DownRight') {
+        if (rt.arrowDirection === 'DownRight') {
             console.log('TODO - DownRight arrow');
         }
 
@@ -74,7 +74,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                         iconContainerEl.addClass('is-maxed');
                     }
 
-                    if (t.talentRequirement !== null) {
+                    if (t.requiredTalent !== null) {
                         iconContainerEl.append(createArrowForDirection(t));
                     }
 

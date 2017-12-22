@@ -48,7 +48,7 @@ function warcraftClassSpecificationVm(talentVm) {
     return WarcraftClassSpecification;
 }
 
-function talentVm(talentRankVm, talentReqVm) {
+function talentVm(talentRankVm, reqTalentVm) {
 
     function Talent(t, spec) {
         this.id = t.id;
@@ -59,9 +59,9 @@ function talentVm(talentRankVm, talentReqVm) {
         this.rowIndex = t.rowIndex;
         this.iconFilePath = t.iconFilePath;
         this.talentRanks = t.talentRanks.map(talentRankVm.build);
-        this.talentRequirement = t.talentRequirement !== null ? talentReqVm.build(t.talentRequirement) : null;
+        this.requiredTalent = t.requiredTalent !== null ? reqTalentVm.build(t.requiredTalent) : null;
         this.selectedRankNo = 0;
-        this.isActive = t.rowIndex === 0 && t.talentRequirement === null;
+        this.isActive = t.rowIndex === 0 && t.requiredTalent === null;
     }
 
     Talent.build = function(data) {
@@ -86,26 +86,24 @@ function talentRankVm() {
     return TalentRank;
 }
 
-function talentReqVm() {
+function reqTalentVm() {
 
-    function TalentRequirement(req) {
+    function RequiredTalent(req) {
         this.id = req.id;
-        this.talentId = req.talentId;
-        this.requiredTalentId = req.requiredTalentId;
-        this.endColIndex = req.requiredTalentColumnIndex;
-        this.endRowIndex = req.requiredTalentRowIndex;
+        this.colIndex = req.columnIndex;
+        this.rowIndex = req.rowIndex;
         this.requiredTalentMessage = req.requiredTalentMessage;
         this.arrowDirection = req.arrowDirection;
     }
 
-    TalentRequirement.build = function(data) {
-        return new TalentRequirement(data);
+    RequiredTalent.build = function (data) {
+        return new RequiredTalent(data);
     }
 
-    return TalentRequirement;
+    return RequiredTalent;
 }
 
-function inspectedTalentVm(talentReqVm, rowAllocationArray) {
+function inspectedTalentVm(reqTalentVm, rowAllocationArray) {
 
     function InspectedTalent(t, selectedTalents, totalPointsPerSpec) {
         var currentRank = t.selectedRankNo > 0 ? _.find(t.talentRanks, { 'rankNo': t.selectedRankNo }) : null;
@@ -140,11 +138,11 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
         var hasReqs = true;
         var inspecTalent = this;
 
-        if (t.talentRequirement !== null) {
-            var requiredTalent = _.find(selectedTalents, { 'id': t.talentRequirement.requiredTalentId });
+        if (t.requiredTalent !== null) {
+            var requiredTalent = _.find(selectedTalents, { 'id': t.requiredTalent.id });
             hasReqs = requiredTalent && requiredTalent.selectedRankNo === requiredTalent.talentRanks.length;
 
-            inspecTalent.requirementsText = !hasReqs ? t.talentRequirement.requiredTalentMessage + '<br />' : '';
+            inspecTalent.requirementsText = !hasReqs ? t.requiredTalent.requiredTalentMessage + '<br />' : '';
         }
 
         angular.forEach(rowAllocationArray, function(req) {
@@ -175,9 +173,9 @@ function inspectedTalentVm(talentReqVm, rowAllocationArray) {
         var hasRequisiteTalent = false;
 
         angular.forEach(selectedTalents, function (st) {
-            var req = st.talentRequirement;
+            var rt = st.requiredTalent;
 
-            if (req !== null && req.requiredTalentId === t.id) {
+            if (rt !== null && rt.id === t.id) {
                 hasRequisiteTalent = true;
                 return;
             }
