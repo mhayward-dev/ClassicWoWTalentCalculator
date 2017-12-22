@@ -4,7 +4,7 @@ app.directive('talentIcon', function ($parse, $compile) {
     function createArrowForDirection(t) {
         var req = t.talentRequirement;
         var arrowEl = angular.element('<div class="requirement-arrow">');
-        var bgColour = t.isActive ? '#bba911' : '#444';
+        var bgColour = t.isActive ? '#bba911' : '#5a5a5a';
 
         if (req.arrowDirection === 'Down') {
             var rowsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
