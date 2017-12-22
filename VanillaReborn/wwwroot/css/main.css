@@ -362,7 +362,7 @@ html body #talent-calculator #talents-select #specifications .specification-cont
   position: relative;
   z-index: 20;
   box-shadow: 5px -3px 10px;
-  color: #444;
+  color: #2d2d2d;
 }
 html body #talent-calculator #talents-select #specifications .specification-container .specification-border .specification-pane .requirement-arrow .arrow-down {
   position: relative;

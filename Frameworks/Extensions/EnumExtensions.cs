@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Frameworks.Extensions
@@ -19,6 +20,17 @@ namespace Frameworks.Extensions
             var fieldInfo = e.GetType().GetField(name);
 
             return Attribute.GetCustomAttribute(fieldInfo, t);
+        }
+
+        public static Dictionary<int, string> ToDictionary<T>() where T : struct
+        {
+            var enumDict = new Dictionary<int, string>();
+            foreach (var e in Enum.GetValues(typeof(T)))
+            {
+                enumDict.Add((int)e, e.ToString());
+            }
+
+            return enumDict;
         }
     }
 }

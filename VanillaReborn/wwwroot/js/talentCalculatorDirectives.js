@@ -1,5 +1,39 @@
 ﻿
 app.directive('talentIcon', function ($parse, $compile) {
+
+    function createArrowForDirection(direction, t) {
+        var req = t.talentRequirement;
+        var arrowEl = angular.element('<div class="requirement-arrow">');
+        var bgColour = t.isActive ? '#bba911' : '#444';
+
+        if (direction === 'Down') {
+            var colsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
+            var pixelDistance = 34 + (colsBetweenCount * 62);
+            var lineHeight = pixelDistance - 18;
+
+            arrowEl.width(10);
+            arrowEl.height(lineHeight);
+            arrowEl.css('bottom', pixelDistance + 'px');
+            arrowEl.css('left', '16px');
+            arrowEl.css('background-color', bgColour);
+
+            var arrowPointEl = angular.element('<div class="arrow-down">');
+            arrowPointEl.css('top', lineHeight - 5);
+            arrowPointEl.css('border-top-color', bgColour);
+            arrowEl.append(arrowPointEl);
+        }
+
+        if (direction === 'Right') {
+            console.log('TODO - Right arrow');
+        }
+
+        if (direction === 'DownRight') {
+            console.log('TODO - DownRight arrow');
+        }
+
+        return arrowEl;
+    }
+
     return {
         restrict: 'E',
         link: function (scope, element, attrs) {
@@ -31,32 +65,8 @@ app.directive('talentIcon', function ($parse, $compile) {
                     }
 
                     if (t.talentRequirement !== null) {
-                        var req = t.talentRequirement;
-                        var arrowEl = angular.element('<div class="requirement-arrow">');
-                        var isDownwards = req.endColIndex === t.colIndex;
-
-                        if (isDownwards) {
-                            var colsBetweenCount = (t.rowIndex - req.endRowIndex) - 1;
-                            var pixelDistance = 34 + (colsBetweenCount * 62);
-                            var lineHeight = pixelDistance - 18;
-                            var bgColour = t.isActive ? '#bba911' : '#444';
-
-                            arrowEl.width(10);
-                            arrowEl.height(lineHeight);
-                            arrowEl.css('bottom', pixelDistance + 'px');
-                            arrowEl.css('left', '16px');
-                            arrowEl.css('background-color', bgColour);
-
-                            var arrowPointEl = angular.element('<div class="arrow-down">');
-                            arrowPointEl.css('top', lineHeight - 5);
-                            arrowPointEl.css('border-top-color', bgColour);
-                            arrowEl.append(arrowPointEl);
-
-                        } else {
-                            // Do Right-Down
-                        }
-
-                        iconContainerEl.append(arrowEl);
+                        var direction = _.get(scope.arrowDirections, t.talentRequirement.arrowDirection);
+                        iconContainerEl.append(createArrowForDirection(direction, t));
                     }
 
                     element.empty();

@@ -3,6 +3,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     $scope.classes = [];
     $scope.selectedClassId = 0;
     $scope.selectedClass = null;
+    $scope.arrowDirections = [];
 
     $scope.isInspectingTalent = false;
     $scope.inspectedTalent = null;
@@ -35,7 +36,10 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                     $scope.getClassById($scope.selectedClassId).isSelected = false;
                 }
 
-                $scope.selectedClass = warcraftClassVm.build(response.data);
+                var dto = response.data;
+                $scope.selectedClass = warcraftClassVm.build(dto.selectedClass);
+                $scope.arrowDirections = dto.arrowDirections;
+
                 $scope.getClassById($scope.selectedClass.id).isSelected = true;
                 $scope.selectedClassId = $scope.selectedClass.id;
 

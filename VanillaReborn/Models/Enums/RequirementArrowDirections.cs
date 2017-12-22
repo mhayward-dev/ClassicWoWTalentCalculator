@@ -3,6 +3,7 @@
     public enum RequirementArrowDirections
     {
         Down = 1 << 0,
-        DownRight = 1 << 1
+        Right = 1 << 1,
+        DownRight = 1 << 2
     }
 }

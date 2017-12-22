@@ -1,4 +1,15 @@
-﻿
+﻿function rowAllocationArray() {
+    return [
+        { rowIndex: 0, requiredNo: 0 },
+        { rowIndex: 1, requiredNo: 5 },
+        { rowIndex: 2, requiredNo: 10 },
+        { rowIndex: 3, requiredNo: 15 },
+        { rowIndex: 4, requiredNo: 20 },
+        { rowIndex: 5, requiredNo: 25 },
+        { rowIndex: 6, requiredNo: 30 }
+    ];
+}
+
 function warcraftClassVm(warcraftClassSpecificationVm) {
 
     function WarcraftClass(wc) {
@@ -84,6 +95,7 @@ function talentReqVm() {
         this.endColIndex = req.requiredTalentColumnIndex;
         this.endRowIndex = req.requiredTalentRowIndex;
         this.requiredTalentMessage = req.requiredTalentMessage;
+        this.arrowDirection = req.arrowDirection;
     }
 
     TalentRequirement.build = function(data) {
@@ -91,18 +103,6 @@ function talentReqVm() {
     }
 
     return TalentRequirement;
-}
-
-function rowAllocationArray() {
-    return [
-        { rowIndex: 0, requiredNo: 0 },
-        { rowIndex: 1, requiredNo: 5 },
-        { rowIndex: 2, requiredNo: 10 },
-        { rowIndex: 3, requiredNo: 15 },
-        { rowIndex: 4, requiredNo: 20 },
-        { rowIndex: 5, requiredNo: 25 },
-        { rowIndex: 6, requiredNo: 30 }
-    ];
 }
 
 function inspectedTalentVm(talentReqVm, rowAllocationArray) {

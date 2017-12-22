@@ -42,7 +42,7 @@ namespace VanillaReborn.Controllers.API
 
             if (warcraftClass.IsNotNull())
             {
-                return Ok(WarcraftClassDTO.ToDTO(warcraftClass));
+                return Ok(TalentCalculatorDTO.ToDTO(warcraftClass));
             }
 
             return BadRequest();
