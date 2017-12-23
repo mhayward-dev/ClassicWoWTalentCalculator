@@ -4,7 +4,7 @@ app.directive('talentIcon', function ($parse, $compile) {
     function createArrowForDirection(t) {
         var rt = t.requiredTalent;
         var arrowEl = angular.element('<div class="requirement-arrow">');
-        var bgColour = t.isActive ? '#bba911' : '#5a5a5a';
+        var bgColour = t.isActive ? '#bba911' : '#7D7D7D';
 
         if (rt.arrowDirection === 'Down') {
             var rowsBetweenCount = (t.rowIndex - rt.rowIndex) - 1;
@@ -15,6 +15,7 @@ app.directive('talentIcon', function ($parse, $compile) {
             arrowEl.height(lineHeight);
             arrowEl.css('bottom', pixelDistance + 'px');
             arrowEl.css('left', '16px');
+            arrowEl.css('background-color', bgColour);
           
             var arrowPointEl = angular.element('<div class="arrow-down">');
             arrowPointEl.css('top', lineHeight - 5);
@@ -29,6 +30,7 @@ app.directive('talentIcon', function ($parse, $compile) {
             arrowEl.height(10);
             arrowEl.width(pixelDistance);
             arrowEl.css('right', pixelDistance + 'px');
+            arrowEl.css('background-color', bgColour);
 
             var arrowPointEl = angular.element('<div class="arrow-right">');
             arrowPointEl.css('left', pixelDistance - 8);
@@ -37,10 +39,32 @@ app.directive('talentIcon', function ($parse, $compile) {
         }
 
         if (rt.arrowDirection === 'DownRight') {
-            console.log('TODO - DownRight arrow');
+            arrowEl = [];
+
+            var rightArrowEl = angular.element('<div class="requirement-arrow">');
+            rightArrowEl.height(10);
+            rightArrowEl.width(62);
+            rightArrowEl.css('right', '36px');
+            rightArrowEl.css('bottom', '60px');
+            rightArrowEl.css('background-color', bgColour);
+            arrowEl.push(rightArrowEl);
+
+            var downwardsArrow = angular.element('<div class="requirement-arrow">');
+            downwardsArrow.width(10);
+            downwardsArrow.height(42);
+            downwardsArrow.css('bottom','70px');
+            downwardsArrow.css('left', '16px');
+            downwardsArrow.css('box-shadow', 'none');
+            downwardsArrow.css('background-color', bgColour);
+
+            var arrowPointEl = angular.element('<div class="arrow-down">');
+            arrowPointEl.css('top', '37px');
+            arrowPointEl.css('border-top-color', bgColour);
+            downwardsArrow.append(arrowPointEl);
+
+            arrowEl.push(downwardsArrow);
         }
 
-        arrowEl.css('background-color', bgColour);
         return arrowEl;
     }
 
@@ -53,7 +77,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     var iconContainerEl = angular.element('<div class="talent-icon-border inactive">');
                     iconContainerEl.attr('data-talent-Id', t.id);
 
-                    var iconEl = angular.element('<div class="talent-icon">');
+                    var iconEl = angular.element('<div class="talent-icon inactive">');
                     iconEl.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
                     iconEl.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
                     iconEl.attr('ng-mouseleave', 'hideTalentTooltip()');
@@ -67,6 +91,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     if (t.isActive) {
                         rankNoEl.css('visibility', 'visible');
                         iconContainerEl.removeClass('inactive');
+                        iconEl.removeClass('inactive');
                     }
 
                     if (t.selectedRankNo == t.talentRanks.length) {
