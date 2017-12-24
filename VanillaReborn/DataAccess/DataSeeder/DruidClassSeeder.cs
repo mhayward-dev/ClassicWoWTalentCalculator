@@ -211,28 +211,134 @@ namespace VanillaReborn.DataAccess.DataSeeder
                  } }
             };
 
+            // Restoration
+            var restorationTalents = new List<Talent>
+            {
+                new Talent { TalentName = "Improved Mark of the Wild", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_nature_regeneration").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 14%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 21%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 28%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 35%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the effects of your Mark of the Wild and Gift of the Wild spells by 42%." }
+                } },
+                new Talent { TalentName = "Furor", ColumnIndex = 2, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_holy_blessingofstamina").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Gives you a 20% chance to gain 10 Rage when you shapeshift into Bear and Dire Bear Form or 40 Energy when you shapeshift into Cat Form." },
+                        new TalentRank { RankNo = 2, RankDescription = "Gives you a 40% chance to gain 10 Rage when you shapeshift into Bear and Dire Bear Form or 40 Energy when you shapeshift into Cat Form." },
+                        new TalentRank { RankNo = 3, RankDescription = "Gives you a 60% chance to gain 10 Rage when you shapeshift into Bear and Dire Bear Form or 40 Energy when you shapeshift into Cat Form." },
+                        new TalentRank { RankNo = 4, RankDescription = "Gives you a 80% chance to gain 10 Rage when you shapeshift into Bear and Dire Bear Form or 40 Energy when you shapeshift into Cat Form." },
+                        new TalentRank { RankNo = 5, RankDescription = "Gives you a 100% chance to gain 10 Rage when you shapeshift into Bear and Dire Bear Form or 40 Energy when you shapeshift into Cat Form." }
+                    } },
+                new Talent { TalentName = "Improved Healing Touch", ColumnIndex = 0, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_healingtouch").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the cast time of your Healing Touch spell by 0.1 sec." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the cast time of your Healing Touch spell by 0.2 sec." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the cast time of your Healing Touch spell by 0.3 sec." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the cast time of your Healing Touch spell by 0.4 sec." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the cast time of your Healing Touch spell by 0.5 sec." }
+                } },
+                new Talent { TalentName = "Nature's Focus", ColumnIndex = 1, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_nature_healingwavegreater").Id,
+                     TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting the Healing Touch, Regrowth and Tranquility spells." },
+                        new TalentRank { RankNo = 2, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting the Healing Touch, Regrowth and Tranquility spells." },
+                        new TalentRank { RankNo = 3, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting the Healing Touch, Regrowth and Tranquility spells." },
+                        new TalentRank { RankNo = 4, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting the Healing Touch, Regrowth and Tranquility spells." },
+                        new TalentRank { RankNo = 5, RankDescription = "Gives you a 14% chance to avoid interruption caused by damage while casting the Healing Touch, Regrowth and Tranquility spells." }
+                } },
+                new Talent { TalentName = "Improved Rage", ColumnIndex = 2, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "ability_druid_enrage").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "The Enrage ability now generates 5 Rage." },
+                        new TalentRank { RankNo = 2, RankDescription = "The Enrage ability now generates 10 Rage." }
+                } },
+                new Talent { TalentName = "Reflection", ColumnIndex = 1, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_frost_windwalkon").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Allows 5% of your Mana regeneration to continue while casting." },
+                        new TalentRank { RankNo = 2, RankDescription = "Allows 10% of your Mana regeneration to continue while casting." },
+                        new TalentRank { RankNo = 3, RankDescription = "Allows 15% of your Mana regeneration to continue while casting." }
+                } },
+                new Talent { TalentName = "Insect Swarm", ColumnIndex = 2, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_insectswarm").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "The enemy target is swarmed by insects, decreasing their chance to hit by 2% and causing 66 Nature damage over 12 sec." }
+                } },
+                new Talent { TalentName = "Subtlety", ColumnIndex = 3, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "ability_eyeoftheowl").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the threat generated by your Healing spells by 4%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the threat generated by your Healing spells by 8%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the threat generated by your Healing spells by 12%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the threat generated by your Healing spells by 16%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the threat generated by your Healing spells by 20%." }
+                } },
+                new Talent { TalentName = "Tranquil Spirit", ColumnIndex = 1, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_holy_elunesgrace").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the mana cost of Healing Touch and Tranquility spells by 2%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces the mana cost of Healing Touch and Tranquility spells by 4%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Reduces the mana cost of Healing Touch and Tranquility spells by 6%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Reduces the mana cost of Healing Touch and Tranquility spells by 8%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Reduces the mana cost of Healing Touch and Tranquility spells by 10%." }
+                } },
+                new Talent { TalentName = "Improved Rejuvenation", ColumnIndex = 3, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_nature_rejuvenation").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effect of your Rejuvenation spell by 5%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effect of your Rejuvenation spell by 10%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the effect of your Rejuvenation spell by 15%." }
+                } },
+                new Talent { TalentName = "Nature's Swiftness", ColumnIndex = 0, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_ravenform").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "When activated, your next Nature spell becomes an instant cast spell." }
+                } },
+                new Talent { TalentName = "Gift of Nature", ColumnIndex = 2, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_protectionformnature").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the effect of all healing spells by 2%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the effect of all healing spells by 4%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the effect of all healing spells by 6%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the effect of all healing spells by 8%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the effect of all healing spells by 10%." }
+                } },
+                new Talent { TalentName = "Improved Tranquility", ColumnIndex = 3, RowIndex = 4, TalentIconId = icons.First(i => i.FileName == "spell_nature_tranquility").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces threat caused by Tranquility by 50%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Reduces threat caused by Tranquility by 100%." }
+                } },
+                new Talent { TalentName = "Improved Regrowth", ColumnIndex = 2, RowIndex = 5, TalentIconId = icons.First(i => i.FileName == "spell_nature_resistnature").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the critical effect chance of your Regrowth spell by 10%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the critical effect chance of your Regrowth spell by 20%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the critical effect chance of your Regrowth spell by 30%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the critical effect chance of your Regrowth spell by 40%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the critical effect chance of your Regrowth spell by 50%." }
+                } },
+                new Talent { TalentName = "Swiftmend", ColumnIndex = 1, RowIndex = 6, TalentIconId = icons.First(i => i.FileName == "inv_relics_idolofrejuvenation").Id,
+                    TalentRanks = new List<TalentRank> {
+                        new TalentRank { RankNo = 1, RankDescription = "Consumes a Rejuvenation or Regrowth effect on a friendly target to instant heal them an amount equal to 12 sec. of Rejuvenation or 18 sec. of Regrowth." }
+                 } }
+            };
+
             return new List<WarcraftClassSpecification> {
                 new WarcraftClassSpecification { SpecificationName = "Balance", SpecificationIndex = 0, SpecificationIcon = "spell_nature_starfall.jpg", Talents = balanceTalents },
                 new WarcraftClassSpecification { SpecificationName = "Feral Combat", SpecificationIndex = 1, SpecificationIcon = "ability_racial_bearform.jpg", Talents = feralCombatTalents },
-                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg" }
+                new WarcraftClassSpecification { SpecificationName = "Restoration", SpecificationIndex = 2, SpecificationIcon = "spell_nature_healingtouch.jpg", Talents = restorationTalents }
             };
         }
 
         public static void SetupTalentRequirements(List<WarcraftClassSpecification> wcs)
         {
-            wcs[0].Talents.First(t => t.TalentName == "Improved Nature's Grasp").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Nature's Grasp");
+            var balanceTalents = wcs[0].Talents;
+            var feralTalents = wcs[1].Talents;
+            var restorationTalents = wcs[2].Talents;
 
-            wcs[0].Talents.First(t => t.TalentName == "Vengeance").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Improved Moonfire");
+            balanceTalents.First(t => t.TalentName == "Improved Nature's Grasp").RequiredTalent = balanceTalents.First(t => t.TalentName == "Nature's Grasp");
+            balanceTalents.First(t => t.TalentName == "Vengeance").RequiredTalent = balanceTalents.First(t => t.TalentName == "Improved Moonfire");
+            balanceTalents.First(t => t.TalentName == "Omen of Clarity").RequiredTalent = balanceTalents.First(t => t.TalentName == "Natural Weapons");
+            balanceTalents.First(t => t.TalentName == "Moonfury").RequiredTalent = balanceTalents.First(t => t.TalentName == "Nature's Grace");
 
-            wcs[0].Talents.First(t => t.TalentName == "Omen of Clarity").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Natural Weapons");
+            feralTalents.First(t => t.TalentName == "Blood Frenzy").RequiredTalent = feralTalents.First(t => t.TalentName == "Sharpened Claws");
+            feralTalents.First(t => t.TalentName == "Primal Fury").RequiredTalent = feralTalents.First(t => t.TalentName == "Sharpened Claws");
+            feralTalents.First(t => t.TalentName == "Heart of the Wild").RequiredTalent = feralTalents.First(t => t.TalentName == "Predatory Strikes");
 
-            wcs[0].Talents.First(t => t.TalentName == "Moonfury").RequiredTalent = wcs[0].Talents.First(t => t.TalentName == "Nature's Grace");
-
-            wcs[1].Talents.First(t => t.TalentName == "Blood Frenzy").RequiredTalent = wcs[1].Talents.First(t => t.TalentName == "Sharpened Claws");
-
-            wcs[1].Talents.First(t => t.TalentName == "Primal Fury").RequiredTalent = wcs[1].Talents.First(t => t.TalentName == "Sharpened Claws");
-
-            wcs[1].Talents.First(t => t.TalentName == "Heart of the Wild").RequiredTalent = wcs[1].Talents.First(t => t.TalentName == "Predatory Strikes");
+            restorationTalents.First(t => t.TalentName == "Nature's Swiftness").RequiredTalent = restorationTalents.First(t => t.TalentName == "Improved Healing Touch");
+            restorationTalents.First(t => t.TalentName == "Gift of Nature").RequiredTalent = restorationTalents.First(t => t.TalentName == "Insect Swarm");
+            restorationTalents.First(t => t.TalentName == "Swiftmend").RequiredTalent = restorationTalents.First(t => t.TalentName == "Tranquil Spirit");
         }
     }
 }

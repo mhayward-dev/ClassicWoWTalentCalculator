@@ -11,7 +11,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "spell_nature_wispsplode" },
                 new TalentIcon { FileName = "spell_fire_fireball" },
                 new TalentIcon { FileName = "spell_nature_stoneclawtotem" },
-                new TalentIcon { FileName =  "spell_nature_spiritarmor" },
+                new TalentIcon { FileName = "spell_nature_spiritarmor" },
                 new TalentIcon { FileName = "spell_fire_immolation" },
                 new TalentIcon { FileName = "spell_shadow_manaburn" },
                 new TalentIcon { FileName = "spell_frost_frostward" },
@@ -80,7 +80,19 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "ability_druid_ravage" },
                 new TalentIcon { FileName = "spell_nature_faeriefire" },
                 new TalentIcon { FileName = "spell_holy_blessingofagility" },
-                new TalentIcon { FileName = "spell_nature_unyeildingstamina" }
+                new TalentIcon { FileName = "spell_nature_unyeildingstamina" },
+                new TalentIcon { FileName = "spell_nature_regeneration" },
+                new TalentIcon { FileName = "spell_holy_blessingofstamina" },
+                new TalentIcon { FileName = "spell_nature_healingwavegreater" },
+                new TalentIcon { FileName = "ability_druid_enrage" },
+                new TalentIcon { FileName = "spell_frost_windwalkon" },
+                new TalentIcon { FileName = "spell_nature_insectswarm" },
+                new TalentIcon { FileName = "ability_eyeoftheowl" },
+                new TalentIcon { FileName = "spell_holy_elunesgrace" },
+                new TalentIcon { FileName = "spell_nature_rejuvenation" },
+                new TalentIcon { FileName = "spell_nature_protectionformnature" },
+                new TalentIcon { FileName = "spell_nature_resistnature" },
+                new TalentIcon { FileName = "inv_relics_idolofrejuvenation" }
             };
         }
     }
