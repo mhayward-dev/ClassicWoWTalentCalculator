@@ -60,9 +60,9 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 } },
                 new Talent { TalentName = "Improved Thorns", ColumnIndex = 0, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_thorns").Id,
                     TalentRanks = new List<TalentRank> {
-                        new TalentRank { RankNo = 1, RankDescription = "Increases the damage caused by your Thorns spell by 25%" },
-                        new TalentRank { RankNo = 2, RankDescription = "Increases the damage caused by your Thorns spell by 50%" },
-                        new TalentRank { RankNo = 3, RankDescription = "Increases the damage caused by your Thorns spell by 75%" }
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the damage caused by your Thorns spell by 25%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the damage caused by your Thorns spell by 50%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the damage caused by your Thorns spell by 75%." }
                 } },
                 new Talent { TalentName = "Omen of Clarity", ColumnIndex = 2, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_crystalball").Id,
                     TalentRanks = new List<TalentRank> {
@@ -75,11 +75,11 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 } },
                 new Talent { TalentName = "Vengeance", ColumnIndex = 1, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_nature_purge").Id,
                     TalentRanks = new List<TalentRank> {
-                        new TalentRank { RankNo = 1, RankDescription = "Increases the Critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 20%." },
-                        new TalentRank { RankNo = 2, RankDescription = "Increases the Critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 40%." },
-                        new TalentRank { RankNo = 3, RankDescription = "Increases the Critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 60%." },
-                        new TalentRank { RankNo = 4, RankDescription = "Increases the Critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 80%." },
-                        new TalentRank { RankNo = 5, RankDescription = "Increases the Critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 100%." }
+                        new TalentRank { RankNo = 1, RankDescription = "Increases the critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 20%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increases the critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 40%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increases the critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 60%." },
+                        new TalentRank { RankNo = 4, RankDescription = "Increases the critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 80%." },
+                        new TalentRank { RankNo = 5, RankDescription = "Increases the critical strike damage bonus of your Starfire, Moonfire and Wrath spells by 100%." }
                 } },
                 new Talent { TalentName = "Improved Starfire", ColumnIndex = 2, RowIndex = 3, TalentIconId = icons.First(i => i.FileName == "spell_arcane_starfire").Id,
                     TalentRanks = new List<TalentRank> {

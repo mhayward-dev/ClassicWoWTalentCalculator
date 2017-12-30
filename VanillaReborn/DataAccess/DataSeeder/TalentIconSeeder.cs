@@ -92,7 +92,16 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "spell_nature_rejuvenation" },
                 new TalentIcon { FileName = "spell_nature_protectionformnature" },
                 new TalentIcon { FileName = "spell_nature_resistnature" },
-                new TalentIcon { FileName = "inv_relics_idolofrejuvenation" }
+                new TalentIcon { FileName = "inv_relics_idolofrejuvenation" },
+                new TalentIcon { FileName = "ability_hunter_aspectofthemonkey" },
+                new TalentIcon { FileName = "ability_hunter_beastsoothe" },
+                new TalentIcon { FileName = "ability_mount_jungletiger" },
+                new TalentIcon { FileName = "ability_druid_dash" },
+                new TalentIcon { FileName = "ability_bullrush" },
+                new TalentIcon { FileName = "ability_hunter_mendpet" },
+                new TalentIcon { FileName = "ability_devour" },
+                new TalentIcon { FileName = "inv_misc_monsterclaw_03" },
+                new TalentIcon { FileName = "ability_druid_ferociousbite" }
             };
         }
     }
