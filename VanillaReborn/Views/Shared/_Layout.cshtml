@@ -6,11 +6,11 @@
     <title>@ViewData["Title"] - Vanilla Reborn</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/libs/bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/main.css" type="text/css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/libs/bootstrap/css/bootstrap.min.css" />
     </environment>
 </head>
 <body>
@@ -47,21 +47,21 @@
     </footer>
 
     <environment include="Development">
-        <script src="/node_modules/jquery/dist/jquery.js"></script>
-        <script src="/node_modules/popper.js/dist/umd/popper.js"></script>
-        <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/node_modules/angular/angular.js"></script>
-        <script src="/node_modules/angular-animate/angular-animate.js"></script>
-        <script src="/node_modules/lodash/lodash.js"></script>
+        <script src="~/libs/jquery/jquery.js"></script>
+        <script src="~/libs/popper/popper.js"></script>
+        <script src="~/libs/bootstrap/js/bootstrap.js"></script>
+        <script src="~/libs/angular/angular.js"></script>
+        <script src="~/libs/angular-animate/angular-animate.js"></script>
+        <script src="~/libs/lodash/lodash.js"></script>
         <script src="~/js/sprintf.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-        <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="/node_modules/angular/angular.min.js"></script>
-        <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
-        <script src="/node_modules/lodash/lodash.min.js"></script>
+        <script src="~/libs/jquery/jquery.min.js"></script>
+        <script src="~/libs/popper/popper.min.js"></script>
+        <script src="~/libs/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/libs/angular/angular.min.js"></script>
+        <script src="~/libs/angular-animate/angular-animate.min.js"></script>
+        <script src="~/libs/lodash/lodash.min.js"></script>
         <script src="~/js/sprintf.min.js"></script>
     </environment>
 

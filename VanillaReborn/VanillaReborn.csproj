@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Frameworks\Frameworks.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\libs\" />
+  </ItemGroup>
+
 </Project>
