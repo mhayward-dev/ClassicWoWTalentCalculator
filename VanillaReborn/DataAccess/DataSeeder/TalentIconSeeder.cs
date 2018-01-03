@@ -5,9 +5,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
 {
     public static class TalentIconSeeder
     {
-        public static List<TalentIcon> SetupIcons()
-        {
-            return new List<TalentIcon> {
+        public static List<TalentIcon> SetupIcons() => new List<TalentIcon> {
                 new TalentIcon { FileName = "spell_nature_wispsplode" },
                 new TalentIcon { FileName = "spell_fire_fireball" },
                 new TalentIcon { FileName = "spell_nature_stoneclawtotem" },
@@ -101,8 +99,33 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "ability_hunter_mendpet" },
                 new TalentIcon { FileName = "ability_devour" },
                 new TalentIcon { FileName = "inv_misc_monsterclaw_03" },
-                new TalentIcon { FileName = "ability_druid_ferociousbite" }
+                new TalentIcon { FileName = "ability_druid_ferociousbite" },
+                new TalentIcon { FileName = "ability_hunter_snipershot" },
+                new TalentIcon { FileName = "ability_searingarrow" },
+                new TalentIcon { FileName = "inv_spear_07" },
+                new TalentIcon { FileName = "ability_searingarrow" },
+                new TalentIcon { FileName = "ability_impalingbolt" },
+                new TalentIcon { FileName = "ability_townwatch" },
+                new TalentIcon { FileName = "ability_hunter_quickshot" },
+                new TalentIcon { FileName = "ability_piercedamage" },
+                new TalentIcon { FileName = "ability_golemstormbolt" },
+                new TalentIcon { FileName = "ability_upgrademoonglaive" },
+                new TalentIcon { FileName = "ability_hunter_criticalshot" },
+                new TalentIcon { FileName = "inv_weapon_rifle_06" },
+                new TalentIcon { FileName = "ability_trueshot" },
+                new TalentIcon { FileName = "inv_misc_head_dragon_black" },
+                new TalentIcon { FileName = "spell_holy_prayerofhealing" },
+                new TalentIcon { FileName = "ability_racial_bloodrage" },
+                new TalentIcon { FileName = "ability_rogue_trip" },
+                new TalentIcon { FileName = "spell_nature_timestop" },
+                new TalentIcon { FileName = "spell_shadow_twilight" },
+                new TalentIcon { FileName = "ability_whirlwind" },
+                new TalentIcon { FileName = "ability_ensnare" },
+                new TalentIcon { FileName = "ability_kick" },
+                new TalentIcon { FileName = "ability_rogue_feigndeath" },
+                new TalentIcon { FileName = "ability_warrior_challange" },
+                new TalentIcon { FileName = "spell_nature_invisibilty" },
+                new TalentIcon { FileName = "inv_spear_02" }
             };
-        }
     }
 }
