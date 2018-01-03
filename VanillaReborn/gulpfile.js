@@ -58,6 +58,13 @@ gulp.task('restore:lodash', function () {
     ]).pipe(gulp.dest(libs + 'lodash'));
 });
 
+gulp.task('restore:sprintf', function () {
+    gulp.src([
+        'node_modules/sprintf-js/dist/*.js',
+        'node_modules/sprintf-js/src/*.js'
+    ]).pipe(gulp.dest(libs + 'sprintf'));
+});
+
 gulp.task('restore', [
     'restore:jquery',
     'restore:popper',
@@ -65,5 +72,6 @@ gulp.task('restore', [
     'restore:angular',
     'restore:angular-animate',
     'restore:angular-sanitize',
-    'restore:lodash'
+    'restore:lodash',
+    'restore:sprintf'
 ]);
