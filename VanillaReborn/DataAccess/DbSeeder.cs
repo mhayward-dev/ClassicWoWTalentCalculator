@@ -39,8 +39,9 @@ namespace VanillaReborn.DataAccess
 
             // 3. Setup Talent Requirement links between Talents
             DruidClassSeeder.SetupTalentRequirements(druid.WarcraftClassSpecifications);
-            ShamanClassSeeder.SetupTalentRequirements(shaman.WarcraftClassSpecifications);
             HunterClassSeeder.SetupTalentRequirements(hunter.WarcraftClassSpecifications);
+            MageClassSeeder.SetupTalentRequirements(mage.WarcraftClassSpecifications);
+            ShamanClassSeeder.SetupTalentRequirements(shaman.WarcraftClassSpecifications);
 
             context.SaveChanges();
         }

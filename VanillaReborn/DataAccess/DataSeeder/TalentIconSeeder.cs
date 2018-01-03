@@ -125,7 +125,18 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 new TalentIcon { FileName = "ability_rogue_feigndeath" },
                 new TalentIcon { FileName = "ability_warrior_challange" },
                 new TalentIcon { FileName = "spell_nature_invisibilty" },
-                new TalentIcon { FileName = "inv_spear_02" }
+                new TalentIcon { FileName = "inv_spear_02" },
+                new TalentIcon { FileName = "spell_holy_dispelmagic" },
+                new TalentIcon { FileName = "inv_wand_01" },
+                new TalentIcon { FileName = "spell_nature_astralrecalgroup" },
+                new TalentIcon { FileName = "spell_arcane_arcaneresilience" },
+                new TalentIcon { FileName = "spell_shadow_detectlesserinvisibility" },
+                new TalentIcon { FileName = "spell_frost_iceshock" },
+                new TalentIcon { FileName = "spell_shadow_siphonmana" },
+                new TalentIcon { FileName = "spell_nature_enchantarmor" },
+                new TalentIcon { FileName = "spell_shadow_charm" },
+                new TalentIcon { FileName = "spell_shadow_teleport" },
+                new TalentIcon { FileName = "spell_nature_lightning" }
             };
     }
 }
