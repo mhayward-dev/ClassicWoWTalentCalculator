@@ -1,9 +1,10 @@
 /// <binding BeforeBuild='less' />
 var gulp = require("gulp"),
     fs = require("fs"),
-    less = require("gulp-less");
-
-var libs = './wwwroot/libs/';
+    less = require("gulp-less"),
+    uglify = require('gulp-uglify'),
+    pump = require('pump'),
+    libs = './wwwroot/libs/';
 
 gulp.task('default', function () {
     // place code for your default task here
@@ -13,6 +14,16 @@ gulp.task("less", function () {
     return gulp.src('wwwroot/css/main.less')
         .pipe(less())
         .pipe(gulp.dest('wwwroot/css'));
+});
+
+gulp.task('compress', function (cb) {
+    pump([
+        gulp.src('wwwroot/js/*.js'),
+        uglify(),
+        gulp.dest('wwwroot/dist')
+    ],
+        cb
+    );
 });
 
 gulp.task('restore:jquery', function () {

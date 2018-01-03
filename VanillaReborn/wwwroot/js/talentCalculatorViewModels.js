@@ -35,7 +35,7 @@ function warcraftClassSpecificationVm(talentVm) {
         this.index = wcs.specificationIndex;
         this.backgroundImage = wcs.backgroundImage;
         this.specificationIcon = wcs.specificationIcon;
-        this.talentRows = wcs.talentRows.length > 0 ? wcs.talentRows.map(talents => talents.map(talentVm.build, {
+        this.talentRows = wcs.talentRows.length != 0 ? wcs.talentRows.map(talents => talents.map(talentVm.build, {
             spec: wcs
         })) : [];
         this.talentsWithRequirements = wcs.talentsWithRequirements;

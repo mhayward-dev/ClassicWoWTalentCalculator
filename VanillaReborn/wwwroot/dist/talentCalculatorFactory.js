@@ -1,0 +1,1 @@
+app.factory("talentCalculatorFactory",["$http",function(t){var a={};return a.getClasses=function(){return t.get("/api/Classes")},a.getSpecifications=function(a){return t.get("/api/Classes/"+a)},a}]);
