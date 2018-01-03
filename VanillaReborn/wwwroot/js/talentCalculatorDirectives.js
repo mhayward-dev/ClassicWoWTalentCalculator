@@ -25,7 +25,7 @@ app.directive('talentIcon', function ($parse, $compile) {
 
         if (rt.arrowDirection === 'Right') {
             var colsBetweenCount = (t.colIndex - rt.colIndex) - 1;
-            var pixelDistance = 35 + (colsBetweenCount * 80);
+            var pixelDistance = 30 + (colsBetweenCount * 80);
 
             arrowEl.height(10);
             arrowEl.width(pixelDistance);
@@ -33,7 +33,7 @@ app.directive('talentIcon', function ($parse, $compile) {
             arrowEl.css('background-color', bgColour);
 
             var arrowPointEl = angular.element('<div class="arrow-right">');
-            arrowPointEl.css('left', pixelDistance - 8);
+            arrowPointEl.css('left', pixelDistance - 6);
             arrowPointEl.css('border-left-color', bgColour);
             arrowEl.append(arrowPointEl);
         }
