@@ -43,8 +43,8 @@ app.directive('talentIcon', function ($parse, $compile) {
 
             var rightArrowEl = angular.element('<div class="requirement-arrow">');
             rightArrowEl.height(10);
-            rightArrowEl.width(62);
-            rightArrowEl.css('right', '36px');
+            rightArrowEl.width(55);
+            rightArrowEl.css('right', '32px');
             rightArrowEl.css('bottom', '60px');
             rightArrowEl.css('background-color', bgColour);
             arrowEl.push(rightArrowEl);
