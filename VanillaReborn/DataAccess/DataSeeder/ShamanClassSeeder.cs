@@ -8,7 +8,6 @@ namespace VanillaReborn.DataAccess.DataSeeder
     {
         public static List<WarcraftClassSpecification> Setup(List<TalentIcon> icons)
         {
-            // Elemental
             var elementalTalents = new List<Talent>
             {
                 new Talent { TalentName = "Convection", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_nature_wispsplode").Id,
@@ -104,7 +103,6 @@ namespace VanillaReborn.DataAccess.DataSeeder
                  } }
             };
 
-            // Enhancement
             var enhancementTalents = new List<Talent> {
                 new Talent { TalentName = "Ancestral Knowledge", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_shadow_grimward").Id,
                     TalentRanks = new List<TalentRank> {
@@ -208,7 +206,6 @@ namespace VanillaReborn.DataAccess.DataSeeder
                     } }
             };
 
-            // Restoration
             var restorationTalents = new List<Talent> {
                 new Talent { TalentName = "Improved Healing Wave", ColumnIndex = 1, RowIndex = 0, TalentIconId = icons.First(i => i.FileName == "spell_nature_magicimmunity").Id,
                     TalentRanks = new List<TalentRank> {

@@ -50,7 +50,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                         new TalentRank { RankNo = 2, RankDescription = "Gives you a 4% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of you next damage spell by 100%." },
                         new TalentRank { RankNo = 3, RankDescription = "Gives you a 6% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of you next damage spell by 100%." },
                         new TalentRank { RankNo = 4, RankDescription = "Gives you a 8% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of you next damage spell by 100%." },
-                        new TalentRank { RankNo = 5, RankDescription = "Gives you a 10% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of you next damage spell by 100%.." }
+                        new TalentRank { RankNo = 5, RankDescription = "Gives you a 10% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of you next damage spell by 100%." }
                 } },
                 new Talent { TalentName = "Magic Attunement", ColumnIndex = 0, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_nature_abolishmagic").Id,
                     TalentRanks = new List<TalentRank> {

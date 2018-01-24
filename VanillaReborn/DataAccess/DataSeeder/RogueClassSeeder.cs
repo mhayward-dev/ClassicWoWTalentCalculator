@@ -251,7 +251,7 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 } },
                 new Talent { TalentName = "Elusiveness", ColumnIndex = 1, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "spell_magic_lesserinvisibilty").Id,
                      TalentRanks = new List<TalentRank> {
-                        new TalentRank { RankNo = 1, RankDescription = "Reability_stealthduces the cooldown of your Vanish and Blind abilities by 45 sec." },
+                        new TalentRank { RankNo = 1, RankDescription = "Reduces the cooldown of your Vanish and Blind abilities by 45 sec." },
                         new TalentRank { RankNo = 2, RankDescription = "Reduces the cooldown of your Vanish and Blind abilities by 1.5 min." }
                 } },
                 new Talent { TalentName = "Camouflage", ColumnIndex = 2, RowIndex = 1, TalentIconId = icons.First(i => i.FileName == "ability_stealth").Id,

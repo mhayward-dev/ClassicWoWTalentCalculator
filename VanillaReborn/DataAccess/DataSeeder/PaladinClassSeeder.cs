@@ -44,9 +44,9 @@ namespace VanillaReborn.DataAccess.DataSeeder
                 } },
                 new Talent { TalentName = "Healing Light", ColumnIndex = 0, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_holy_holybolt").Id,
                     TalentRanks = new List<TalentRank> {
-                        new TalentRank { RankNo = 1, RankDescription = "Increaes the amount healed by your Holy Light and Flash of Light spells by 4%." },
-                        new TalentRank { RankNo = 2, RankDescription = "Increaes the amount healed by your Holy Light and Flash of Light spells by 8%." },
-                        new TalentRank { RankNo = 3, RankDescription = "Increaes the amount healed by your Holy Light and Flash of Light spells by 12%." }
+                        new TalentRank { RankNo = 1, RankDescription = "Increase the amount healed by your Holy Light and Flash of Light spells by 4%." },
+                        new TalentRank { RankNo = 2, RankDescription = "Increase the amount healed by your Holy Light and Flash of Light spells by 8%." },
+                        new TalentRank { RankNo = 3, RankDescription = "Increase the amount healed by your Holy Light and Flash of Light spells by 12%." }
                 } },
                 new Talent { TalentName = "Consecration", ColumnIndex = 1, RowIndex = 2, TalentIconId = icons.First(i => i.FileName == "spell_holy_innerfire").Id,
                     TalentRanks = new List<TalentRank> {

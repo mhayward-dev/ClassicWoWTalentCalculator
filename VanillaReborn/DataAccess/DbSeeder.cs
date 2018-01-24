@@ -45,6 +45,7 @@ namespace VanillaReborn.DataAccess
             PriestClassSeeder.SetupTalentRequirements(priest.WarcraftClassSpecifications);
             RogueClassSeeder.SetupTalentRequirements(rogue.WarcraftClassSpecifications);
             ShamanClassSeeder.SetupTalentRequirements(shaman.WarcraftClassSpecifications);
+            WarlockClassSeeder.SetupTalentRequirements(warlock.WarcraftClassSpecifications);
 
             context.SaveChanges();
         }
