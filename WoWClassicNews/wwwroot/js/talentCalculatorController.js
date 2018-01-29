@@ -236,5 +236,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) { return t.id !== talent.id });
     }
 
+    angular.element('#btn-share').tooltip();
+
     $scope.fetchClasses();
 });

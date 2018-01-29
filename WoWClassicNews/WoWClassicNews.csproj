@@ -23,4 +23,8 @@
     <Folder Include="wwwroot\libs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\robots.txt" />
+  </ItemGroup>
+
 </Project>
