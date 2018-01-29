@@ -16,3 +16,12 @@ C:\Code\VanillaReborn\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfo
 C:\Code\VanillaReborn\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfo.cs
 C:\Code\VanillaReborn\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.dll
 C:\Code\VanillaReborn\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.pdb
+C:\Code\WoWClassicNews\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.deps.json
+C:\Code\WoWClassicNews\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.dll
+C:\Code\WoWClassicNews\Frameworks\bin\Debug\netcoreapp2.0\Frameworks.pdb
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.csprojResolveAssemblyReference.cache
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.csproj.CoreCompileInputs.cache
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfoInputs.cache
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.AssemblyInfo.cs
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.dll
+C:\Code\WoWClassicNews\Frameworks\obj\Debug\netcoreapp2.0\Frameworks.pdb

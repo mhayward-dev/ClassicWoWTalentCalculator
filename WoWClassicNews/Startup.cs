@@ -24,7 +24,7 @@ namespace VanillaReborn
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<VanillaRebornContext>(options =>
+            services.AddDbContext<WoWClassicNewsContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("VanillaRebornDatabase")));
         }
 

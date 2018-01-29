@@ -6,7 +6,7 @@ namespace VanillaReborn.DataAccess
 {
     public static class DbSeeder
     {
-        public static void Seed(VanillaRebornContext context)
+        public static void Seed(WoWClassicNewsContext context)
         {
             // 1. Add Talent Icons
             var talentIcons = TalentIconSeeder.SetupIcons();

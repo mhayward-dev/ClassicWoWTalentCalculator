@@ -6,7 +6,7 @@ namespace VanillaReborn.DataAccess
 {
     public static class DbInitialiser
     {
-        public static void Initialise(VanillaRebornContext context)
+        public static void Initialise(WoWClassicNewsContext context)
         {
             context.Database.EnsureCreated();
 

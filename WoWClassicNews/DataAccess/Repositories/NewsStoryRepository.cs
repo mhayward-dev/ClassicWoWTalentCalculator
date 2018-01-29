@@ -9,7 +9,7 @@ namespace VanillaReborn.DataAccess.Repositories
 {
     public class NewsStoryRepository : BaseRepository<NewsStory, NewsStoryRepository>
     {
-        public NewsStoryRepository(VanillaRebornContext context) : base(context)
+        public NewsStoryRepository(WoWClassicNewsContext context) : base(context)
         {
             CurrentRepository = this;
         }

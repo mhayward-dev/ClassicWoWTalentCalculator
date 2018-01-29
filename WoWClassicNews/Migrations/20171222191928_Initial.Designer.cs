@@ -10,10 +10,11 @@ using VanillaReborn.DataAccess;
 
 namespace VanillaReborn.Migrations
 {
-    [DbContext(typeof(VanillaRebornContext))]
-    partial class VanillaRebornContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(WoWClassicNewsContext))]
+    [Migration("20171222191928_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

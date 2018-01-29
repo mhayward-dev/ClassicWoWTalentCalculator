@@ -14,12 +14,12 @@ namespace VanillaReborn.Controllers
 {
     public class NewsController : Controller
     {
-        private readonly VanillaRebornContext _context;
+        private readonly WoWClassicNewsContext _context;
         private NewsStoryRepository newsRepository;
         private readonly int pageSize = 10;
         private int totalPages;
 
-        public NewsController(VanillaRebornContext context)
+        public NewsController(WoWClassicNewsContext context)
         {
             _context = context;
             newsRepository = new NewsStoryRepository(context);

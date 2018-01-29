@@ -6,7 +6,7 @@ namespace VanillaReborn.DataAccess.Repositories
 {
     public class WarcraftClassRepository : BaseRepository<WarcraftClass, WarcraftClassRepository>
     {
-        public WarcraftClassRepository(VanillaRebornContext context) : base(context)
+        public WarcraftClassRepository(WoWClassicNewsContext context) : base(context)
         {
             CurrentRepository = this;
         }

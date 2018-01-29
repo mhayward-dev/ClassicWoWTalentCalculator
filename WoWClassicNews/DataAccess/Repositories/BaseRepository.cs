@@ -11,13 +11,13 @@ namespace VanillaReborn.DataAccess.Repositories
         where T : class
         where Repository : class
     {
-        public VanillaRebornContext Context { get; private set; }
+        public WoWClassicNewsContext Context { get; private set; }
         protected Repository CurrentRepository { get; set; }
         public IQueryable<T> Query { get; protected set; }
 
         public BaseRepository(DbContext context)
         {
-            Context = (VanillaRebornContext)context;
+            Context = (WoWClassicNewsContext)context;
         }
 
         public virtual Repository EagerLoad()

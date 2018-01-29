@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Code\\VanillaReborn\\Frameworks\\Frameworks.csproj",
+      "projectUniqueName": "C:\\Code\\WoWClassicNews\\Frameworks\\Frameworks.csproj",
       "projectName": "Frameworks",
-      "projectPath": "C:\\Code\\VanillaReborn\\Frameworks\\Frameworks.csproj",
+      "projectPath": "C:\\Code\\WoWClassicNews\\Frameworks\\Frameworks.csproj",
       "packagesPath": "C:\\Users\\mhayw\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\VanillaReborn\\Frameworks\\obj\\",
+      "outputPath": "C:\\Code\\WoWClassicNews\\Frameworks\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

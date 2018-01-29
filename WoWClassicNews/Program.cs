@@ -23,7 +23,7 @@ namespace VanillaReborn
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<VanillaRebornContext>();
+                    var context = services.GetRequiredService<WoWClassicNewsContext>();
                     DbInitialiser.Initialise(context);
                 }
                 catch (Exception ex)

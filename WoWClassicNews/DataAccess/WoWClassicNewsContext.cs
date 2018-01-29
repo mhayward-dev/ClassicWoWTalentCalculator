@@ -3,9 +3,9 @@ using VanillaReborn.Models;
 
 namespace VanillaReborn.DataAccess
 {
-    public class VanillaRebornContext : DbContext
+    public class WoWClassicNewsContext : DbContext
     {
-        public VanillaRebornContext(DbContextOptions<VanillaRebornContext> options)
+        public WoWClassicNewsContext(DbContextOptions<WoWClassicNewsContext> options)
             : base(options)
         { }
 
