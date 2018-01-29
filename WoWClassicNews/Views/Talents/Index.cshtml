@@ -72,8 +72,8 @@
                 </div>
 
                 <div class="col-lg-3 col-sm-5 text-center">
-                    <button type="button" class="btn btn-success w-75">Save &amp; Share</button>
-                    <button type="button" class="btn btn-light w-75 mt-2" ng-click="resetAllTalents()">Reset All Points</button>
+                    <button id="btn-share" type="button" class="btn btn-success w-75" data-toggle="tooltip" data-placement="top" title="Coming Soon!">Save &amp; Share</button>
+                    <button id="btn-reset-all" type="button" class="btn btn-light w-75 mt-2" ng-click="resetAllTalents()">Reset All Points</button>
                 </div>
 
                 <div id="talent-tooltip" ng-class="isInspectingTalent ? 'fade-in' : 'fade-out'" ng-style="talentTooltipPos">
