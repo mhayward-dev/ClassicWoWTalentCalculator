@@ -25,7 +25,7 @@ namespace VanillaReborn
         {
             services.AddMvc();
             services.AddDbContext<WoWClassicNewsContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("VanillaRebornDatabase")));
+                options.UseSqlServer(Configuration.GetConnectionString("WoWClassicNewsDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
