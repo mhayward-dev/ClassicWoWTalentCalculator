@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VanillaReborn.ViewModels
+namespace WoWClassicNews.ViewModels
 {
     public class AboutViewModel
     {

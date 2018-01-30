@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VanillaReborn.Models
+namespace WoWClassicNews.Models
 {
     public class NewsStory
     {

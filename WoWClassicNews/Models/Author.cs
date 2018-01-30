@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VanillaReborn.Models
+namespace WoWClassicNews.Models
 {
     public class Author
     {

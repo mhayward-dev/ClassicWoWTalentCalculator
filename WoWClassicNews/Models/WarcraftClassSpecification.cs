@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace VanillaReborn.Models
+namespace WoWClassicNews.Models
 {
     public class WarcraftClassSpecification
     {

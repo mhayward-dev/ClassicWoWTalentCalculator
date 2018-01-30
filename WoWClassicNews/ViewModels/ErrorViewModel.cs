@@ -1,6 +1,6 @@
 using System;
 
-namespace VanillaReborn.Models
+namespace WoWClassicNews.Models
 {
     public class ErrorViewModel
     {

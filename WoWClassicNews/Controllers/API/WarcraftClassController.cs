@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using VanillaReborn.DataAccess.Repositories;
-using VanillaReborn.DataAccess;
+using WoWClassicNews.DataAccess.Repositories;
+using WoWClassicNews.DataAccess;
 using Frameworks.Extensions;
-using VanillaReborn.Models.DTOs;
-using VanillaReborn.ViewModels;
+using WoWClassicNews.Models.DTOs;
+using WoWClassicNews.ViewModels;
 
-namespace VanillaReborn.Controllers.API
+namespace WoWClassicNews.Controllers.API
 {
     [Route("api/Classes")]
     public class WarcraftClassController : Controller

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace VanillaReborn.DataAccess.Repositories
+namespace WoWClassicNews.DataAccess.Repositories
 {
     public class BaseRepository<T, Repository>
         where T : class

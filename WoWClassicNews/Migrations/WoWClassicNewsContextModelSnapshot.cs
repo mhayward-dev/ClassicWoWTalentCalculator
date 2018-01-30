@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
-using VanillaReborn.DataAccess;
+using WoWClassicNews.DataAccess;
 
-namespace VanillaReborn.Migrations
+namespace WoWClassicNews.Migrations
 {
     [DbContext(typeof(WoWClassicNewsContext))]
-    partial class VanillaRebornContextModelSnapshot : ModelSnapshot
+    partial class WoWClassicNewsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace VanillaReborn.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("VanillaReborn.Models.Author", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -36,7 +36,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.NewsStory", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.NewsStory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -66,7 +66,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("NewsStories");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.NewsTag", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.NewsTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -82,7 +82,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("NewsTags");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.Talent", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.Talent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -110,7 +110,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("Talents");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.TalentIcon", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.TalentIcon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -122,7 +122,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("TalentIcons");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.TalentRank", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.TalentRank", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -140,7 +140,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("TalentRanks");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.WarcraftClass", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.WarcraftClass", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -154,7 +154,7 @@ namespace VanillaReborn.Migrations
                     b.ToTable("WarcraftClasses");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.WarcraftClassSpecification", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.WarcraftClassSpecification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -174,48 +174,48 @@ namespace VanillaReborn.Migrations
                     b.ToTable("WarcraftClassSpecifications");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.NewsStory", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.NewsStory", b =>
                 {
-                    b.HasOne("VanillaReborn.Models.Author", "Author")
+                    b.HasOne("WoWClassicNews.Models.Author", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.NewsTag", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.NewsTag", b =>
                 {
-                    b.HasOne("VanillaReborn.Models.NewsStory")
+                    b.HasOne("WoWClassicNews.Models.NewsStory")
                         .WithMany("Tags")
                         .HasForeignKey("NewsStoryId");
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.Talent", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.Talent", b =>
                 {
-                    b.HasOne("VanillaReborn.Models.Talent", "RequiredTalent")
+                    b.HasOne("WoWClassicNews.Models.Talent", "RequiredTalent")
                         .WithMany()
                         .HasForeignKey("RequiredTalentId");
 
-                    b.HasOne("VanillaReborn.Models.TalentIcon", "TalentIcon")
+                    b.HasOne("WoWClassicNews.Models.TalentIcon", "TalentIcon")
                         .WithMany()
                         .HasForeignKey("TalentIconId");
 
-                    b.HasOne("VanillaReborn.Models.WarcraftClassSpecification")
+                    b.HasOne("WoWClassicNews.Models.WarcraftClassSpecification")
                         .WithMany("Talents")
                         .HasForeignKey("WarcraftClassSpecificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.TalentRank", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.TalentRank", b =>
                 {
-                    b.HasOne("VanillaReborn.Models.Talent")
+                    b.HasOne("WoWClassicNews.Models.Talent")
                         .WithMany("TalentRanks")
                         .HasForeignKey("TalentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("VanillaReborn.Models.WarcraftClassSpecification", b =>
+            modelBuilder.Entity("WoWClassicNews.Models.WarcraftClassSpecification", b =>
                 {
-                    b.HasOne("VanillaReborn.Models.WarcraftClass")
+                    b.HasOne("WoWClassicNews.Models.WarcraftClass")
                         .WithMany("WarcraftClassSpecifications")
                         .HasForeignKey("WarcraftClassId")
                         .OnDelete(DeleteBehavior.Cascade);

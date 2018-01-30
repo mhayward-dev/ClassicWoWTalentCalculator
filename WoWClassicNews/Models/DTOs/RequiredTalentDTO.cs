@@ -1,7 +1,7 @@
-﻿using VanillaReborn.Models.Enums;
+﻿using WoWClassicNews.Models.Enums;
 using Frameworks.Extensions;
 
-namespace VanillaReborn.Models.DTOs
+namespace WoWClassicNews.Models.DTOs
 {
     public class RequiredTalentDTO : TalentDTO
     {

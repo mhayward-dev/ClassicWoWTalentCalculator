@@ -1,4 +1,4 @@
-﻿namespace VanillaReborn.Models.Enums
+﻿namespace WoWClassicNews.Models.Enums
 {
     public enum RequirementArrowDirections
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VanillaReborn.Models;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess.DataSeeder
+namespace WoWClassicNews.DataAccess.DataSeeder
 {
     public class PriestClassSeeder
     {

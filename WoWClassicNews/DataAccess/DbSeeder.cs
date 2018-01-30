@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using VanillaReborn.DataAccess.DataSeeder;
-using VanillaReborn.Models;
+using WoWClassicNews.DataAccess.DataSeeder;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess
+namespace WoWClassicNews.DataAccess
 {
     public static class DbSeeder
     {

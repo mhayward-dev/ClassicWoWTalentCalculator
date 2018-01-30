@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VanillaReborn.Models;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess
+namespace WoWClassicNews.DataAccess
 {
     public class WoWClassicNewsContext : DbContext
     {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace VanillaReborn.Migrations
+namespace WoWClassicNews.Migrations
 {
     public partial class Initial : Migration
     {

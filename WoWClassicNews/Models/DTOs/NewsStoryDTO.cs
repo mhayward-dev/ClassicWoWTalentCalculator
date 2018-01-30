@@ -1,9 +1,9 @@
 ﻿using Frameworks.Extensions;
 using System;
 using System.Collections.Generic;
-using VanillaReborn.Models.Enums;
+using WoWClassicNews.Models.Enums;
 
-namespace VanillaReborn.Models.DTOs
+namespace WoWClassicNews.Models.DTOs
 {
     public class NewsStoryDTO
     {
@@ -32,7 +32,7 @@ namespace VanillaReborn.Models.DTOs
                 PreviewHtml = ns.PreviewHtml,
                 TopSectionHtml = ns.TopSectionHtml,
                 MidSectionHtml = ns.MidSectionHtml,
-                StoryImage = $"/images/content/{ns.StoryImage}",
+                StoryImage = $"/images/news/{ns.StoryImage}",
                 TitleUrl = StringExtensions.URLFriendly(ns.Title)
             };
         }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using VanillaReborn.Models;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess.Repositories
+namespace WoWClassicNews.DataAccess.Repositories
 {
     public class WarcraftClassRepository : BaseRepository<WarcraftClass, WarcraftClassRepository>
     {

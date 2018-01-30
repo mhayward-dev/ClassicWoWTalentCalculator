@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VanillaReborn.DataAccess
+namespace WoWClassicNews.DataAccess
 {
     public static class DbInitialiser
     {

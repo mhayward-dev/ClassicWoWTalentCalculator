@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VanillaReborn.Models;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess.Repositories
+namespace WoWClassicNews.DataAccess.Repositories
 {
     public class NewsStoryRepository : BaseRepository<NewsStory, NewsStoryRepository>
     {

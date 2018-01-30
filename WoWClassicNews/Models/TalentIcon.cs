@@ -1,4 +1,4 @@
-﻿namespace VanillaReborn.Models
+﻿namespace WoWClassicNews.Models
 {
     public class TalentIcon
     {

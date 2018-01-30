@@ -1,4 +1,4 @@
-USE [VanillaRebornDev]
+USE WoWClassicNewsDev
 
 INSERT INTO Authors
 SELECT 'admin.png', 'Mark', 'Site Admin'
@@ -11,8 +11,8 @@ GETDATE(),
 NULL,
 'teldrassil-classic.jpg',
 1,
-'Vanilla Reborn has launched!',
-'<div class="col-2"></div><div class="col-8"> <img src="/images/content/teldrassil-classic.jpg" class="img-fluid"/> </div><div class="col-2"></div>'
+'WoW Classic News has launched!',
+'<div class="col-2"></div><div class="col-8"> <img src="/images/news/teldrassil-classic.jpg" class="img-fluid"/> </div><div class="col-2"></div>'
 
 INSERT INTO NewsStories
 SELECT 1,
@@ -23,4 +23,4 @@ NULL,
 'wow-classic.jpg',
 8,
 'Remembering World of Warcraft (2006)',
-'<div class="col-2"></div><div class="col-8"> <img src="/images/content/wow-classic.jpg" class="img-fluid"/> </div><div class="col-2"></div>'
+'<div class="col-2"></div><div class="col-8"> <img src="/images/news/wow-classic.jpg" class="img-fluid"/> </div><div class="col-2"></div>'

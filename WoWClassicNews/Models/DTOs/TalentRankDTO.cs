@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VanillaReborn.Models.DTOs
+namespace WoWClassicNews.Models.DTOs
 {
     public class TalentRankDTO
     {

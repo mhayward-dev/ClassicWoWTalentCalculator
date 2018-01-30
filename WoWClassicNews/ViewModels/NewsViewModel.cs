@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VanillaReborn.Models.DTOs;
+using WoWClassicNews.Models.DTOs;
 
-namespace VanillaReborn.ViewModels
+namespace WoWClassicNews.ViewModels
 {
     public class NewsViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VanillaReborn.Models;
+using WoWClassicNews.Models;
 
-namespace VanillaReborn.DataAccess.DataSeeder
+namespace WoWClassicNews.DataAccess.DataSeeder
 {
     public static class TalentIconSeeder
     {

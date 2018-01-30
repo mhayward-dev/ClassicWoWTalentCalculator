@@ -1,16 +1,15 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using VanillaReborn.DataAccess;
-using VanillaReborn.Models.DTOs;
-using VanillaReborn.DataAccess.Repositories;
-using VanillaReborn.ViewModels;
+using WoWClassicNews.DataAccess;
+using WoWClassicNews.Models.DTOs;
+using WoWClassicNews.DataAccess.Repositories;
+using WoWClassicNews.ViewModels;
 using Frameworks.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace VanillaReborn.Controllers
+namespace WoWClassicNews.Controllers
 {
     public class NewsController : Controller
     {
@@ -74,7 +73,7 @@ namespace VanillaReborn.Controllers
 
             if (!string.Equals(friendlyUrl, title, StringComparison.Ordinal))
             {
-                return RedirectToRoutePermanent("", new { id = id, title = friendlyUrl });
+                return RedirectToRoutePermanent("", new { id, title = friendlyUrl });
             }
 
             ViewBag.CurrentPage = "News";
