@@ -21,15 +21,15 @@ namespace WoWClassicNews.Controllers
         [HttpGet("Talents")]
         public IActionResult Index(string className)
         {
-            var name = wcRepository.All().ForClassName(className).FirstResult();
+            var wc = wcRepository.All().ForClassName(className).FirstResult();
 
-            if (name.IsNull())
+            if (wc.IsNull())
             {
                 return RedirectToActionPermanent("Index", new { className = "Druid" });
             }
 
             ViewBag.CurrentPage = "Talents";
-            ViewBag.ClassName = name.ClassName;
+            ViewBag.ClassName = wc.ClassName;
 
             return View();
         }
