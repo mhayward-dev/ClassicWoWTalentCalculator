@@ -9,9 +9,9 @@
 
     <section id="class-select">
         <div id="class-row" class="bg-light row no-gutters">
-            <div class="col-4 col-md class-icon" ng-repeat="c in classes" ng-click="fetchSpecifications(c.className)"
+            <div class="col-4 col-md class-icon" ng-repeat="c in classes" ng-click="changeClass(c.className)"
                  ng-class="[(c.className | lowercase)  + '-bg', {'selected' : c.isSelected} ]">
-                <img ng-src="{{ c.iconFilePath }}" />
+                <img ng-src="../{{ c.iconFilePath }}" />
                 <div class="highlight-line" ng-class="[(c.className | lowercase)  + '-bg', c.isSelected ? 'selected' : 'deselected']"></div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <div class="specification-border">
                         <div class="specification-title thin-text">{{ s.specName }}</div>
                         <div class="specification-count"><strong>{{ totalPointsPerSpec[s.index] }}</strong></div>
-                        <div class="specification-pane" ng-style="{'background-image': 'url(' + s.backgroundImage + ')'}">
+                        <div class="specification-pane" ng-style="{'background-image': 'url(../' + s.backgroundImage + ')'}">
                             <table>
                                 <tr ng-repeat="talents in s.talentRows">
                                     <td ng-repeat="i in [0, 1, 2, 3]">
@@ -65,7 +65,7 @@
                             </table>
                         </div>
                         <div class="specification-icon">
-                            <img ng-src="{{ s.specificationIcon }}" ng-class="(selectedClass.className | lowercase)  + '-border'" />
+                            <img ng-src="../{{ s.specificationIcon }}" ng-class="(selectedClass.className | lowercase)  + '-border'" />
                         </div>
                         <div class="specification-reset">
                             <button type="button" class="btn btn-link text-muted" ng-click="resetSpecificationTree(s.index)">Reset</button>
@@ -106,6 +106,10 @@
 </div>
 
 @section Scripts {
+    <script>
+        var urlClassName = '@ViewBag.ClassName';
+    </script>
+
     <environment include="Development">
         <script src="~/libs/angular-sanitize/angular-sanitize.js"></script>
         <script src="~/js/talentCalculatorViewModels.js"></script>

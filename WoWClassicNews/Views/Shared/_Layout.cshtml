@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="@ViewData["PageDescription"]">
-    <title>@ViewData["Title"] - WoW Classic News</title>
+    <title>WCN - @ViewData["Title"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/libs/bootstrap/css/bootstrap.css" />
@@ -15,8 +15,11 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" asp-area="" asp-controller="News" asp-action="Index">WoW Classic News</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand">
+        <a class="navbar-brand" asp-area="" asp-controller="News" asp-action="Index">
+            <img src="~/images/brand/WCN-logo.png" class="brand-logo d-inline-block align-top" alt="WoW Classic News Logo">
+        </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +29,7 @@
                     <a id="news-nav-link" class="nav-link" asp-area="" asp-controller="News" asp-action="Index">News</a>
                 </li>
                 <li class="nav-item">
-                    <a id="talents-nav-link" class="nav-link" asp-area="" asp-controller="Talents" asp-action="Index">Talents</a>
+                    <a id="talents-nav-link" class="nav-link" asp-area="" asp-controller="Talents" asp-action="Index">Talent Calculator</a>
                 </li>
                 <li class="nav-item">
                     <a id="about-nav-link" class="nav-link" asp-area="" asp-controller="About" asp-action="Index">About</a>
@@ -39,9 +42,11 @@
         @RenderBody()
     </div>
 
-    <footer class="footer bg-dark">
+    <footer class="footer bg-brand">
         <div class="container-fluid">
-            <span class="text-muted small">&copy; 2017 - WoW Classic News</span>
+            <img src="~/images/brand/WCN-logo.png" class="brand-logo" alt="WoW Classic News Logo">
+            <span class="text-muted ml-1 small"></span>
+            <span class="text-muted small">WoW Classic News &copy; 2017</span>
             <span class="text-muted ml-1 small"> - </span>
             <span class="text-muted ml-1 small">A site dedicated to following the release of World of Warcraft Classic</span>
         </div>

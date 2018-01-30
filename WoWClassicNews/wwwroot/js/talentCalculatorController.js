@@ -20,11 +20,16 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         talentCalculatorFactory.getClasses()
             .then(function (response) {
                 $scope.classes = response.data.map(warcraftClassVm.build);
-                $scope.fetchSpecifications('Druid');
+                $scope.fetchSpecifications(urlClassName.length != 0 ? urlClassName : 'Druid');
 
             }, function (error) {
                 console.log(error);
             });
+    };
+
+    $scope.changeClass = function (className) {
+        window.history.replaceState({}, className + " - 0/0/0", "Talents?className=" + className);
+        $scope.fetchSpecifications(className);
     };
 
     $scope.fetchSpecifications = function (className) {
@@ -41,6 +46,7 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
                 $scope.selectedClassId = $scope.selectedClass.id;
 
                 resetTotalPoints();
+                updateWindowTitle();
 
             }, function (error) {
                 console.log(error);
@@ -136,6 +142,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             $scope.totalPointsPerSpec[specIndex] += 1;
             $scope.availablePoints -= 1;
             $scope.requiredLevel += 1;
+
+            updateWindowTitle();
         }
     };
 
@@ -175,6 +183,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
             $scope.totalPointsPerSpec[specIndex] -= 1;
             $scope.availablePoints += 1;
             $scope.requiredLevel -= 1;
+
+            updateWindowTitle();
         }
     };
 
@@ -194,6 +204,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         $scope.requiredLevel -= pointsInSpec;
         $scope.totalPointsPerSpec[specIndex] = 0;
         $scope.selectedTalents[specIndex] = [];
+
+        updateWindowTitle();
     };
 
     $scope.resetAllTalents = function () {
@@ -216,6 +228,8 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
         $scope.requiredLevel = 9;
         $scope.totalPointsPerSpec = [0, 0, 0];
         $scope.selectedTalents = [[], [], []];
+
+        updateWindowTitle();
     }
 
     function updateTalentTree(specIndex, callback) {
@@ -235,6 +249,13 @@ app.controller('talentCalculatorController', function ($scope, $timeout, talentC
     function removeSelectedTalent(talent, specIndex) {
         $scope.selectedTalents[specIndex] = $scope.selectedTalents[specIndex].filter(function (t) { return t.id !== talent.id });
     }
+
+    function updateWindowTitle () {
+        var points = $scope.totalPointsPerSpec;
+        var className = $scope.selectedClass.className;
+        angular.element('head title', window.parent.document)
+            .text(sprintf("WCN - %s - %s/%s/%s", className, points[0], points[1], points[2]));
+    };
 
     angular.element('#btn-share').tooltip();
 

@@ -78,7 +78,7 @@ app.directive('talentIcon', function ($parse, $compile) {
                     iconContainerEl.attr('data-talent-Id', t.id);
 
                     var iconEl = angular.element('<div class="talent-icon inactive">');
-                    iconEl.css('background', sprintf('url("%s") no-repeat center center', t.iconFilePath));
+                    iconEl.css('background', sprintf('url("%s") no-repeat center center', '../' + t.iconFilePath));
                     iconEl.attr('ng-mouseenter', sprintf('showTalentTooltip($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));
                     iconEl.attr('ng-mouseleave', 'hideTalentTooltip()');
                     iconEl.attr('ng-click', sprintf('addTalentPoint($event, %s, %s, %s)', t.specIndex, t.rowIndex, t.colIndex));

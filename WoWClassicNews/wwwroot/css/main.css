@@ -8,6 +8,15 @@ html body {
 html body .thin-text {
   font-weight: 300;
 }
+html body .bg-brand {
+  background-color: #0A1950;
+}
+html body nav .brand-logo {
+  height: 30px;
+}
+html body footer .brand-logo {
+  height: 20px;
+}
 html body #news-page {
   padding-top: 15px;
   padding-bottom: 15px;
