@@ -44,6 +44,14 @@ html {
             padding-bottom: 15px;
 
             #main-news-container {
+                h1.news-title {
+                    font-size: 3rem;
+                }
+
+                p.news-lead {
+                    font-size: 1.5rem;
+                }
+
                 .example {
                     height: 400px;
                     background: #CCC;
@@ -55,11 +63,21 @@ html {
                     .news-story-item {
                         margin-bottom: 15px;
 
+                        .preview-img-container {
+                            height: 200px;
+                            overflow: hidden;
+
+                            .preview-img {
+                                margin-top: -10%;
+                                width: inherit;
+                            }
+                        }
+
                         .author-details {
                             padding-top: 10px;
 
                             .author-avatar img {
-                                width: 55px;
+                                width: 48px;
                                 border-radius: 50%;
                             }
                         }
@@ -574,7 +592,6 @@ html {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 60px;
             line-height: 60px;
             margin-top: 10px;
         }

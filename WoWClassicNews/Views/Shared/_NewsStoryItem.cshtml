@@ -1,23 +1,26 @@
 ﻿@model WoWClassicNews.Models.DTOs.NewsStoryDTO
 
 <div class="news-story-item card">
+    <div class="preview-img-container card-img-top">
+        <img class="preview-img" src="@Model.StoryImage" alt="@Model.Title">
+    </div>
     <div class="card-body row">
-        <div class="col-md-8 story-name">
+        <div class="col-md-8 col-sm-12 story-name">
             <h4 class="thin-text text-muted">@Model.StoryTypeDescription</h4>
             <h4 class="card-title">@Model.Title</h4>
         </div>
-        <div class="col-md-4 author-details row no-gutters">
-            <div class="col-9 text-right">
+        <div class="col-md-4 col-sm-12 author-details row">
+            <div class="col text-md-right">
                 <div class="text-muted">By @Model.Author.Name</div>
                 <div class="text-muted">@Model.PublishedDate</div>
             </div>
-            <div class="author-avatar col-3 text-right">
+            <div class="author-avatar">
                 <img src="@Model.Author.AvatarImage" />
             </div>
         </div>
         <div class="col-md-12 story-content">
             <p class="card-text">@Html.Raw(Model.PreviewHtml)</p>
             <button type="button" class="btn btn-dark float-right">@Html.ActionLink("Read more", "ViewStory", new { id = Model.Id, title = Model.TitleUrl })</button>
-        </div>       
+        </div>
     </div>
 </div>

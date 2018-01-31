@@ -21,6 +21,12 @@ html body #news-page {
   padding-top: 15px;
   padding-bottom: 15px;
 }
+html body #news-page #main-news-container h1.news-title {
+  font-size: 3rem;
+}
+html body #news-page #main-news-container p.news-lead {
+  font-size: 1.5rem;
+}
 html body #news-page #main-news-container .example {
   height: 400px;
   background: #CCC;
@@ -31,11 +37,19 @@ html body #news-page #main-news-container #news-story-container {
 html body #news-page #main-news-container #news-story-container .news-story-item {
   margin-bottom: 15px;
 }
+html body #news-page #main-news-container #news-story-container .news-story-item .preview-img-container {
+  height: 200px;
+  overflow: hidden;
+}
+html body #news-page #main-news-container #news-story-container .news-story-item .preview-img-container .preview-img {
+  margin-top: -10%;
+  width: inherit;
+}
 html body #news-page #main-news-container #news-story-container .news-story-item .author-details {
   padding-top: 10px;
 }
 html body #news-page #main-news-container #news-story-container .news-story-item .author-details .author-avatar img {
-  width: 55px;
+  width: 48px;
   border-radius: 50%;
 }
 html body #news-page #main-news-container #news-story-container .news-story-item .story-content {
@@ -439,7 +453,6 @@ html body .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px;
   line-height: 60px;
   margin-top: 10px;
 }
