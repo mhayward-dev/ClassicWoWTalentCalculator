@@ -1,6 +1,3 @@
-# WoWClassicNews
-WoW Classic News
+# WoW Classic Talent Calculator using Angular JS
 
-This is the codebase for my WoW Classic fansite.
-
-The project is in-progress...
+This is a prototype of a talent calculator used to help players plan their characters in the popular MMORPG, World of Warcraft.
